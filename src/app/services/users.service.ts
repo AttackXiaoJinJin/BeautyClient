@@ -12,19 +12,21 @@ url:string = 'http://localhost:3001/users';
   ) {
 }
 //登录
-login(user, callback) {
-this.http.post(this.url + '/login', user).subscribe(function (result) {
-  callback(result);
-},
-function (error) {
-  console.log(error.message);
-}
-);
-}
+// login(user, callback) {
+// this.http.post(this.url + '/login', user).subscribe(function (result) {
+//   callback(result);
+// },
+// function (error) {
+//   console.log(error.message);
+// }
+// );
+// }
+
 
 //注册
-  regist(user, callback) {
-    this.http.post(this.url + '/regist', user).subscribe(function (result) {
+  regist(telephone,password,username,email,callback) {
+    this.http.post(this.url + '/regist', {telephone:telephone,password:password,username:username,email:email}).subscribe(
+      function (result) {
         callback(result);
       },
       function (error) {
@@ -32,6 +34,24 @@ function (error) {
       }
     )
   }
+  //通过手机获取id
+  getIdByPhone(telephone,callback){
+    this.http.post(this.url+'/getIdByPhone',{telephone:telephone}).subscribe(
+      function (result) {
+        callback(result);
+      },
+      function (error) {
+        console.log(error.message);
+      }
+    );
+  }
+
+
+
+
+
+
+
 
 
   Resetp(user, callback) {

@@ -16,8 +16,10 @@ export class RegistComponent implements OnInit {
   _telephone:any;
   //倒计时是否结束
   if_countover:boolean;
+  //注册提示
   regist_res: string;
-  nologin: any;
+  //输入的邮箱
+  _email:any;
   //验证码
   yanzheng: any;
   //验证码按钮的value
@@ -26,7 +28,12 @@ export class RegistComponent implements OnInit {
   s:any='30';
   //输入的验证码
   _inputyanzheng:any;
-
+  //验证码不正确显示
+  yanzhengShow:boolean;
+  //输入的密码
+  _password:any;
+  //输入的姓名
+  _username:any;
 
   constructor(private userSer: UsersService,
               private router: Router,
@@ -42,28 +49,37 @@ export class RegistComponent implements OnInit {
   }
 
   //注册
-  toregist(reg) {
+  toregist() {
     let that = this;
     if (that._inputyanzheng== that.yanzheng) {
-      that.userSer.regist(reg.form.value, function (result) {
-        if (result.StateCode == 0) {
+      this.yanzhengShow=false;
+      let that=this;
+      //注册
+      that.userSer.regist(that._telephone+'',that._password+'',that._username+'', that._email+'',function (result) {
+        console.log(result.statusCode)
+        if (result.statusCode == 5) {
           that.regist_res = '用户名已被注册！';
-        } else {
+        } else if(result.statusCode == 6){
+
           that.regist_res = '';
-          sessionStorage.setItem('userId', reg.form.value.userId);
-          sessionStorage.setItem('username', reg.form.value.username);
-          sessionStorage.setItem('icon', 'icon_default.jpg');
-          location.reload();
-          that.router.navigate(['/index']);
+          that.userSer.getIdByPhone(that._telephone+'',function (result) {
+            if(result.statusCode){
+              that.router.navigate(['/**']);
+            }else{
+              sessionStorage.setItem('userId', result.userId);
+              sessionStorage.setItem('username', that._username);
+              sessionStorage.setItem('icon', 'icon_default.jpg');
+              //刷新
+              location.reload();
+              that.router.navigate(['/index']);
+
+            }
+          });
+
         }
       })
     }
-    else {
-      that.nologin = true;
-      setTimeout(function () {
-        that.nologin = false;
-      }, 3000)
-    }
+
   }
 
   ngOnDestroy() {

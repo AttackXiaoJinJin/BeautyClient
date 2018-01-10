@@ -1,7 +1,7 @@
 
 <div  class="col-md-12 regist-bg">
   <!--验证码错误-->
-  <div  class="wrong-yanzheng animated fadeInDown" *ngIf="nologin" >验证码错误,请重试！</div>
+  <div  class="wrong-yanzheng animated fadeInDown" *ngIf="yanzhengShow" >验证码错误,请重试！</div>
 <!--e-shine logo 返回首页-->
   <div routerLink="/index" class="logo3"><img src="http://owo22ooz3.bkt.clouddn.com/logo3.png"></div>
 
@@ -47,7 +47,7 @@
       <div class="form-group  col-lg-12 col-md-12">
         <label for="register-password" class="control-label col-lg-2">Password</label>
         <div class="col-lg-12 col-md-12">
-        <input type="password" class="form-control regist-tel" data-type="password"  #myrgpsw="ngModel"  [(ngModel)]="rgpsw1" minlength="6" maxlength="12" pattern="^[a-zA-Z0-9]{6,12}$" id="register-password" name="userPassword" placeholder="请输入密码"  required>
+        <input type="password" class="form-control regist-tel" data-type="password"  #myrgpsw="ngModel"  [(ngModel)]="_password" minlength="6" maxlength="12" pattern="^[a-zA-Z0-9]{6,12}$" id="register-password" name="userPassword" placeholder="请输入密码"  required>
       </div>
       </div>
       <!--密码错误提示-->
