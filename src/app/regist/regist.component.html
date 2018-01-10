@@ -1,0 +1,104 @@
+
+<div  class="col-md-12 login-bg">
+  <div  class="shareNews animated fadeInDown" *ngIf="nologin" style="left:580px;background-color:gray;text-align: center" >验证码错误,请重试！</div>
+  <div routerLink="/index" class="logo3"><img src="http://owo22ooz3.bkt.clouddn.com/logo3.png"></div>
+  <div class="login1">
+  <div class="row col-md-5 ">
+    <form class="form-horizontal" #myForm="ngForm" style="margin-top:20px"  enctype="application/x-www-form-urlencoded">
+      <div class="form-group  col-lg-12 col-md-12" >
+        <label for="userId01" class="control-label col-lg-2">Telephone</label>
+        <div class="col-lg-12 col-md-12">
+          <input type="text" class="form-control tel" #tel="ngModel" pattern="^1[34578]\d{9}$" [(ngModel)]="_telephone" id="userId01" name="userId" placeholder="手机号" required>
+        </div>
+      </div>
+      <div class="control-group col-md-12 col-lg-12">
+        <div><p style="color:#FF69B4">{{regist_res}}</p></div>
+        <div *ngIf="tel.invalid && (tel.dirty || tel.touched)"
+             class="tel1">
+          <div *ngIf="tel.errors.required">
+            <span class=" fa fa-minus-circle"></span>号码不能为空
+          </div>
+          <div *ngIf="tel.errors.pattern">
+            <span class=" fa fa-minus-circle"></span>号码格式不正确
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group col-md-3" >
+        <label for="userId01" class="control-label col-lg-2">Code</label>
+        <input type="text" name="test" #test="ngModel" class="form-control tel" style="width: 400px;margin-left: 15px" [(ngModel)]="_test" placeholder="验证码" >
+      </div>
+      <div class="form-group col-md-2" >
+        <input type="button" class=" form-control tel" style="width: 200px;margin-left: 377px;margin-top: 27px" value="免费获取验证码" id="send-captcha" (click)="send(myForm)">
+      </div>
+      <!--密码-->
+      <div class="form-group  col-lg-12 col-md-12">
+        <label for="register-password" class="control-label col-lg-2">Password</label>
+        <div class="col-lg-12 col-md-12">
+        <input type="password" class="form-control tel" data-type="password"  #myrgpsw="ngModel"  [(ngModel)]="rgpsw1" minlength="6" maxlength="12" pattern="^[a-zA-Z0-9]{6,12}$" id="register-password" name="userPassword" placeholder="请输入密码"  required>
+      </div>
+      </div>
+      <div class="control-group col-md-12 col-lg-12">
+      <div *ngIf="myrgpsw.invalid && (myrgpsw.dirty || myrgpsw.touched)" class="tel1" >
+
+        <div *ngIf="myrgpsw.errors.required">
+          <span class="fa fa-minus-circle"></span>密码不能为空
+        </div>
+        <div *ngIf="myrgpsw.errors.minlength&&myrgpsw.errors.maxlength">
+          <span class="fa fa-minus-circle"></span> 密码大于六位且小于12位
+        </div>
+        <div *ngIf="myrgpsw.errors.pattern">
+          <span class="fa fa-minus-circle"></span> 密码由8-20位数字和字母组成
+        </div>
+      </div>
+      </div>
+      <!--确定密码-->
+      <div class="form-group  col-lg-12 col-md-12">
+        <label for="password_confirm" class="control-label col-lg-2">checkpass</label>
+        <div class="col-lg-12 col-md-12">
+        <input  type="password" class="form-control tel"  #pswconfirm="ngModel"  [(ngModel)]="pswconfirm1" name="password_confirm" id="password_confirm" placeholder="请再次确认密码" required data-type="password">
+      </div>
+      </div>
+      <div class="control-group col-md-12 col-lg-12">
+      <div *ngIf=" pswconfirm.value != myrgpsw.value" class="tel1">
+        <span class="fa fa-minus-circle"></span>两次密码不一致
+      </div>
+      </div>
+      <div class="form-group col-md-12 col-lg-12">
+        <label class="control-label col-lg-2" for="username">username</label>
+        <div class="col-lg-12 col-md-12">
+          <input type="text" #username="ngModel" id="username" [(ngModel)]="_username" name="username"  class="form-control tel"  placeholder="用户名" required>
+        </div>
+      </div>
+      <div class="control-group col-md-12 col-lg-12">
+        <div *ngIf="username.invalid && (username.dirty || username.touched)"
+             class="tel1">
+          <div *ngIf="username.errors.required">
+            <span class=" fa fa-minus-circle"></span>用户名 不能为空
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-md-12 col-lg-12">
+        <label class="control-label  col-lg-2" for="age">Email</label>
+        <div class="col-lg-12 col-md-12">
+          <input type="text" id="age" pattern="^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$" #age="ngModel" [(ngModel)]="_age"  class="form-control tel" name="userEmail" placeholder="邮箱" required>
+        </div>
+      </div>
+      <div class="control-group col-md-12 col-lg-12">
+        <div *ngIf="age.invalid && (age.dirty || age.touched)"
+             class="tel1">
+          <div *ngIf="age.errors.pattern">
+            <span class=" fa fa-minus-circle"></span>邮箱输入有误！
+          </div>
+          <div *ngIf="age.errors.required">
+            <span class=" fa fa-minus-circle"></span>邮箱不能为空
+          </div>
+        </div>
+      </div>
+      <button type="button" id="btnregist" (click)="toregist(myForm)" class="login" style="margin-left:185px" [disabled]="!myForm.form.valid">注册</button>
+    </form>
+    <div routerLink="/login" class="zhuce">已有账号，去登录>></div>
+  </div>
+</div>
+  </div>
+

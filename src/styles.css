@@ -1,1 +1,48 @@
 /* You can add global styles to this file, and also import other style files */
+
+.animated-2x {
+  animation-duration:.2s;
+  animation-fill-mode: both;
+
+}
+a{cursor: pointer;}
+#preview1 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.left_photo img{
+  width: 100%;
+  height:100%;
+  object-fit: cover;
+}
+#preview img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+ul{list-style: none;}
+#backshow{
+  min-height:40px;
+  width:867px;
+  text-align: left;
+  padding-top:10px;
+  background-color: rgba(163, 163, 163, 0.35);
+  border-top:1px solid #ffffff;
+  margin-left:-15px;
+}
+.a{
+  color: #000000;
+  font-size:16px;
+  font-weight: 600;
+}
+#backshow p{
+  margin-left:-20px;
+  margin-top:5px;
+  font-weight: 400;
+}
+#imgg img{
+  width:35%;
+  height:100%;
+  object-fit: cover;
+}

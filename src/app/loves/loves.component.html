@@ -1,0 +1,28 @@
+<div style="">
+  <div class="container" style="margin-left:200px">
+    <div class="row" >
+    <div class="col-xs-4 col-sm-4 col-md-4 ">
+      <img class="img-responsive" src="http://owo22ooz3.bkt.clouddn.com/love-1.jpg">
+    </div>
+    <div class="col-xs-7 col-sm-7 col-md-7">
+       <img src="http://owo22ooz3.bkt.clouddn.com/love-2.jpg">
+       <img src="http://owo22ooz3.bkt.clouddn.com/love-3.jpg">
+      <img src="http://owo22ooz3.bkt.clouddn.com/love-4.jpg">
+      <div  style="margin-top: 3px"> <img src="http://owo22ooz3.bkt.clouddn.com/love-5.jpg">
+        <img src="http://owo22ooz3.bkt.clouddn.com/love-6.jpg">
+        <img src="http://owo22ooz3.bkt.clouddn.com/love-7.jpg">
+      </div>
+    </div>
+    </div>
+    <div class="yi col-md-12 col-md-offset-1">
+      <ul *ngFor="let love of loves;let index=index">
+        <li><img src="http://owo22ooz3.bkt.clouddn.com/{{love.goodspic}}" (click)="godetail(love.goodsid)"></li>
+        <li>MyLove时尚{{love.goodsname}}</li>
+        <li>￥{{love.goodsprice}} <span class="pra"><span id="{{index}}" class="xin" (click)="pra(index)"></span><span class="pra1">{{love.praise}}</span></span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="col-sm-12 col-md-6 " style="height:60px;margin-left: 35%">
+  <a><input class="b" type="button" *ngFor="let item of number;let index=index" value="{{item}}"(click)="show(index)"></a>
+</div>

@@ -1,0 +1,134 @@
+<div  class="col-md-12 login-bg">
+  <!--重置密码-->
+  <div  class="shareNews animated fadeInDown" *ngIf="statem==4" >
+    <span class="fa fa-3x fa-check" style="color: green">
+    </span>重置密码成功！
+  </div>
+  <!--验证码错误-->
+  <div  class="shareNews animated fadeInDown" *ngIf="statem==3" >
+    <span class="fa fa-3x fa-close" style="color: red">
+    </span>验证码错误，请重试！
+  </div>
+<!--找回密码-->
+  <div *ngIf="statem==1" class="animated zoomIn findmima">
+    <form #reform="ngForm">
+      <h4 style="margin-top: 40px;margin-bottom: 30px;margin-left: 100px">找回密码</h4>
+      <div class="pa" style="text-align: center;color: black">
+        <div class="form-group" style="color: black">手机号码:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input pattern="^1[34578]\d{9}$" class="form-control xtel" #retel="ngModel"  [(ngModel)]="_retel"  name="retel" placeholder="请输入手机号"  required>
+        </div>
+        <div class="control-group">
+          <div *ngIf="retel.invalid && (retel.dirty || retel.touched)" class="tel2" >
+            <div *ngIf="retel.errors.required">
+              <span class="fa fa-minus-circle"></span>手机号不能为空
+            </div>
+            <div *ngIf="retel.errors.pattern" class="tel2">
+              <span class="fa fa-minus-circle"></span> 手机格式有误
+            </div>
+
+          </div>
+        </div>
+        <div class="form-group" style="color: black">
+          <input type="button" value="获取验证码" (click)="send(reform)" id="gettest">
+          <input type="text" class="form-control xtel"  #retest="ngModel"  [(ngModel)]="_retest" name="retest"  placeholder="验证码"  required>
+        </div>
+          <div class="control-group">
+          <div *ngIf="retest.invalid && (retest.dirty || retest.touched)" class="tel2" >
+          <div *ngIf="retest.errors.required" class="tel2">
+            <span class="fa fa-minus-circle"></span> 验证码为非空
+          </div>
+          </div>
+          </div>
+
+      </div>
+    </form>
+      <button type="button" id="btnregist" (click)="toreset(reform)" [disabled]="reform.form.invalid" class="login2" >确认</button>
+      <button type="button"  class="login2" style="margin-left: 20px" (click)=" hid()">退出</button>
+
+  </div>
+  <!--重置密码===-->
+  <div *ngIf="statem==2" class="animated zoomIn" style="z-index: 4 ;position: absolute;width:285px;height: 300px;left: 500px;margin-top: 120px;box-shadow: 1px 1px 10px 3px #5e5e5e;background-color: rgba(255,255,255,0.78)" >
+    <form #newform="ngForm">
+      <h4 style="margin-top: 40px;margin-bottom: 30px;margin-left: 100px">重置密码</h4>
+      <div class="pa" style="text-align: center;color: black">
+
+        <div class="form-group" style="color: black">新密码:&nbsp;&nbsp;&nbsp;&nbsp;
+          <input class="form-control xtel" type="password" #myrgpsw="ngModel"  [(ngModel)]="rgpsw1" name="newpass" placeholder="请输入新密码"  required>
+        </div>
+        <div class="control-group">
+          <div *ngIf="myrgpsw.invalid && (myrgpsw.dirty || myrgpsw.touched)"class="tel2" >
+
+            <div *ngIf="myrgpsw.errors.required">
+              <span class="fa fa-minus-circle"></span>密码不能为空
+            </div>
+          </div>
+        </div>
+        <div class="form-group" style="color: black">确认密码:&nbsp;&nbsp;
+          <input type="password" class="form-control xtel" #pswconfirm="ngModel"  [(ngModel)]="pswconfirm1" name="newtwo"  placeholder="二次密码"  required>
+        </div>
+        <div class="control-group">
+            <div *ngIf="pswconfirm.value!= myrgpsw.value" class="tel2">
+              <span class="fa fa-minus-circle"></span>两次密码不一致！
+            </div>
+        </div>
+      </div>
+    </form>
+      <button type="button"  (click)="repass(newform)" [disabled]="newform.form.invalid" class="login2" >确认</button>
+      <button type="button"  class="login2" style="margin-left: 20px" (click)=" hid()">退出</button>
+  </div>
+  <!--e-shine log-->
+  <div routerLink="/index" class="logo4"><img src="http://owo22ooz3.bkt.clouddn.com/logo4.png">
+  </div>
+<!--登录表单-->
+  <div class="login1">
+    <div class="text">欢迎回来！请登录</div>
+    <!--用户名或密码错误-->
+    <div class="login_ti"><span class="fa fa-minus-circle"></span><p>{{login_res}}</p></div>
+    <div class="col-md-3 col-lg-3">
+  <form #loginForm="ngForm">
+    <!--输入框，手机号-->
+    <div class="form-group">
+      <input type="text" class="form-control tel" #tel="ngModel" pattern="^1[34578]\d{9}$" [(ngModel)]="_telephone" id="telephone" name="userId" placeholder="手机号" required>
+    </div>
+    <!--手机号不正确-->
+    <div *ngIf="tel.invalid && (tel.dirty || tel.touched)"
+         class="tel1">
+      <div *ngIf="tel.errors.required">
+        <span class=" fa fa-minus-circle"></span>
+        请输入手机号
+      </div>
+      <div *ngIf="tel.errors.pattern">
+        <span class=" fa fa-minus-circle"></span>
+        手机号码格式不正确
+      </div>
+    </div>
+    <!--密码框=====-->
+    <div class="form-group">
+      <input type="password" class="form-control tel" #pass="ngModel" minlength="6"  [(ngModel)]="_password" id="password" name="userPassword" placeholder="密码" required>
+    </div>
+    <!--密码错误-->
+    <div *ngIf="pass.invalid && (pass.dirty || pass.touched)"
+         class="tel1">
+      <div *ngIf="pass.errors.required">
+        <span class="fa fa-minus-circle"></span>
+        密码不能为空
+      </div>
+      <div *ngIf="pass.errors.minlength">
+        <span class="fa fa-minus-circle"></span>
+        密码大于六位
+      </div>
+    </div>
+    <!--==-->
+    <button type="button" (click)="toLogin(loginForm)" [disabled]="loginForm.form.invalid" class="login">登录</button>
+  </form>
+      <!--忘记密码，注册-->
+      <div class="zhuce">
+        <a style="width:45%;display: inline-block" (click)="reset()">忘记密码？
+        </a>
+        <a routerLink="/regist" >还没账号？ 去注册>>
+        </a>
+      </div>
+    </div>
+</div>
+  <!--===-->
+</div>

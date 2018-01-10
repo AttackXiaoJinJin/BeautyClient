@@ -1,0 +1,83 @@
+<div class="girl" >
+<div class="big-girl">
+  <img class="img-responsive" src="http://owo22ooz3.bkt.clouddn.com/girls-img/big-girl.jpg">
+</div>
+  <div >
+  <a id="title" class="col-md-12"></a>
+  <div class="col-md-12 navbar" >
+<ul class="nav " id="fix" >
+  <li  class="active tian" style=""><a>甜美可爱</a></li>
+  <li data-to="thin" class="thin" style=""><a>心计显瘦</a></li>
+  <li class="wen" style=""><a>温柔气质</a></li>
+  <li class="chang" style=""><a>长腿秘诀</a></li>
+  <li class="qing" style=""><a>清新减龄</a></li>
+  <li class="xia" style=""><a>夏树公主</a></li>
+</ul>
+</div>
+    <div class="container" id="bigcon">
+      <div class="col-md-12 title1">夏天+小清新+甜美，清纯灵动气息</div>
+    <div class="sweet" id="sweet" *ngFor="let mes of qq[0]">
+      <ul>
+        <li>
+          <img src="http://owo22ooz3.bkt.clouddn.com/{{mes?.goodspic}}">
+          <div class="name">{{mes?.goodsname}}</div>
+          <div class="price">￥{{mes?.goodsprice}} </div>
+          <div class="buy1 buy" (click)="godetail(mes?.goodsid)">立即购买</div>
+
+        </li>
+      </ul>
+    </div>
+      <div class="col-md-12 title2" id="sim">夏天+显瘦+显腿，夏季扮靓妥妥的</div>
+    <div class="thin" id="thin" *ngFor="let mes of qq[1]">
+
+      <ul>
+        <li>
+          <img src="http://owo22ooz3.bkt.clouddn.com/{{mes.goodspic}}">
+          <div class="name">文艺小清新宽松短袖学生...</div>
+          <div class="price">￥66.00 </div>
+          <div class="buy2 buy" (click)="godetail(mes.goodsid)">立即购买</div>
+
+        </li>
+
+      </ul>
+</div>
+      <div class="col-md-12 title3">连衣裙+气质，都是属于你的夏日之美</div>
+    <div class="soft" id="soft" *ngFor="let mes of qq[2]">
+      <ul>
+        <li>
+          <img src="http://owo22ooz3.bkt.clouddn.com/{{mes.goodspic}}">
+          <div class="name">文艺清新系带收腰碎花雪纺连...</div>
+          <div class="price">￥149.00 </div>
+          <div class="buy3 buy" (click)="godetail(mes.goodsid)">立即购买</div>
+
+        </li>
+      </ul>
+    </div>
+      <div class="col-md-12 title4">让你美美过夏天！夏天+t恤+短裤 显腿长</div>
+      <div class="longleg" id="longleg" *ngFor="let mes of qq[3]">
+        <ul>
+          <li>
+            <img src="http://owo22ooz3.bkt.clouddn.com/{{mes.goodspic}}">
+            <div class="name">圆领t恤女短袖宽松韩范...</div>
+            <div class="price">￥99.00 </div>
+            <div class="buy4 buy" (click)="godetail(mes.goodsid)">立即购买</div>
+
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-12 title5">夏季+连衣裙，减龄文艺还小清新 </div>
+      <div class="cutage" id="cutage" *ngFor="let mes of qq[4]">
+        <ul>
+          <li>
+            <img src="http://owo22ooz3.bkt.clouddn.com/{{mes.goodspic}}">
+            <div class="name">自制清新系带收腰无袖夏季...</div>
+            <div class="price">￥109.00 </div>
+            <div class="buy5 buy" (click)="godetail(mes.goodsid)">立即购买</div>
+
+          </li>
+        </ul>
+      </div>
+
+    </div>
+</div>
+</div>

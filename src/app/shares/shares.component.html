@@ -1,0 +1,198 @@
+<div class="container">
+  <div class="container">
+    <div class="row" id="move_id">
+      <div class="col-md-12 col-lg-12">
+        <div class="lianxi" *ngIf="sh">
+          <p>手机:</p>
+          <p>15797717014</p>
+          <p><a  routerLink="shares-area">分享</a><span><a (click)="xiao()">取消</a></span></p>
+        </div>
+        <img src="http://owo22ooz3.bkt.clouddn.com/lianxi.png" class="cloth_phone" (click)="shares()">
+        <div class="well">
+          <div class="well-item">
+            <div class="correct">
+              <img src="http://owo22ooz3.bkt.clouddn.com/{{put[0].img}}" height="400" width="219"/>
+            </div>
+            <div class="opposite">
+              <div class="">
+                <div class="opposite-content">
+                  <div class="opposite-content-text">
+                    <h3 class="cloth_types">{{put[0].type}}</h3>
+                    <h4 class="cloth_name">{{put[0].imgname}}</h4>
+                    <p class="cloth_price">促销价：¥{{put[0].price}}</p>
+                    <p class="cloth_introduce">{{put[0].feel}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="well-item">
+            <div class="correct">
+              <img src="http://owo22ooz3.bkt.clouddn.com/{{put[1].img}}" height="400" width="221"/>
+            </div>
+            <div class="opposite">
+              <div class="">
+                <div class="opposite-content">
+                  <div class="opposite-content-text">
+                    <h3 class="cloth_types">{{put[1].type}}</h3>
+                    <h4 class="cloth_name">{{put[1].imgname}}</h4>
+                    <p class="cloth_price">促销价：¥{{put[1].price}}</p>
+                    <p class="cloth_introduce">{{put[1].feel}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="well-item">
+            <div class="correct">
+              <img src="http://owo22ooz3.bkt.clouddn.com/{{put[2].img}}" height="400" width="221"/>
+          </div>
+            <div class="opposite">
+              <div class="">
+                <div class="opposite-content">
+                  <div class="opposite-content-text">
+                    <h3 class="cloth_types">{{put[2].type}}</h3>
+                    <h4 class="cloth_name">{{put[2].imgname}}</h4>
+                    <p class="cloth_price">促销价：¥{{put[2].price}}</p>
+                    <p class="cloth_introduce">{{put[2].feel}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-12">
+        <div class="well">
+          <div class="well-item">
+            <div class="correct">
+              <img src="http://owo22ooz3.bkt.clouddn.com/{{put[3].img}}" height="400" width="219"/>
+            </div>
+            <div class="opposite">
+              <div class="">
+                <div class="opposite-content">
+                  <div class="opposite-content-text">
+                    <h3 class="cloth_types">{{put[3].type}}</h3>
+                    <h4 class="cloth_name">{{put[3].imgname}}</h4>
+                    <p class="cloth_price">促销价：¥{{put[3].price}}</p>
+                    <p class="cloth_introduce">{{put[3].feel}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="well-item">
+            <div class="camera">
+            </div>
+            <div >
+              <img src="../../../assets/shares_images/xj2.jpg" class="camera1" >
+            </div>
+          </div>
+          <div  class="shareNews animated fadeInDown" *ngIf="nologin" style="left:480px;background-color: rgba(255,255,255,0.8);" >你还未登录，即将进入登陆页面！</div>
+
+          <div class="well-item">
+            <div class="correct">
+              <img src="http://owo22ooz3.bkt.clouddn.com/{{put[4].img}}" height="400" width="221"/>
+            </div>
+            <div class="opposite">
+              <div class="">
+                <div class="opposite-content">
+                  <div class="opposite-content-text">
+                    <h3 class="cloth_types">{{put[4].type}}</h3>
+                    <h4 class="cloth_name">{{put[4].imgname}}</h4>
+                    <p class="cloth_price">促销价：¥{{put[4].price}}</p>
+                    <p class="cloth_introduce">{{put[4].feel}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-12">
+        <div class="well">
+          <div class="well-item">
+            <div class="correct">
+              <img src="http://owo22ooz3.bkt.clouddn.com/{{put[5].img}}" height="400" width="219"/>
+            </div>
+            <div class="opposite">
+              <div class="">
+                <div class="opposite-content">
+                  <div class="opposite-content-text">
+                    <h3 class="cloth_types">{{put[5].type}}</h3>
+                    <h4 class="cloth_name">{{put[5].imgname}}</h4>
+                    <p class="cloth_price">促销价：¥{{put[5].price}}</p>
+                    <p class="cloth_introduce">{{put[5].feel}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="well-item">
+            <div class="correct">
+              <img src="http://owo22ooz3.bkt.clouddn.com/{{put[6].img}}" height="400" width="221"/>
+            </div>
+            <div class="opposite">
+              <div class="">
+                <div class="opposite-content">
+                  <div class="opposite-content-text">
+                    <h3 class="cloth_types">{{put[6].type}}</h3>
+                    <h4 class="cloth_name">{{put[6].imgname}}</h4>
+                    <p class="cloth_price">促销价：¥{{put[6].price}}</p>
+                    <p class="cloth_introduce">{{put[6].feel}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="well-item">
+            <div class="correct">
+              <img src="http://owo22ooz3.bkt.clouddn.com/{{put[7].img}}" height="400" width="221"/>
+            </div>
+            <div class="opposite">
+              <div class="">
+                <div class="opposite-content">
+                  <div class="opposite-content-text">
+                    <h3 class="cloth_types">{{put[7].type}}</h3>
+                    <h4 class="cloth_name">{{put[7].imgname}}</h4>
+                    <p class="cloth_price">促销价：¥{{put[7].price}}</p>
+                    <p class="cloth_introduce">{{put[7].feel}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <div class="shares_content">
+    <!--<h3 class="shares_content_top">快来晒出属于你的E—shine吧</h3>-->
+    <div class="shares_content_left">
+      <div class="left_photo">
+        <!--<img src="http://owo22ooz3.bkt.clouddn.com/{{src}}">-->
+      </div>
+      <!--<h3 class="left_photo_zi">你的小天地</h3>-->
+      <form class=" form-horizontal" enctype="multipart/form-data">
+        <div style="width:70px;height:40px;position: relative">
+        <input class="form-control"style="opacity:0;z-index:2" type="file" name="user_icon" id="upload_file" (change)="onFileChanged($event.target.files)" placeholder="Upload file">
+          <input type="button" value="上传图片" id="btn">
+        </div>
+      </form>
+    </div>
+    <div class="shares_content_right">
+      <form #cloForm="ngForm">
+      <input class="clothes_types" #type="ngModel"  [(ngModel)]="_type" name="mytype"type="text" placeholder="请输入你衣服的类型">
+      <input class="clothes_name" #cname="ngModel"  [(ngModel)]="_cname" type="text"name="name" placeholder="属于你的衣名">
+      <input class="clothes_price" #price="ngModel"  [(ngModel)]="_price" name="price"type="text" placeholder="亮出你的价格">
+        <input class="clothes_tel" type="text" placeholder="写出你的联系方式">
+      <input class="clothes_feeling" #feeling="ngModel"  [(ngModel)]="_feeling"name="feeling" type="text" placeholder="谈谈你的感受或建议">
+      <div class="btn_"><input class="submit" type="button" value="提交" (click)="upload(cloForm)">
+        <input class="lose" type="button" value="取消" (click)="cancel2()">
+      </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,22 @@
+
+<div>
+
+  <nav class="navbar nav1">
+    <div class="first" (click)="toIndex()"><span class="glyphicon glyphicon-home"></span>返回首页</div>
+
+    <ul class="nav navbar-nav">
+      <a class="navbar-brand"><span class="glyphicon glyphicon-cloud">E-shine</span></a>
+
+    <li><a routerLink="./center" routerLinkActive="active">个人中心</a></li>
+    <li><a routerLink="./pay" routerLinkActive="active">我的订单</a></li>
+    <li><a routerLink="./myflow" routerLinkActive="active">我的物流</a></li>
+    <li><a routerLink="./shapping-car" routerLinkActive="active"><span class="glyphicon glyphicon-shopping-cart"></span>购物车</a></li>
+    </ul>
+  </nav>
+
+  <div>
+    <router-outlet>
+    </router-outlet>
+  </div>
+</div>
+

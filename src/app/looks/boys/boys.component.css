@@ -1,0 +1,164 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.boy{
+  width: 100%;
+  height: 5000px;
+  background-color: black;
+}
+.boys-big img{
+  margin:  0 auto;
+}
+.boys-big{
+  width: 100%;
+  background-color: black;
+  margin-top: -20px;
+}
+.newNav ul{
+  width: 768px;
+  list-style: none;
+  background-color: #000000;
+
+}
+.newNav li{
+  width: 80px;
+  float: left;
+  font-size:14px;
+  border-right: dashed;
+  text-align: center;
+  background-color: #010101;
+  margin-left:50px;
+
+}
+.newNav a{
+  color: white;
+}
+.newNav a:hover{
+  color: black;
+  cursor: pointer;
+}
+.newNav .active a{
+  color: black;
+  background-color: white;
+}
+.container ul{
+  list-style: none;
+}
+.container li{
+  height: 480px;
+  width: 230px;
+  text-align: center;
+  background-color: #c3c3c3;
+  float: left;
+  padding-top: 5px;
+  margin-bottom: 30px;
+  margin-left: 30px;
+}
+.container li a:hover{
+  cursor: pointer;
+  opacity: 0.5;
+  text-decoration: none;
+}
+
+.buy1 a{
+  color: white;
+}
+.con2{
+  width: 100%;
+}
+.cloth{
+  margin-left: 140px;
+}
+.price{
+  font-size: 20px;
+  font-weight: 600;
+  margin-top:6px;
+
+}
+.name{
+  font-size:16px;
+  margin-top: 10px;
+}
+.title1{
+  text-align: center;
+  font-size: 16px;
+  font-weight:600;
+  color: #f6ff27;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 60px;
+}
+.title2{
+  font-size: 12px;
+  font-weight: 400;
+  color: #fff5ff;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.buy1{
+  margin-left:40px;
+  width: 150px;
+  height: 40px;
+  background-color: rgb(0, 0, 0);
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  text-align: center;
+  border: solid 1px white;
+  border-radius: 7px;
+  line-height: 40px;
+  margin-top:30px;
+
+}
+@media(min-width: 768px) {
+  .newNav ul{
+    width: 768px;
+    margin-left:100px;
+
+  }
+  .newNav li{
+    width:120px;
+    font-size:16px;
+  }
+  .title1{
+    font-size: 14px;
+  }
+  .title2{
+    font-size: 12px;
+  }
+}
+@media(min-width: 992px) {
+  .newNav ul{
+    width: 992px;
+    margin-left:100px;
+  }
+  .newNav li{
+    width: 153px;
+    font-size:18px;
+  }
+  .title2{
+    font-size: 14px;
+  }
+  .title1{
+    font-size: 16px;
+  }
+}
+@media(min-width: 1280px) {
+  .newNav ul{
+    width: 1200px;
+    margin-left:140px;
+  }
+  .newNav li{
+    width: 200px;
+    font-size:22px;
+    padding-right: 40px;
+
+  }
+  .title1{
+    font-size: 18px;
+  }
+  .title2{
+    font-size: 16px;
+  }
+}

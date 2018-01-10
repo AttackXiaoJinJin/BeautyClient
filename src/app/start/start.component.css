@@ -1,0 +1,54 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+img{
+  border:0;
+}
+
+#container{
+  z-index: 101;
+  width:2500px;
+  text-align: center;
+  height: 1410px;
+  overflow: hidden;
+  /*position: relative;*/
+  position: fixed;
+  top:0;
+}
+span{
+  white-space:pre;
+  margin:100px auto;
+}
+#container ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width:8000px;
+  position: absolute;
+}
+
+#container ul li{
+  float:left;
+  width:1920px ;
+  height: 1230px;
+  margin-right: 0px;
+}
+.eshine{
+  position:absolute;
+  top: 150px;
+  left: 17%;
+  z-index: 6;
+}
+/*兼容手机屏幕*/
+@media screen and (min-width:320px) and (max-width:450px)
+{
+  .eshine{
+    top: 250px;
+    position:absolute;
+    left: 15px;
+    z-index: 6;
+  }
+
+}

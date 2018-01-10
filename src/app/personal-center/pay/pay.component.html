@@ -1,0 +1,247 @@
+<div class="container">
+  <div  class="shareNews animated fadeInDown" *ngIf="address_succ==1"  ><span class="fa fa-3x fa-check" style="color: green"></span>修改地址成功</div>
+  <div  class="shareNews animated fadeInDown" *ngIf="address_succ==2"  ><span class="fa fa-3x fa-check" style="color: green"></span>请选择地址</div>
+
+  <div class="row">
+    <div class="col-md-12 col-lg-12">
+      <div id="comment_head">
+        <span id="shine_id">E-shine支付</span>
+        <span id="slide_id">
+          <ul>
+            <li class="slideCircle" id="slideCircle_id" >1
+              <p class="pur">购物车</p></li>
+            <li class="slideLine" id="slideLine_id"></li>
+            <li class="slideLine" id="slideLine_id1"></li>
+            <li class="slideCircle" id="slideCircle_id1">2
+              <p class="pur">确认订单</p>
+            </li>
+            <li class="slideLine" id="slideLine_id2"></li>
+            <li class="slideLine"></li>
+            <li class="slideCircle">3
+              <p class="pur">支付</p>
+            </li>
+            <li class="slideLine"></li>
+            <li class="slideLine"></li>
+            <li>
+            <img  class="slideCircle1" src="../../../assets/shopping_images/pay_images/gouzi.png" height="48" width="48"/>
+              <p class="pur">&nbsp;&nbsp;&nbsp;&nbsp;完成</p>
+            </li>
+          </ul>
+        </span>
+      </div>
+      <div id="con_id" class="con">
+
+  <div id="confirm_address_id">选择收货地址</div>
+        <div class="kuang">
+          <div class="name_add">
+            <ul class="information">
+              <li>娟娟</li>
+              <li>----------------------------------</li>
+              <li>
+                江苏苏州工业园区
+              </li>
+              <li>独墅湖苏州大学分校</li>
+              <li >18852995180</li>
+              <a >删除</a>
+              <a >编辑</a>
+            </ul>
+          </div>
+    <div class="name_add" *ngFor="let item of address;let index=index" (click)="choose(index)">
+      <ul class="information">
+        <li>{{item.shopname}}</li>
+        <li>----------------------------------</li>
+        <li>
+         {{item.address }}
+        </li>
+        <li>{{item.detailadd}}</li>
+        <li >{{item.shoptel}}</li>
+        <a (click)="delhome(index)" id={{item.del}}>删除</a>
+        <a id="editor" (click)="editor(index,addForm)">编辑</a>
+       <img *ngIf=item.state id="dagou"src="../../../assets/shopping_images/pay_images/dagou.png" height="35" width="35"/>
+      </ul>
+    </div>
+        </div>
+  <div class="manage_address">
+    <ul id="manage_address_id" >
+      <li><a (click)="usenew()">使用新地址</a></li>
+    </ul>
+  </div>
+
+
+  <div  *ngIf=state1 class="center_hidden">
+    <form  #addForm="ngForm" class="form-horizontal" id="myform">
+      <input type="text" name="homeid" #id="ngModel" [(ngModel)]="_id" style="display: none">
+      <div class="main_address">
+        <ul>
+          <li>
+            <p  class="province">省:
+              <span class="xinghao">*</span>
+            </p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <select type="text" id="province_id" name="shen" (change)="sh()" #shen="ngModel"  [(ngModel)]="_shen">
+              <option *ngFor="let item of a" value="{{item}}">{{item}}</option>
+              </select>
+
+          <li>
+            市：&nbsp;&nbsp;
+            <select type="text" id="city_id" #city="ngModel" (change)="sh1()" name="city" [(ngModel)]="_city">
+              <option *ngFor="let item of b" >{{item}}</option>
+              </select>
+
+          <li>
+            区：&nbsp;&nbsp;
+            <select type="text" id="area_id" #qu="ngModel"  [(ngModel)]="_qu" name="qu">
+              <option *ngFor="let item of c">{{item}}</option>
+              </select>
+
+        </ul>
+      </div>
+
+      <div class="form-group col-lg-12 col-md-12">
+        <label class="control-label  col-lg-2" for="you">邮政编码<span class="xinghao">*</span></label>
+        <div class="col-lg-3 col-md-3">
+          <input type="text" pattern="^[1-9][0-9]{5}$" id="you"  #you="ngModel" class="form-control " [(ngModel)]="value" name="you" required>
+        </div>
+      </div>
+      <div class="control-group col-md-6 col-lg-6">
+        <div *ngIf="you.invalid && (you.dirty || you.touched)"
+             class="miss">
+          <div *ngIf="you.errors.required">
+            邮政编码不能为空!
+          </div>
+          <div *ngIf="you.errors.minlength">
+            编码格式不正确！
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-lg-12 col-md-12">
+        <label class="control-label  col-lg-2" for="detail">街道地址<span class="xinghao">*</span></label>
+        <div class="col-lg-6 col-md-6">
+          <textarea minlength="10" id="detail"rows="5" placeholder="地址不能为空" #detail="ngModel" class="form-control " [(ngModel)]="_detail" name="detail" required>
+          </textarea>
+        </div>
+      </div>
+      <div class="control-group col-md-6 col-lg-6">
+        <div *ngIf="detail.invalid && (detail.dirty || detail.touched)"
+             class="miss">
+          <div *ngIf="detail.errors.required">
+            地址不能为空
+          </div>
+          <div *ngIf="detail.errors.minlength">
+            街道地址无效！
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group col-lg-12 col-md-12">
+        <label class="control-label  col-lg-2" for="name">收货姓名<span class="xinghao">*</span></label>
+        <div class="col-lg-3 col-md-3">
+          <input type="text" id="name" value="chifan" #name="ngModel" class="form-control " [(ngModel)]="_name" name="name" required>
+        </div>
+      </div>
+      <div class="control-group col-md-6 col-lg-6">
+        <div *ngIf="name.invalid && (name.dirty ||name.touched)"
+             class="miss">
+          <div *ngIf="name.errors.required">
+            姓名不能为空
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group col-lg-12 col-md-12">
+        <label class="control-label  col-lg-2" for="tel">收货号码<span class="xinghao">*</span></label>
+        <div class="col-lg-4 col-md-4">
+          <input type="text" id="tel"pattern="^1[34578]\d{9}$" #tel="ngModel" class="form-control " [(ngModel)]="_tel" name="tel" required>
+        </div>
+      </div>
+      <div class="control-group col-md-6 col-lg-6">
+        <div *ngIf="tel.invalid && (tel.dirty ||tel.touched)"
+             class="miss">
+          <div *ngIf="tel.errors.required">
+            收货号码不能为空
+          </div>
+          <div *ngIf="tel.errors.pattern">
+            号码格式有误！
+          </div>
+        </div>
+      </div>
+
+    <ul class="cancel_address">
+      <input class="cancel_address_id" *ngIf="x1==1" type="button" value="确认地址" (click)="addhome(addForm)">
+      <input class="cancel_address_id" type="button" *ngIf="x1==2" value="确认修改" (click)="update(addForm)">
+      <input (click)="cancel()" id="cancel_address_id1"type="button" value="取消">
+    </ul>
+    </form>
+      </div>
+
+  <div class="bottom">
+    <p>确认商品信息</p>
+    <ul class="title_goods">
+      <li class="first_goods">商品</li>
+      <li>商品信息</li>
+      <li>单价(元)</li>
+      <li>数量</li>
+      <li>小计(元)</li>
+    </ul>
+
+    <ul *ngFor="let good of goods;let index=index" class="center_goods {{index}}">
+      <span class="goods_picture">
+      <img src="http://owo22ooz3.bkt.clouddn.com/{{good.goodspic }}" height="80" width="80"/>
+        <a class="name_good">{{good.goodsname}}</a>
+      </span>
+      <li class="size_goods">{{good.goodssize}}</li>
+      <li>{{good.goodsprice}}</li>
+      <li class="number_goods">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{good.ordnumber}}</li>
+      <li><button class="btn" (click)="ded(good.goodsid,index)">删除</button></li>
+    </ul>
+    <div *ngIf="sum==0"id="no">这里空空如也~~快去购买你喜欢的衣服吧！！！</div>
+
+    <ul class="center1_goods">
+      <li class="beizhu">
+        <p id="beizhu_id">备注：</p>
+          <input class="beizhu_put" type="text" placeholder="补充填写其它信息，如有快递不到也请备注">
+      </li>
+      <li>快递公司:全国包邮</li>
+      <li class="money_goods">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;快递运费:<span>0.00</span></li>
+    </ul>
+    <p class="total_goods">合计:<span>{{sum}}</span></p>
+    <ul class="bottom_goods">
+      <a (click)="back()"> 返回购物车</a>
+      <span class="summary">总计：<span>{{sum}}</span></span>
+      <input type="button" value="确认并付款" (click)="pay()" class="btn_goods">
+      <input type="button" value="取消订单" class="btn" (click)="del1()">
+    </ul>
+  </div>
+
+
+    </div>
+
+
+    </div>
+    </div>
+  </div>
+<div class="pay_module" *ngIf="state_pay==1">
+  <!--<div class="pay_price">-->
+  <!--你需要支付总金额为：￥</div>-->
+  <ul class="pay_ways">
+    <li>请用支付宝扫码支付<br>↓ </li>
+    <li>&nbsp;&nbsp;&nbsp;请用电脑支付<br>&nbsp;&nbsp;↓</li>
+    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      请用微信扫码支付<br>&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;↓</li>
+  </ul>
+  <ul class="QR_code">
+    <li class="code_picture">
+      <img src="../../../assets/shopping_images/pay_images/weixin.png" height="234" width="228">
+    </li>
+    <li class="poza">
+      <img src="../../../assets/shopping_images/pay_images/diannao.jpg" height="236" width="228">
+      <input  class="confirm_final" type="button" (click)="pays()" value="确认并付款">
+      <input  class="confirm_final1" type="button" (click)="cancel()" value="取消付款">
+    </li>
+      <!--<input  class="confirm_final" type="button" (click)="cancel()" value="取消付款">-->
+    <li>
+      <img src="../../../assets/shopping_images/pay_images/zhifubao.png" height="236" width="232">
+  </li>
+
+  </ul>
+</div>

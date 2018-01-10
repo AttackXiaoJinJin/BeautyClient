@@ -1,0 +1,247 @@
+<div class="center1">
+<div class="big_con">
+  <div class="container" >
+    <div class="row">
+      <div  class="shareNews animated fadeInDown" *ngIf="stateh==0" id='kuang' ><span class="fa fa-3x fa-check" style="color: green"></span>上传头像成功</div>
+      <div  class="shareNews animated fadeInDown" *ngIf="stateh==1" ><span class="fa fa-3x fa-check" style="color: green"></span>上传背景成功</div>
+      <div  class="shareNews animated fadeInDown" *ngIf="stateh==2" ><span class="fa fa-3x fa-check" style="color: green"></span>修改密码成功</div>
+      <div  class="shareNews animated fadeInDown" *ngIf="stateh==3" ><span class="fa fa-3x fa-close" style="color: red"></span>原始密码错误,修改失败</div>
+      <div  class="shareNews animated fadeInDown" *ngIf="stateh==4" ><span class="fa fa-3x fa-close" style="color: red"></span>密码错误</div>
+
+      <div id="big">
+        <div class="edit" (click)="showb()">编辑资料 <span class="glyphicon glyphicon-edit"></span></div>
+
+        <div class="col-md-12 col-lg-12">
+          <form class="form-horizontal" #myform="ngForm">
+
+            <div class="big">
+
+              <div class="first">
+                <div id="preview1"><img src="http://owo22ooz3.bkt.clouddn.com/{{back[0].icon}}"></div>
+                <p id="suki">{{back[0].username}}
+                  <span *ngIf=state class="glyphicon glyphicon-pencil bian" (click)="textname()"></span></p>
+                <div class="yonghu" *ngIf=state1 >
+                  <div  class="form-group col-md-12 col-lg-12">
+                    <div class="col-lg-12 col-md-12">
+                      <input (keyup.enter)="updaten(myform)" (blur)="updaten(myform)" type="text" #username="ngModel" id="username" [(ngModel)]="_username" name="username"  class="form-control tel-1"  placeholder="用户名" required>
+                    </div>
+                  </div>
+                  <div class="control-group col-md-12 col-lg-12">
+                    <div *ngIf="username.invalid && (username.dirty || username.touched)"
+                         class="tel1-1">
+                      <div *ngIf="username.errors.required">
+                        <span class=" fa fa-minus-circle"></span>用户名 不能为空
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <p style="clear: both">Web Designer</p>
+                <p (click)="showm()" style="margin-top: -5px;cursor: pointer" >修改密码 <span class="fa fa-paperclip"></span> </p>
+                <div *ngIf="statem" class="animated zoomIn" style="z-index: 4;border-radius: 15px ;position: absolute;width: 400px;height: 400px;left: 180px;box-shadow: 1px 1px 10px 3px #5e5e5e;background-color: rgba(232,236,255,0.93)" >
+
+                    <h4 style="margin-top: 40px;margin-bottom: 30px">修改密码</h4>
+                    <div class="pa" style="text-align: center;color: black">
+                      <div class="form-group" >当前密码:&nbsp;
+                        <input type="password" (keyup.enter)="onpass(pass.value)" (blur)="onpass(pass.value)" class="form-control tel" #pass="ngModel" minlength="6"  [(ngModel)]="_password" id="password" name="pass" placeholder="原始密码" required>
+                      </div>
+                      <div class="control-group">
+                        <div *ngIf="pass.invalid && (pass.dirty || pass.touched)"
+                             class="tel1" >
+                          <div *ngIf="pass.errors.required">
+                            <span class=" fa fa-minus-circle"></span>密码不能为空
+                          </div>
+                          <div *ngIf="pass.errors.minlength">
+                            <span class=" fa fa-minus-circle"></span>密码大于六位数！
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group" style="color: black">新密码:&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="password"  class="form-control tel" data-type="password"  #myrgpsw="ngModel"  [(ngModel)]="rgpsw1" minlength="6" maxlength="12" pattern="^[a-zA-Z0-9]{6,12}$" id="register-password" name="newpass" placeholder="请输入密码"  required>
+                      </div>
+                      <div class="control-group">
+                        <div *ngIf="myrgpsw.invalid && (myrgpsw.dirty || myrgpsw.touched)" class="tel1" >
+
+                          <div *ngIf="myrgpsw.errors.required">
+                            <span class="fa fa-minus-circle"></span>密码不能为空
+                          </div>
+                          <div *ngIf="myrgpsw.errors.minlength&&myrgpsw.errors.maxlength" class="tel1">
+                            <span class="fa fa-minus-circle"></span> 密码大于六位且小于12位
+                          </div>
+                          <div *ngIf="myrgpsw.errors.pattern" class="tel1">
+                            <span class="fa fa-minus-circle"></span> 密码由8-20位数字和字母组成
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group" style="color: black">确认密码:&nbsp;
+                        <input type="password" class="form-control tel"  #pswconfirm="ngModel"  [(ngModel)]="pswconfirm1" name="password_confirm" id="password_confirm" placeholder="请再次确认密码"  data-type="password" required>
+                      </div>
+                      <div class="control-group">
+                       <div *ngIf="pswconfirm.value!= myrgpsw.value" class="tel1">
+                          <span class="fa fa-minus-circle"></span>两次密码不一致
+                        </div>
+                      <!--</div>-->
+                    </div>
+                    </div>
+                  <button type="button" id="btnregist" (click)="toregist(myform)" [disabled]="myform.form.invalid" class="login" >确认</button>
+                    <button type="button"  class="login" style="margin-left: 20px" (click)=" hid()">退出</button>
+                </div>
+              </div>
+
+              <div class="first">
+                <h3>Contact</h3>
+                <p>{{back[0].email}}
+                  <span *ngIf=state class="glyphicon glyphicon-pencil bian" (click)="textput()"></span>
+                </p>
+                <div *ngIf=state2 class="youxiang">
+                  <div class="form-group col-md-12 col-lg-12">
+                    <div class="col-lg-12 col-md-12">
+                      <input type="text" id="age"  (keyup.enter)="updaten1(myform)" (blur)="updaten1(myform)" pattern="^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$" #age="ngModel" [(ngModel)]="_age"  class="form-control tel-1" name="useremail" placeholder="邮箱" required>
+                    </div>
+                  </div>
+                  <div class="control-group col-md-12 col-lg-12">
+                    <div *ngIf="age.invalid && (age.dirty || age.touched)"
+                         class="tel1-1">
+                      <div *ngIf="age.errors.pattern">
+                        <span class=" fa fa-minus-circle"></span>邮箱输入有误！
+                      </div>
+                      <div *ngIf="age.errors.required">
+                        <span class=" fa fa-minus-circle"></span>邮箱不能为空
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <p>{{back[0].telephone}}</p>
+                <p>Richmond.China</p>
+              </div>
+              <div class="first">
+                <h3>Follow</h3>
+                <div class="first1">
+                  <div class="first2">f</div>
+                  <div class="first2">in</div>
+                  <div class="first2">@</div>
+                </div>
+                <div class="first1">
+                  <div class="first2">v</div>
+                  <div class="first2">G</div>
+                  <div class="first2">t</div>
+                </div>
+              </div>
+              <div class="first">
+                <h3>Visted</h3>
+                <p id="be"><B>Be</B></p>
+                <p class="sencond1">Follow my behance<br>listen</p>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-12 col-lg-12">
+          <h2 class="center">About Me</h2>
+          <p class="line">_____</p>
+          <div class="container-fluid">
+          </div>
+          <div id="header">
+            <form class=" form-horizontal" enctype="multipart/form-data">
+              <input class="form-control" type="file" name="user_icon"  id="upload_file"   (change)="onFileChanged($event.target.files)" placeholder="Upload file">
+              <div class="change_txt">更改头像</div>
+              <div id="preview" class="yu">
+                <img src="http://owo22ooz3.bkt.clouddn.com/{{back[0].icon}}" alt="">
+              </div>
+            </form>
+
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-12">
+          <div class="icon">
+            <p class="icon_first">
+              <img src="http://owo22ooz3.bkt.clouddn.com/dingdan1.png" height="40" width="40">
+            </p>
+            <p class="icon_first">
+              <img src="http://owo22ooz3.bkt.clouddn.com/information1.png" height="45" width="45">
+            </p>
+            <p class="icon_first">
+              <img src="http://owo22ooz3.bkt.clouddn.com/address1.png" height="45" width="45">
+            </p>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-12">
+          <div class="icon_introduce">
+              <a routerLink="../pay" routerLinkActive="active">
+                <h5 class="icon_first_introduce">
+                我的订单
+                </h5>
+              </a>
+
+              &nbsp;<a ><h5 class="icon_first_introduce" routerLink="/shares-myarea" routerLinkActive="active">我的分享
+          </h5></a>
+
+            <h5 class="icon_first_introduce" style="cursor: pointer" (mouseover)="address()" (mouseout)="address_hid()"
+                routerLink="../pay" routerLinkActive="active">收货地址
+              &nbsp;&nbsp;
+            </h5>
+            <div class=" address_news animated fadeIn" *ngIf="address_state"> <p></p> </div>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-12">
+          <div class="icon">
+            <p class="icon_second">
+              <img src="http://owo22ooz3.bkt.clouddn.com/pingjia1.png" height="50" width="50"/>
+            </p>
+            <p class="icon_second">
+              <img src="http://owo22ooz3.bkt.clouddn.com/shopping1.png" height="40" width="40"/>
+            </p>
+            <p class="icon_second">
+              <img src="http://owo22ooz3.bkt.clouddn.com/wuliu1.png" height="40" width="40"/>
+            </p>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-12">
+          <div class="icon_introduce1">
+            <h5 class="icon_first_introduce">
+              &nbsp;&nbsp;&nbsp;&nbsp;评价
+            </h5>
+            <a routerLink="../shapping-car" routerLinkActive="active"><h5 class="icon_first_introduce">
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;购物车
+            </h5></a>
+
+              <a routerLink="../myflow" routerLinkActive="active">
+                <h5 class="icon_first_introduce">
+                我的物流
+                </h5>
+              </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12 col-lg-12">
+        <div class="left_bizhi">
+          <div class="change">
+            <div class="dian">个性主题</div>
+            <img  class="tu" src="http://owo22ooz3.bkt.clouddn.com/dingdang2.jpg" height="80" width="80"/>
+          </div>
+          <div class="wallpaper">
+            <ul id="wallpaper_id">
+              <p class="top_arrow" (click)="top()">
+                <img src="http://owo22ooz3.bkt.clouddn.com/top_arrow.png" height="25" width="25">
+              </p>
+              <li *ngFor="let item of def;let index=index" (click)="dianji(index)">
+                <img src="http://owo22ooz3.bkt.clouddn.com/{{item}}" height="80" width="80">
+              </li>
+              <input class="confirm_pic" (click)="change()" type="button" value="确认" *ngIf=fsq>
+              <p class="bottom_arrow" (click)="bottom()">
+                <img  id="bottom_id" src="http://owo22ooz3.bkt.clouddn.com/left_arrow.png" height="25" width="25">
+              </p>
+
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+
+    </div>
+    <img id="wallpaper" src="http://owo22ooz3.bkt.clouddn.com/{{back[0].background}}">
+  </div>
+</div>
+</div>

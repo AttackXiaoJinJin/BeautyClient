@@ -1,0 +1,443 @@
+.body{
+  background-color: #fcd45a;
+}
+#mycarousel img{
+  margin: 0 auto;
+}
+#mycarousel{
+  margin-top: -20px;
+}
+.man,.woman{
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+.woman{
+  font-size: 12px;
+  width: 90px;
+  height:30px;
+  line-height: 30px;
+  margin-right:50px;
+  text-align: center;
+  border:dashed 1px #ffe0e7;
+  background-color: #ffe0e7;
+  margin-top:50px;
+
+}
+.man{
+  font-size: 12px;
+  width: 90px;
+  height:30px;
+  line-height: 30px;
+  margin-left:50px;
+  text-align: center;
+  border:dashed 1px #ffe0e7;
+  background-color: #ffe0e7;
+  margin-top:50px;
+
+}
+.woman:hover{
+  cursor: pointer;
+  background-color: white;
+}
+.man:hover{
+  background-color: white;
+  cursor: pointer;
+}
+.woman a{
+  text-decoration: none;
+  /*cursor: pointer;*/
+  color: #ff4ba7;
+}
+.man a{
+  color: #010101;
+  /*cursor: pointer;*/
+  text-decoration: none;
+
+}
+.looks-1{
+  cursor: pointer;
+}
+.fl{
+  float: left;
+}
+.fr{
+  float: right;
+}
+.looks-man{
+  margin-left:0px;
+  margin-top:25px;
+  width:490px;
+  height:260px
+}
+.looks-man span:hover{
+  /*cursor: pointer;*/
+}
+h4{
+  font-size: 12px;
+  padding-top: 5px;
+  color:black;
+  font-weight: 600;
+
+}
+.look1{
+  text-align: center;
+  line-height: 60px;
+  width: 80px;
+  height: 40px;
+  border: double 6px #ff4ba7;
+}
+.look1 h4{
+  cursor: pointer;
+
+}
+.word1{
+  font-weight:600;
+  background-color: rgba(255, 255, 255, 0.78);
+  width: 60px;
+  height: 90px;
+  color: #000000;
+  font-size: 14px;
+  text-align: center;
+  line-height: 90px;
+  display: none;
+  position: absolute
+
+}
+.man1:hover .word1{
+  display: block;
+}
+.word2{
+  font-weight:600;
+  background-color: rgba(255, 255, 255, 0.78);
+  width: 90px;
+  height: 152px;
+  color: #000000;
+  font-size: 14px;
+  text-align: center;
+  line-height: 152px;
+  display: none;
+  position: absolute
+}
+.man2:hover .word2{
+  display: block;
+}
+.foot{
+  width: 100%;
+  height: 283px;
+  background-color: black;
+  text-align: center;
+}
+.foot1{
+  width: 100%;
+  height: 75px;
+  background-color: black;
+  text-align: center;
+}
+.man11{
+   background: url(../../assets/looks-loves-img/looks-man2.jpg);
+  background-size: cover;
+
+}
+.man12{
+  background: url(../../assets/looks-loves-img/looks-man4.jpg);
+  background-size: cover;
+
+}
+.man13{
+  background: url(../../assets/looks-loves-img/looks-man6.jpg);
+  background-size: cover;
+
+}
+.man1{
+  width: 60px;
+  height: 90px;
+  display:inline-block
+}
+.man2{
+  background: url(../../assets/looks-loves-img/looks-man5.jpg);
+  background-size: cover;
+  width: 90px;
+  height: 152px;
+  display:inline-block
+}
+.dapei{
+  width: 250px;
+  height: 140px;
+  margin-left: 20px;
+}
+.dapei h2{
+  padding-top: 40px;
+  padding-left: 45px
+}
+h2{
+  font-size: 18px;
+}
+.bg2{
+  z-index: 1;
+  margin-left: -180px;
+  margin-top:250px
+}
+.bg1 img{
+  display: none;
+}
+.bg2 img{
+  display: none;
+}
+.foot2{
+  background-color: #ff4ba7;
+  height: 500px;
+  margin-top: 30px;
+  margin-bottom: 30px
+}
+@media (min-width:768px){
+  .man,.woman{
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+  .woman{
+    font-size: 12px;
+    width: 90px;
+    height:30px;
+    line-height: 30px;
+    margin-right:200px;
+    text-align: center;
+    border:dashed 1px #ffe0e7;
+    background-color: #ffe0e7;
+    margin-top:50px;
+  }
+  .man{
+    font-size: 12px;
+    width: 90px;
+    height:30px;
+    line-height: 30px;
+    margin-left:200px;
+    text-align: center;
+    border:dashed 1px #ffe0e7;
+    background-color: #ffe0e7;
+    margin-top:50px;
+  }
+  .man1{
+    width: 60px;
+    height: 90px;
+    display:inline-block
+  }
+  .man2{
+    background: url(../../assets/looks-loves-img/looks-man5.jpg);
+    width: 90px;
+    height: 152px;
+    display:inline-block
+  }
+  .word1{
+    width: 60px;
+    height: 90px;
+    font-size:14px;
+    text-align: center;
+    line-height: 90px;
+    display: none;
+    position: absolute;
+  }
+  .word2{
+    font-weight:600;
+    background-color: rgba(255, 255, 255, 0.78);
+    width: 90px;
+    height: 152px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 152px;
+    display: none;
+    position: absolute
+  }
+  .look1{
+    width: 80px;
+    height: 40px;
+  }
+  h4{
+    font-size: 12px;
+  }
+  .man2{
+    background-size: cover;
+  }
+  h2{
+    font-size: 18px;
+  }
+  .dapei{
+    margin-left: 20px;
+
+  }
+  .foot2{
+    height: 600px;
+  }
+
+}
+@media (min-width:992px){
+  .man,.woman{
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+  .woman{
+     font-size: 14px;
+     width: 120px;
+     height:40px;
+     line-height: 40px;
+     margin-right:300px;
+    text-align: center;
+    border:dashed 1px #ffe0e7;
+    background-color: #ffe0e7;
+    margin-top:50px;
+
+   }
+  .man{
+    font-size: 14px;
+    width: 120px;
+    height:40px;
+    line-height: 40px;
+    margin-left:300px;
+    text-align: center;
+    border:dashed 1px #ffe0e7;
+    background-color: #ffe0e7;
+    margin-top:50px;
+
+  }
+  .man1{
+    width: 80px;
+    height: 120px;
+    display:inline-block
+  }
+  .man2{
+    background: url(../../assets/looks-loves-img/looks-man5.jpg);
+    width: 110px;
+    height: 186px;
+    display:inline-block
+  }
+  .word1{
+    width: 80px;
+    height: 120px;
+    font-size:16px;
+    text-align: center;
+    line-height: 120px;
+    display: none;
+    position: absolute
+
+  }
+  .word2{
+    font-weight:600;
+    background-color: rgba(255, 255, 255, 0.78);
+    width: 110px;
+    height: 186px;
+    font-size: 16px;
+    text-align: center;
+    line-height: 186px;
+    display: none;
+    position: absolute
+  }
+  .look1{
+    width: 100px;
+    height: 50px;
+  }
+  h4{
+    font-size: 16px;
+  }
+  .man2{
+    background-size: cover;
+  }
+h2{
+  font-size: 20px;
+}
+.dapei{
+  margin-left: 50px;
+  margin-top:-10px
+
+}
+  .foot2{
+    height: 700px;
+  }
+}
+@media (min-width:1280px){
+  .man,.woman{
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+  .woman{
+    width: 150px;
+    height:50px;
+    line-height: 50px;
+    font-size: 16px;
+    margin-right: 400px;
+    text-align: center;
+    border:dashed 1px #ffe0e7;
+    background-color: #ffe0e7;
+    margin-top:50px;
+
+  }
+  .man{
+    width: 150px;
+    height:50px;
+    line-height: 50px;
+    font-size: 16px;
+    margin-left: 400px;
+    text-align: center;
+    border:dashed 1px #ffe0e7;
+    background-color: #ffe0e7;
+    margin-top:50px;
+
+  }
+  .man1{
+    width: 100px;
+    height: 150px;
+    display:inline-block
+  }
+  .man2{
+    background: url(../../assets/looks-loves-img/looks-man5.jpg);
+    width: 150px;
+    height: 254px;
+    display:inline-block
+  }
+  .word1{
+    width: 100px;
+    height: 150px;
+    font-size:20px;
+    text-align: center;
+    line-height: 150px;
+    display: none;
+    position: absolute
+
+  }
+  .word2{
+    font-weight:600;
+    background-color: rgba(255, 255, 255, 0.78);
+    width: 150px;
+    height: 254px;
+    font-size: 20px;
+    text-align: center;
+    line-height: 254px;
+    display: none;
+    position: absolute
+  }
+  .look1{
+    width: 120px;
+    height: 60px;
+  }
+  h4{
+  font-size: 20px;
+}
+  .man2{
+    background-size: cover;
+  }
+  h2{
+    font-size: 26px;
+  }
+.dapei{
+  margin-left: 70px;
+  background: url(../../assets/looks-loves-img/bg1.png);
+  margin-top:-20px
+}
+  .bg1 img{
+    display: block;
+  }
+  .bg2 img{
+    display: block;
+  }
+  .foot2{
+    height: 800px;
+  }
+}
