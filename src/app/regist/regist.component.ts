@@ -12,78 +12,39 @@ declare var $: any;
   providers: [UsersService]
 })
 export class RegistComponent implements OnInit {
+  //输入框的手机号
+  _telephone:any;
+  //倒计时是否结束
+  if_countover:boolean;
   regist_res: string;
   nologin: any;
-  code: any;
-  countdown :any;
+  //验证码
+  yanzheng: any;
+  //验证码按钮的value
+  yanvalue:any;
+  //倒计时的时间
+  s:any='30';
+  //输入的验证码
+  _inputyanzheng:any;
+
+
   constructor(private userSer: UsersService,
               private router: Router,
               private  glo: GlobalPropertyService) {
   }
 
   ngOnInit() {
-
     this.glo.hiddenNavs = true;//初始化
-    $(function () {
-      var btn = $("#send-captcha");
-      // 定义发送时间间隔(s)
-      var SEND_INTERVAL = 60;
-      var timeLeft = SEND_INTERVAL;
-
-      /**
-       * 绑定btn按钮的监听事件
-       */
-      var bindBtn = function () {
-        btn.click(function () {
-          alert('111');
-          // 需要先禁用按钮（为防止用户重复点击）
-          btn.unbind('click');
-          btn.attr('disabled', 'disabled');
-          $.ajax({
-            type: 'post',
-            url: 'http://localhost:3001/users/send',
-            data: {'tel': 112},
-            dataType: 'json',
-            contentType: "application/x-www-form-urlencoded; charset=utf-8",
-            success: function (result) {
-              if (result.stateCode == 1) {
-                alert('发送成功');
-                //成功
-                timeLeft = SEND_INTERVAL;
-                timeCount();
-              } else if (result.stateCode == 0) {
-                alert('发送失败');
-                // ** 重要：因为发送失败，所以要恢复发送按钮的监听 **
-                bindBtn();
-                btn.remove('disabled');
-              }
-            },
-            error: function (err) {
-
-            }// ajax接口调用...
-          })
-        })
-      }
-
-
-      var timeCount = function () {
-        window.setTimeout(function () {
-          if (timeLeft > 0) {
-            timeLeft -= 1;
-            btn.html(timeLeft + "后重新发送");
-            timeCount();
-          } else {
-            btn.html("重新发送");
-            bindBtn();
-          }
-        }, 1000);
-      }
-    })
+    //初始化界面是 验证码
+    this.yanvalue="验证码";
+    //因为一开始的页面加载没有手机号
+    this.if_countover=false;
   }
 
+  //注册
   toregist(reg) {
     let that = this;
-    if (reg.form.value.test == that.code) {
+    if (that._inputyanzheng== that.yanzheng) {
       that.userSer.regist(reg.form.value, function (result) {
         if (result.StateCode == 0) {
           that.regist_res = '用户名已被注册！';
@@ -110,39 +71,66 @@ export class RegistComponent implements OnInit {
     this.glo.hiddenNavs = false;
   }
 
-  send(tel) {
+  //获取验证码
+  getyanzheng() {
     let that = this;
-    that.userSer.check({'telephone': tel.form.value.userId}, function (result) {
-      if (result.StateCode == 0) {
-        alert('erro');
-      }
-      else {
-        that.code = result.code;
-        console.log(that.code)
+    //倒计时
+    that.countdown();
+    that.userSer.getyanzheng( that._telephone+'', function (result) {
+      if (result.yanzheng) {
+        that.yanzheng= result.yanzheng;
+        console.log(that.yanzheng)
       }
     })
-   that.countdown = 60;
 
-    var obj = $("#send-captcha");
-    settime(obj);
 
-    function settime(obj) {
-      if (that.countdown == 0) {
-        obj.attr('disabled', false);
-        obj.val("免费获取验证码");
-        that.countdown = 60;
-        return;
-      } else {
-        obj.attr('disabled', true);
-        obj.val("重新发送(" + that.countdown + ")");
-        that.countdown--;
-      }
-      setTimeout(function () {
-          settime(obj)
-        }
-        , 1000)
-    }
   }
+
+  //倒计时
+  countdown(){
+    let that=this;
+    let d = new Date("1111/1/1,0:00:30");
+    that.if_countover=true;
+    let interval = setInterval(function () {
+      //返回时间的秒。返回值是 0 ~30 之间的一个整数。
+      that.s = d.getSeconds();
+      that.yanvalue=that.s+"s后重新发送";
+      that.s = that.s < 10 ? "0" + that.s : that.s;
+      if (that.s == 0) {
+        //倒计时结束清除interval
+        clearInterval(interval);
+        //变成重新发送
+        that.yanvalue="重新发送";
+        //生成未知的随机六位数
+        that.yanzheng=that.makesix();
+        // console.log(that._confirm_code);
+        //时间到，验证码按钮able
+        that.if_countover=false;
+      }
+      d.setSeconds(that.s - 1);
+    },1000)
+  }
+
+
+
+  //随机生成六位数
+  makesix(){
+    //随机产生六位数验证码
+    let range=function(start,end)
+    {
+      let array=[];
+      for(let i=start;i<end;++i) array.push(i);
+      return array;
+    };
+    let randomstr = range(0,6).map(function(x){
+      return Math.floor(Math.random()*10);
+    }).join('');
+    // console.log(randomstr);
+
+    return randomstr;
+  }
+
+
 }
 
 

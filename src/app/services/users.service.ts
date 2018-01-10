@@ -70,8 +70,11 @@ function (error) {
       }
     )
   }
-check(body, callback) {
-    this.http.post(this.url + '/check',body).subscribe(function (result) {
+
+//  获取验证码
+getyanzheng(tel, callback) {
+    this.http.post(this.url + '/check',{telephone:tel}).subscribe(
+      function (result) {
         callback(result);
       },
       function (error) {
@@ -79,6 +82,17 @@ check(body, callback) {
       }
     )
   }
+
+
+
+
+
+
+
+
+
+
+
  delmys(body, callback) {
     this.http.post(this.url + '/delmys',body).subscribe(function (result) {
         callback(result);

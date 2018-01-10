@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
 
   send(tel) {
     let that = this;
-    that.userSer.check({'telephone': tel.form.value.retel}, function (result) {
+    that.userSer.getyanzheng({'telephone': tel.form.value.retel}, function (result) {
       if (result.StateCode == 0) {
         alert('手机号不正确');
       }
