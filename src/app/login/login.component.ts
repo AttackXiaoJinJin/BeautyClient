@@ -41,23 +41,23 @@ export class LoginComponent implements OnInit {
   toLogin(login_form) {
     let that = this;
     that.n = 0;
-    that.userSer.login(login_form.form.value, function (result) {
-      if (result.StateCode == 0) {
-        $('.login_ti span').css('display', 'block');
-        that.login_res = '用户名或密码错误！';
-      } else {
-        //刷新页面
-        location.reload();
-        //手机号
-        that.tel = login_form.form.value.userId;
-        //姓名
-        that.name = result[0].username;
-        sessionStorage.setItem('userId', that.tel);
-        sessionStorage.setItem('username', that.name);
-        sessionStorage.setItem('icon', result[0].icon);
-        that.router.navigate(['/index']);
-      }
-    })
+    // that.userSer.login(login_form.form.value, function (result) {
+    //   if (result.StateCode == 0) {
+    //     $('.login_ti span').css('display', 'block');
+    //     that.login_res = '用户名或密码错误！';
+    //   } else {
+    //     //刷新页面
+    //     location.reload();
+    //     //手机号
+    //     that.tel = login_form.form.value.userId;
+    //     //姓名
+    //     that.name = result[0].username;
+    //     sessionStorage.setItem('userId', that.tel);
+    //     sessionStorage.setItem('username', that.name);
+    //     sessionStorage.setItem('icon', result[0].icon);
+    //     that.router.navigate(['/index']);
+    //   }
+    // })
   }
 
   ngOnDestroy() {

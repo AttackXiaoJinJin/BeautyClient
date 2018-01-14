@@ -1,4 +1,3 @@
-/* users接口 */
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
@@ -7,10 +6,8 @@ export class UsersService {
 // url:string = 'http://39.106.36.37:3000/users';
 // url:string = 'http://101.132.127.138:3001/users';
 url:string = 'http://localhost:3001/users';
-  constructor(
-    private http: HttpClient
-  ) {
-}
+  constructor(private http: HttpClient) {}
+
 //登录
 // login(user, callback) {
 // this.http.post(this.url + '/login', user).subscribe(function (result) {
@@ -34,6 +31,8 @@ url:string = 'http://localhost:3001/users';
       }
     )
   }
+
+
   //通过手机获取id
   getIdByPhone(telephone,callback){
     this.http.post(this.url+'/getIdByPhone',{telephone:telephone}).subscribe(
