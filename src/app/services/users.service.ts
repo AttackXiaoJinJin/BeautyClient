@@ -9,15 +9,16 @@ url:string = 'http://localhost:3001/users';
   constructor(private http: HttpClient) {}
 
 //登录
-// login(user, callback) {
-// this.http.post(this.url + '/login', user).subscribe(function (result) {
-//   callback(result);
-// },
-// function (error) {
-//   console.log(error.message);
-// }
-// );
-// }
+  login(telephone,password,callback){
+    this.http.post(this.url+'/login',{telephone:telephone,password:password}).subscribe(
+      function (result) {
+        callback(result);
+      },
+      function (error) {
+        console.log(error.message);
+      }
+    );
+  }
 
 
 //注册
@@ -45,16 +46,9 @@ url:string = 'http://localhost:3001/users';
     );
   }
 
-
-
-
-
-
-
-
-
-  Resetp(user, callback) {
-    this.http.post(this.url + '/Resetp', user).subscribe(function (result) {
+  //重置密码
+  resetpass(telephone,newpass, callback) {
+    this.http.post(this.url + '/resetpass', {telephone:telephone,newpass:newpass}).subscribe(function (result) {
         callback(result);
       },
       function (error) {
@@ -62,6 +56,7 @@ url:string = 'http://localhost:3001/users';
       }
     )
   }
+
    comment(comment, callback) {
     this.http.post(this.url + '/comment', comment ).subscribe(function (result) {
         callback(result);

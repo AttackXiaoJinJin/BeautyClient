@@ -142,7 +142,6 @@ export class RegistComponent implements OnInit {
       return Math.floor(Math.random()*10);
     }).join('');
     // console.log(randomstr);
-
     return randomstr;
   }
 
