@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
   _inputyanzheng:any;
   //倒计时是否结束
   if_countover:boolean;
-
+  user_id:any;
 
   n:any;
   code:any;
@@ -90,18 +90,19 @@ export class LoginComponent implements OnInit {
   toLogin() {
     let that = this
     that.n = 0
-    that.userSer.login(that._telephone+'',that._password,function (result) {
-      if (result.statusCode == 2) {
+    that.userSer.login(that._telephone+'',that._password+'',function (result) {
+      if (result.statusCode === 2) {
         that.login_ti=true
         that.login_res = '用户名或密码错误！';
       } else {
         //刷新页面
         location.reload();
         //姓名
-        that.name = result[0].username;
+        that.name = result.username;
         sessionStorage.setItem('userPhone', that._telephone);
         sessionStorage.setItem('userName', that.name);
-        sessionStorage.setItem('icon', result[0].icon);
+        sessionStorage.setItem('icon', result.icon);
+        sessionStorage.setItem('userId', result.id);
         that.router.navigate(['/index']);
       }
     })

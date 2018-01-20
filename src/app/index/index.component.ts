@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 
 declare let $ :any;
+
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',

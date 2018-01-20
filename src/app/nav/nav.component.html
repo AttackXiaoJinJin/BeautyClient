@@ -51,16 +51,20 @@
       </form>
       <!--登录，注册-->
       <ul class="nav navbar-nav navbar-right" id="user_nav">
-        <li *ngIf=!tel style="float:right;"><span><a href="" routerLink="/login" routerLinkActive="active"> 登录</a></span>
-          &nbsp;&nbsp;
-          <span> <a href="" routerLink="/regist" routerLinkActive="active"> 注册</a></span></li>
-        <li *ngIf=tel style="float:right">
-            <span>
-              <a href="" routerLink="/personal-center" routerLinkActive="active">欢迎:{{name}}</a>
-              <!--<app-center [qq]="qq1" #centers></app-center>-->
-            </span>&nbsp;
-
-          <span><a href="#" (click)="end()" routerLink="/" routerLinkActive="active" >注销</a> </span></li>
+        <!--未登录显示-->
+        <li *ngIf="!isLogin" style="float:right;margin-right: 10px;">
+          <span><a href="" routerLink="/login" routerLinkActive="active"> 登录</a></span>
+          <span> <a href="" routerLink="/regist" routerLinkActive="active"> 注册</a></span>
+        </li>
+        <!--已登录显示-->
+        <li *ngIf="isLogin" style="float:right">
+            <span style="margin-right: 5px">
+              <a href="" routerLink="/personal-center" routerLinkActive="active">欢迎:{{userName}}</a>
+            </span>
+          <span>
+            <a (click)="end()" routerLinkActive="active" >注销</a>
+          </span>
+        </li>
       </ul>
       <!---->
     </div>

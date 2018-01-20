@@ -39,6 +39,7 @@ import { FooterComponent } from './footer/footer.component'
 //解决404问题
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import { NavComponent } from './nav/nav.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 
 
@@ -65,6 +66,7 @@ import { NavComponent } from './nav/nav.component';
     FooterComponent,
     NavComponent,
     BacktopComponent,
+    SidebarComponent,
     SharesMyareaComponent
 
   ],

@@ -84,15 +84,7 @@ export class PersonalService {
     )
   }
 
-  myshop(body, callback ) {
-  this.http.post(this.url + '/myshop', body ).subscribe(function (result) {
-      callback(result);
-    },
-    function (error) {
-      console.log(error.message);
-    }
-  )
-}
+
   delshop(body, callback ) {
     this.http.post(this.url + '/delshop', body ).subscribe(function (result) {
         callback(result);

@@ -68,9 +68,20 @@ url:string = 'http://localhost:3001/users';
       }
     )
   }
+  //我的购物车
+  myshop(telephone, callback ) {
+    this.http.post(this.url + '/myshop', {telephone:telephone} ).subscribe(function (result) {
+        callback(result);
+      },
+      function (error) {
+        console.log(error.message);
+      }
+    )
+  }
 
 
 
+  //===========================
   comment(comment, callback) {
     this.http.post(this.url + '/comment', comment ).subscribe(function (result) {
         callback(result);
