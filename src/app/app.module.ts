@@ -1,3 +1,5 @@
+
+import { BacktopComponent } from './backtop/backtop.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
@@ -36,6 +38,7 @@ import { FooterComponent } from './footer/footer.component'
 
 //解决404问题
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
+import { NavComponent } from './nav/nav.component';
 
 
 
@@ -60,6 +63,8 @@ import {HashLocationStrategy, LocationStrategy} from '@angular/common';
     SharesAreaComponent,
     StartComponent,
     FooterComponent,
+    NavComponent,
+    BacktopComponent,
     SharesMyareaComponent
 
   ],

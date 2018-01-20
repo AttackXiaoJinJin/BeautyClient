@@ -4,7 +4,8 @@ import {HttpClient} from '@angular/common/http';
 @Injectable()
 export class PersonalService {
   // url: string = 'http://39.106.36.37:3000/personal';
-  url: string = 'http://101.132.127.138:3000/personal';
+  // url: string = 'http://101.132.127.138:3000/personal';
+  url: string = 'http://localhost:3001/personal';
 
   constructor(private http: HttpClient) {
   }
@@ -26,15 +27,7 @@ export class PersonalService {
       }
     )
   }
-  showput(callback) {
-    this.http.post(this.url + '/showput','').subscribe(function (result) {
-        callback(result);
-      },
-      function (error) {
-        console.log(error.message);
-      }
-    )
-  }
+
   showshop(body,callback) {
     this.http.post(this.url + '/showshop',body).subscribe(function (result) {
         callback(result);
@@ -90,7 +83,8 @@ export class PersonalService {
       }
     )
   }
-myshop(body, callback ) {
+
+  myshop(body, callback ) {
   this.http.post(this.url + '/myshop', body ).subscribe(function (result) {
       callback(result);
     },

@@ -99,8 +99,8 @@ export class LoginComponent implements OnInit {
         location.reload();
         //姓名
         that.name = result[0].username;
-        sessionStorage.setItem('userId', that._telephone);
-        sessionStorage.setItem('username', that.name);
+        sessionStorage.setItem('userPhone', that._telephone);
+        sessionStorage.setItem('userName', that.name);
         sessionStorage.setItem('icon', result[0].icon);
         that.router.navigate(['/index']);
       }

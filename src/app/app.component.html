@@ -1,122 +1,59 @@
-<div class="body" style="width: 100%">
+<!--<div class="body" style="width: 100%">-->
+
+<div *ngIf="!_hiddenNavs">
   <!--E-shine大logo-->
-<div *ngIf="!_hiddenNavs" class="logo2" style="text-align: center">
-  <img src="http://owo22ooz3.bkt.clouddn.com/logo2.png">
+  <img class="logo2" style="text-align: center" src="http://owo22ooz3.bkt.clouddn.com/logo2.png">
+  <!--导航栏-->
+  <app-nav></app-nav>
+  <!--导航====-->
 </div>
 
-  <!--<a id="title1" class="col-md-12"></a>-->
-
-  <!--导航栏-->
-<nav id="fix1" class="navbar ng1" *ngIf="!_hiddenNavs">
-  <div class="container-fluid">
-    <!--云+E-shine logo-->
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">
-        <!--云-->
-        <span class="glyphicon glyphicon-cloud">
-          E-shine
-        </span>
-      </a>
-    </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <!--导航栏子项-->
-      <ul class="nav navbar-nav ng3" style="margin-left: 200px">
-        <li>
-          <a routerLink="/index" routerLinkActive="active" >首页
-          <span class="sr-only">(current)
-          </span>
-        </a>
-        </li>
-        <li>
-          <a routerLink="/looks" routerLinkActive="active">穿搭</a>
-          <ul class="dropdown">
-            <li routerLink="/boys">男生搭</li>
-            <li routerLink="/girls">女生搭</li>
-          </ul>
-        </li>
-        <li>
-          <a routerLink="/loves" routerLinkActive="active">情侣时光
-           <span class="glyphicon glyphicon-heart"></span>
-          </a>
-        </li>
-        <li>
-          <a routerLink="/fashion-week" routerLinkActive="active">时尚圈</a>
-          <ul class="dropdown d1">
-            <li routerLink="/fashion-week">秀场</li>
-            <li routerLink="/fashion-wu">吴亦凡</li>
-            <li routerLink="/fashion-ying">赵丽颖</li>
-            <li routerLink="/fashion-ou">王鸥</li>
-          </ul>
-        </li>
-        <li><a href="#" routerLink="/shares" routerLinkActive="active">达人分享</a></li>
-        <li><a href="#" routerLink="/shares-area" routerLinkActive="active">分享</a></li>
-      </ul>
-    <!--搜索框-->
-      <form class="navbar-form navbar-left" #appForm="ngForm">
-        <div class="form-group">
-          <input type="text" class="form-control" name="search" placeholder="Search" #sea="ngModel" [(ngModel)]="_sea" >
-          <span class="glyphicon glyphicon-search btn btn-default" (click)="search(appForm)"></span>
-        </div>
-      </form>
-      <!--登录，注册-->
-      <ul class="nav navbar-nav navbar-right" id="user_nav">
-          <li *ngIf=!tel style="float:right;"><span><a href="" routerLink="/login" routerLinkActive="active"> 登录</a></span>
-            &nbsp;&nbsp;
-            <span> <a href="" routerLink="/regist" routerLinkActive="active"> 注册</a></span></li>
-          <li *ngIf=tel style="float:right">
-            <span>
-              <a href="" routerLink="/personal-center" routerLinkActive="active">欢迎:{{name}}</a>
-              <!--<app-center [qq]="qq1" #centers></app-center>-->
-            </span>&nbsp;
-
-            <span><a href="#" (click)="end()" routerLink="/" routerLinkActive="active" >注销</a> </span></li>
-      </ul>
-      <!---->
-    </div>
-  </div>
-</nav>
-  <!--导航====-->
 
 
-  <div>
-  <ul id="dock">
-    <li id="links"><span class="fa fa-user"></span>
-      <ul class="free">
-        <li class="header"><a class="dock-keleyi-com">固定</a><a class="undock">隐藏</a></li>
-        <div *ngIf=!tel>你还没有登录呢~~~</div>
-        <div *ngIf= tel><li><img routerLink="/personal-center" class="img-circle" src="http://owo22ooz3.bkt.clouddn.com/{{icon}}" width="100px"height="110px"></li>
-        <li>用户名：<span>{{name}}</span></li></div>
-        <li><button>欢迎~~</button></li>
-      </ul>
-    </li>
-    <li id="files"><span class="fa fa-shopping-cart"></span>购物车<div class="circle">{{num}}</div>
-      <ul class="free" style="overflow-y: scroll">
-        <li class="header"><a class="dock-keleyi-com">固定</a><a class="undock">隐藏</a></li>
-        <li (click)="goshop()">我的购物车</li><div  *ngIf=tel>
-        <li *ngFor="let item of mes">
-          <span><img width="80" height="120" (click)="goshop()" src="http://owo22ooz3.bkt.clouddn.com/{{item.goodspic}}"></span>
-          <span style="width: 80px;height: 50px;display: inline-block">{{item.goodsname}}</span>
-        </li>
-      </div>
-      </ul>
-    </li>
-    <li id="tools"><span class="fa fa-paw"></span>我的足迹
-      <ul class="free">
-        <li class="header"><a class="dock-keleyi-com">固定</a><a class="undock">隐藏</a>我的足迹</li>
-        <li *ngFor="let item of mesf">
-          <div>{{item.lookdate}}</div>
-          <span><img (click)="godetail(item.lookid)" width="80" height="120" src="http://owo22ooz3.bkt.clouddn.com/{{item.lookpic}}"></span>
-          <span style="width: 80px;height: 50px;display: inline-block">{{item.lookname}}</span>
-        </li>
-      </ul>
-    </li>
-    <li id="top"><span class="fa fa-chevron-up"></span>顶部
-    </li>
-  </ul>
-  </div>
+<!--侧边栏-->
+  <!--<div>-->
+  <!--<ul id="dock">-->
+    <!--<li id="links"><span class="fa fa-user"></span>-->
+      <!--<ul class="free">-->
+        <!--<li class="header"><a class="dock-keleyi-com">固定</a><a class="undock">隐藏</a></li>-->
+        <!--<div *ngIf=!tel>你还没有登录呢~~~</div>-->
+        <!--<div *ngIf= tel><li><img routerLink="/personal-center" class="img-circle" src="http://owo22ooz3.bkt.clouddn.com/{{icon}}" width="100px"height="110px"></li>-->
+        <!--<li>用户名：<span>{{name}}</span></li></div>-->
+        <!--<li><button>欢迎~~</button></li>-->
+      <!--</ul>-->
+    <!--</li>-->
+    <!--<li id="files"><span class="fa fa-shopping-cart"></span>购物车<div class="circle">{{num}}</div>-->
+      <!--<ul class="free" style="overflow-y: scroll">-->
+        <!--<li class="header"><a class="dock-keleyi-com">固定</a><a class="undock">隐藏</a></li>-->
+        <!--<li (click)="goshop()">我的购物车</li><div  *ngIf=tel>-->
+        <!--<li *ngFor="let item of mes">-->
+          <!--<span><img width="80" height="120" (click)="goshop()" src="http://owo22ooz3.bkt.clouddn.com/{{item.goodspic}}"></span>-->
+          <!--<span style="width: 80px;height: 50px;display: inline-block">{{item.goodsname}}</span>-->
+        <!--</li>-->
+      <!--</div>-->
+      <!--</ul>-->
+    <!--</li>-->
+    <!--<li id="tools"><span class="fa fa-paw"></span>我的足迹-->
+      <!--<ul class="free">-->
+        <!--<li class="header"><a class="dock-keleyi-com">固定</a><a class="undock">隐藏</a>我的足迹</li>-->
+        <!--<li *ngFor="let item of mesf">-->
+          <!--<div>{{item.lookdate}}</div>-->
+          <!--<span><img (click)="godetail(item.lookid)" width="80" height="120" src="http://owo22ooz3.bkt.clouddn.com/{{item.lookpic}}"></span>-->
+          <!--<span style="width: 80px;height: 50px;display: inline-block">{{item.lookname}}</span>-->
+        <!--</li>-->
+      <!--</ul>-->
+    <!--</li>-->
+
+    <!--</li>-->
+  <!--</ul>-->
+  <!--</div>-->
+
   <div class="row">
+    <!--//通过路由跳转显示特定网页-->
     <router-outlet #outlet>
     </router-outlet>
+    <!--回到顶部-->
+    <app-backtop *ngIf="!_hiddenTop"></app-backtop>
   </div>
 
   <!--底部声明-->
@@ -124,5 +61,5 @@
     <app-footer></app-footer>
   </div>
 
-</div>
+<!--</div>-->
 

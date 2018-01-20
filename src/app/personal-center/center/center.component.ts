@@ -100,7 +100,7 @@ this.src= sessionStorage.getItem('icon');
 
   toIndex(){
     this.router.navigate(['/index',this._val]);
-    this.glo.serverUrl='http://127.0.0.1:8000'
+    // this.glo.serverUrl='http://127.0.0.1:8000'
   }
   ngOnDestroy(){
     console.log('personal -ngDestroy');

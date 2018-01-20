@@ -5,7 +5,10 @@
   animation-fill-mode: both;
 
 }
-a{cursor: pointer;}
+a{
+  cursor: pointer;
+  text-decoration: none;
+}
 #preview1 img {
   width: 100%;
   height: 100%;

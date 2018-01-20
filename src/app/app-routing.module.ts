@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+
 import { IndexComponent } from './index/index.component';
+//分享
 import { SharesComponent} from './shares/shares.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LooksComponent } from './looks/looks.component';

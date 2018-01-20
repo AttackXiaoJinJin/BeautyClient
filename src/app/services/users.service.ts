@@ -57,7 +57,21 @@ url:string = 'http://localhost:3001/users';
     )
   }
 
-   comment(comment, callback) {
+  //  获取验证码
+  getyanzheng(tel, callback) {
+    this.http.post(this.url + '/check',{telephone:tel}).subscribe(
+      function (result) {
+        callback(result);
+      },
+      function (error) {
+        console.log(error.message);
+      }
+    )
+  }
+
+
+
+  comment(comment, callback) {
     this.http.post(this.url + '/comment', comment ).subscribe(function (result) {
         callback(result);
       },
@@ -84,27 +98,6 @@ url:string = 'http://localhost:3001/users';
       }
     )
   }
-
-//  获取验证码
-getyanzheng(tel, callback) {
-    this.http.post(this.url + '/check',{telephone:tel}).subscribe(
-      function (result) {
-        callback(result);
-      },
-      function (error) {
-        console.log(error.message);
-      }
-    )
-  }
-
-
-
-
-
-
-
-
-
 
 
  delmys(body, callback) {
