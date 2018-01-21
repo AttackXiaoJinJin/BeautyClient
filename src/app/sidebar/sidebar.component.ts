@@ -14,14 +14,24 @@ export class SidebarComponent implements OnInit {
   if_login:boolean=false
   //头像
   icon:any
-
-  mes:any
   //手机
   tel:any
   //用户名
   name:any
+  //id
+  user_id:any
+  mes:any
+  //是否显示侧边栏
+  my_class:any='free'
+  my_class1:any='free'
+  my_class2:any='free'
+
+
+
   mesf:any
-  num:any
+  //我的购物信息
+  shopresult:any
+  footresult:any
   constructor(
     private userSer: UsersService,
     private router: Router,
@@ -34,61 +44,71 @@ export class SidebarComponent implements OnInit {
       that.tel= sessionStorage.getItem('userPhone')
       that.icon= sessionStorage.getItem('icon')
       that.name= sessionStorage.getItem('userName')
+      that.user_id=sessionStorage.getItem('userId')
+      that.if_login=true
+    }else{
+      that.if_login=false
     }
 
+  }
+//  init===========
+
+//  购物车
+  myshop(){
+    let that=this
     //购物车
     that.userSer.myshop(that.tel+'', function (result) {
-        that.mes = result[0];
+      that.shopresult=result
+
       // that.mes.unshift(that.detail);
-        that.num=that.mes.length;
-        that.mesf=result[1];
+      // that.mesf=result[1];
     })
-
-    $(document).ready(function () {
-      var docked = 0;
-
-      $("#dock li ul").height($(window).height());
-
-      $("#dock .dock-keleyi-com").click(function () {
-        $(this).parent().parent().addClass("docked").removeClass("free");
-
-        docked += 1;
-        var dockH = ($(window).height()) / docked
-        var dockT = 0;
-
-        $("#dock li ul.docked").each(function () {
-          $(this).height(dockH).css("top", dockT + "px");
-          dockT += dockH;
-        });
-        $(this).parent().find(".undock").show();
-        $(this).hide();
-
-      });
-
-      $("#dock .undock").click(function () {
-        $(this).parent().parent().addClass("free").removeClass("docked")
-          .animate({ right: "-160px" }, 200).height($(window).height()).css("top", "0px");
-
-        docked = docked - 1;
-        var dockH = ($(window).height()) / docked
-        var dockT = 0;
-
-        $("#dock li ul.docked").each(function () {
-          $(this).height(dockH).css("top", dockT + "px");
-          dockT += dockH;
-        });
-        $(this).parent().find(".dock-keleyi-com").show();
-        $(this).hide();
-      });
-
-      $("#dock li").hover(function () {
-        $(this).find("ul").animate({ right: "20px" }, 200);
-      }, function () {
-        $(this).find("ul.free").animate({ right: "-180px" }, 200);
-      });
-    });
-
-
   }
+//  我的足迹
+  myfoot(){
+    let that=this
+    //购物车
+    that.userSer.myfoot(that.tel+'', function (result) {
+      that.footresult=result
+      console.log(result)
+      console.log("aaaa")
+      // that.mes.unshift(that.detail);
+      // that.mesf=result[1];
+    })
+  }
+
+
+
+// 个人中心—购物车
+  goshop(){
+    this.router.navigate(['personal-center/shapping-car']);
+  }
+
+  //点击固定0
+  fixation_links(){
+    this.my_class='docked';
+    this.my_class1='free';
+    this.my_class2='free';
+  }
+  fixation_files(){
+    this.myshop()
+    this.my_class1='docked';
+    this.my_class='free';
+    this.my_class2='free';
+  }
+  fixation_tools(){
+    this.myfoot()
+    this.my_class2='docked';
+    this.my_class='free';
+    this.my_class1='free';
+  }
+  //隐藏
+  undock(){
+    let that=this
+    that.my_class='free';
+    that.my_class1='free';
+    that.my_class2='free';
+  }
+
 
 }

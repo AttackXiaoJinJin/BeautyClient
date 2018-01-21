@@ -78,7 +78,16 @@ url:string = 'http://localhost:3001/users';
       }
     )
   }
-
+  //我的足迹
+  myfoot(telephone, callback ) {
+    this.http.post(this.url + '/myfoot', {telephone:telephone} ).subscribe(function (result) {
+        callback(result);
+      },
+      function (error) {
+        console.log(error.message);
+      }
+    )
+  }
 
 
   //===========================

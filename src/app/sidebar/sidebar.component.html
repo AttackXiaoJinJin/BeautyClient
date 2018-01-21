@@ -1,44 +1,67 @@
 <!--侧边栏-->
-<div>
+<div style="position: absolute;">
   <ul id="dock">
-    <!--用户头像-->
-    <li id="links"><span class="fa fa-user"></span>
-      <ul class="free">
-      <li class="header">
-        <a class="dock-keleyi-com">固定</a>
-        <a class="undock">隐藏</a>
-      </li>
-      <div *ngIf=!tel>你还没有登录呢~~~</div>
-       <div *ngIf= tel><li><img routerLink="/personal-center" class="img-circle" src="http://owo22ooz3.bkt.clouddn.com/{{icon}}" width="100px"height="110px"></li>
-      <li>用户名：<span>{{name}}</span></li></div>
-      <li><button>欢迎~~</button></li>
-      </ul>
+    <!--用户头像====================-->
+    <li id="links" (click)="fixation_links()"><span class="fa fa-user"></span>
+      <!--<ul id="shopContent" class="free">-->
   </li>
     <!--用户头像end===============-->
-    <!--购物车=========-->
-  <li id="files"><span class="fa fa-shopping-cart"></span>购物车<div class="circle">{{num}}</div>
-    <ul class="free" style="overflow-y: scroll">
-    <li class="header"><a class="dock-keleyi-com">固定</a><a class="undock">隐藏</a></li>
-    <li (click)="goshop()">我的购物车</li><div  *ngIf=tel>
-    <li *ngFor="let item of mes">
-    <span><img width="80" height="120" (click)="goshop()" src="http://owo22ooz3.bkt.clouddn.com/{{item.goodspic}}"></span>
-    <span style="width: 80px;height: 50px;display: inline-block">{{item.goodsname}}</span>
-    </li>
-</div>
-  </ul>
+    <!--购物车=========================-->
+  <li id="files" (click)="fixation_files()">
+    <span class="fa fa-shopping-cart"></span>购物车<div class="circle">{{shopresult&&shopresult.length}}</div>
   </li>
+    <!--end=========================================-->
     <!--我的足迹=======================-->
-    <li id="tools"><span class="fa fa-paw"></span>我的足迹
-    <ul class="free">
-    <li class="header"><a class="dock-keleyi-com">固定</a><a class="undock">隐藏</a>我的足迹</li>
-    <li *ngFor="let item of mesf">
-    <div>{{item.lookdate}}</div>
-    <span><img (click)="godetail(item.lookid)" width="80" height="120" src="http://owo22ooz3.bkt.clouddn.com/{{item.lookpic}}"></span>
-    <span style="width: 80px;height: 50px;display: inline-block">{{item.lookname}}</span>
+    <li id="tools" (click)="fixation_tools()"><span class="fa fa-paw"></span>我的足迹
     </li>
-    </ul>
-    </li>
-<!--=================-->
+<!--==============================================-->
+    <ul [className]="my_class">
+      <!--<ul >-->
+      <li class="header">
 
+        <a class="unlock" (click)="undock()">隐藏</a>
+        <!--<a [className]="fixation_class" (click)="fixation()">固定</a>-->
+      </li>
+      <li *ngIf="!user_id">你还没有登录呢~~~</li>
+      <li *ngIf="user_id">
+        <!--<img routerLink="/personal-center" class="img-circle" src="http://owo22ooz3.bkt.clouddn.com/{{icon}}" width="100px"height="110px">-->
+        <!--<img routerLink="/personal-center" class="img-circle" src="http://localhost:3001/uploads/{{icon}}" width="100px"height="110px">-->
+        <img routerLink="/personal-center" class="img-circle" src="http://localhost:3001/icon/{{icon}}" width="100px" height="110px">
+        <span style="display: block;margin-top: 10px">用户名：{{name}}</span>
+      </li>
+      <li>欢迎~~</li>
+    </ul>
+
+    <!--滚动条-->
+    <ul  [className]="my_class1" style="overflow-y: scroll">
+      <li class="header">
+        <!--<a class="fixation">固定</a>-->
+        <a class="undock" (click)="undock()">隐藏</a>
+      </li>
+      <!--<li>我的购物车</li>-->
+      <div *ngIf="user_id">
+        <!--循环=========-->
+        <li  *ngFor="let item of shopresult">
+          <!--<span><img width="80" height="120" (click)="goshop()" src="http://owo22ooz3.bkt.clouddn.com/{{item.goodspic}}"></span>-->
+          <span><img width="80" height="120" (click)="goshop()" src="http://localhost:3001/images/{{item.goodspic}}"></span>
+          <span style="width: 80px;height: 50px;display: inline-block">{{item.goodsname}}</span>
+        </li>
+        <!--=============-->
+      </div>
+    </ul>
+
+    <ul [className]="my_class2" style="overflow-y: scroll">
+      <li class="header">
+        <!--<a class="fixation">固定</a>-->
+        <a class="undock" (click)="undock()">隐藏</a>
+        <!--我的足迹-->
+      </li>
+      <li *ngFor="let item of footresult">
+        <div>{{item.lookdate}}</div>
+        <!--<span><img (click)="godetail(item.lookid)" width="80" height="120" src="http://owo22ooz3.bkt.clouddn.com/{{item.lookpic}}"></span>-->
+        <span><img (click)="godetail(item.lookid)" width="80" height="120" src="http://localhost:3001/images/{{item.lookpic}}"></span>
+        <span style="width: 80px;height: 50px;display: inline-block">{{item.lookname}}</span>
+      </li>
+    </ul>
 </ul>
 </div>

@@ -91,6 +91,7 @@ export class LoginComponent implements OnInit {
     let that = this
     that.n = 0
     that.userSer.login(that._telephone+'',that._password+'',function (result) {
+      console.log(result)
       if (result.statusCode === 2) {
         that.login_ti=true
         that.login_res = '用户名或密码错误！';

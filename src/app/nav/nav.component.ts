@@ -82,11 +82,11 @@ export class NavComponent implements OnInit {
   //注销
   end(){
       sessionStorage.removeItem('userId')
-      sessionStorage.getItem('userName')
-      sessionStorage.getItem('userPhone')
-      sessionStorage.getItem('icon')
+      sessionStorage.removeItem('userName')
+      sessionStorage.removeItem('userPhone')
+      sessionStorage.removeItem('icon')
       this.router.navigate(['/login']);
-      this.isLogin = false;
+      this.isLogin = false
   }
 
   goshop(){
