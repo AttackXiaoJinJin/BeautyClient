@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // import {PersonalService} from './../services/personal.service';
-import {GlobalPropertyService} from './../services/global-property.service'
-
+import {GlobalPropertyService} from '../services/global-property.service'
 import {Router} from '@angular/router';
-declare var $: any
 @Component({
   selector: 'app-personal-center',
   templateUrl: './personal-center.component.html',
@@ -11,13 +9,12 @@ declare var $: any
   providers: []
 })
 export class PersonalCenterComponent implements OnInit {
-  _val:string='';
 
   constructor(
     // private personSer: PersonalService,
               private router: Router,
   private  glo:GlobalPropertyService
-) {
+  ) {
   }
 
   ngOnInit() {
@@ -28,7 +25,7 @@ export class PersonalCenterComponent implements OnInit {
     this.router.navigate(['index']);
   }
   ngOnDestroy(){
-    console.log('personal -ngDestroy');
+    // console.log('personal -ngDestroy');
     this.glo.hiddenNavs=false;
   }
 }

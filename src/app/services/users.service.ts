@@ -88,6 +88,40 @@ url:string = 'http://localhost:3001/users';
       }
     )
   }
+  //删除购物车单个物品
+  delshop(shopid, callback ) {
+    this.http.post(this.url + '/delshop', {shopid:shopid} ).subscribe(function (result) {
+        callback(result);
+      },
+      function (error) {
+        console.log(error.message);
+      }
+    )
+  }
+  //添加订单????=====================
+  addorder (goodsid,shopsum,tel,size, callback ) {
+    this.http.post(this.url + '/addorder', {goodsid:goodsid,shopsum:shopsum,tel:tel,size:size} ).subscribe(function (result) {
+        callback(result);
+      },
+      function (error) {
+        console.log(error.message);
+      }
+    )
+  }
+  //删除订单????================================
+  delorder (goodsid, callback ) {
+    this.http.post(this.url + '/delorder', {goodsid:goodsid} ).subscribe(function (result) {
+        callback(result);
+      },
+      function (error) {
+        console.log(error.message);
+      }
+    )
+  }
+
+
+
+
 
 
   //===========================
@@ -138,15 +172,15 @@ url:string = 'http://localhost:3001/users';
       }
     )
   }
-  addorder(body, callback ) {
-    this.http.post(this.url + '/addorder',body ).subscribe(function (result) {
-        callback(result);
-      },
-      function (error) {
-        console.log(error.message);
-      }
-    )
-  }
+  // addorder(body, callback ) {
+  //   this.http.post(this.url + '/addorder',body ).subscribe(function (result) {
+  //       callback(result);
+  //     },
+  //     function (error) {
+  //       console.log(error.message);
+  //     }
+  //   )
+  // }
   commentShow (callback) {
     this.http.post (this.url+ '/commentShow','' ).subscribe(function (result) {
         callback(result);

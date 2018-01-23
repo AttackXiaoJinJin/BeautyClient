@@ -22,18 +22,19 @@
             <li class="slideLine"></li>
             <li>
             <img class="slideCircle1" src="../../../assets/shopping_images/pay_images/gouzi.png" height="48" width="48"/>
-              <p class="pur">&nbsp;&nbsp;&nbsp;&nbsp;完成</p>
+              <!--<p class="pur" style="padding-left: 10px">&nbsp;&nbsp;&nbsp;&nbsp;完成</p>-->
+              <p class="pur" style="padding-left: 10px">完成</p>
             </li>
           </ul>
         </span>
       </div>
-      <div *ngIf="mes.length==0" class="center1" >亲，你还没有添加任何商品~~</div>
-      <div *ngIf="mes.length!==0"  >
+      <div *ngIf="shopresult&&shopresult.length==0" class="center1" >亲，你还没有添加任何商品~~</div>
+      <div *ngIf="shopresult&&shopresult.length!==0"  >
       <div class="top">
         <ul class="Line1">
-          <li>
-            <input class="quan" id="quan_id" name="quan" type="checkbox" (change)="quan(mes)">
-            全选</li>
+          <!--<li>-->
+            <!--<input class="quan" id="quan_id" name="quan" type="checkbox" (change)="allchecked(mes)">-->
+            <!--全选</li>-->
           <li>商品信息</li>
           <li>&nbsp;单价(元)</li>
           <li>数量    </li>
@@ -42,29 +43,32 @@
         </ul>
       </div>
 
-      <div class="center" *ngFor="let mes1 of mes;let index=index">
+      <div class="center" *ngFor="let item of shopresult;let index=index">
 
         <ul class="Line2">
           <li>&nbsp;&nbsp;
-            <input id="{{index}}" name="dang" type="checkbox" (click)="dan(index)">
-            <img  src="http://owo22ooz3.bkt.clouddn.com/{{mes1.goodspic}}" height="60" width="60">
+            <!--订单-->
+            <!--<input name="dang" type="checkbox" (click)="selectCheck(item.shopid)">-->
+            <!--<img  src="http://owo22ooz3.bkt.clouddn.com/{{mes1.goodspic}}" height="60" width="60">-->
+            <img  src="http://localhost:3001/images/{{item.goodspic}}" height="60" width="60">
           </li>
-          <li><a (click)=" godetail(mes1.goodsid)">{{mes1.goodsname}}</a></li>
-          <li id="singlePrice_id">{{mes1.goodsprice}}</li>
+          <li><a (click)=" godetail(item.goodsid)">{{item.goodsname}}</a></li>
+          <li id="singlePrice_id">{{item.goodsprice}}</li>
           <div class="jia_jian">
             &nbsp;&nbsp;
-            <input type="button" id="jian_id"  value="-" (click)="les(index)">
-            <input type="text" id="shuzi_id" value={{mes1.shopsum}}>
-            <input type="button" id="jia_id"  value="+" (click)="add(index)">
+            <button id="jian_id" (click)="cutnum(index)">-</button>
+            <button id="shuzi_id" >{{item.shopsum}}</button>
+            <!--<input type="text" name="order_num" [(ngModel)]="order_num">-->
+            <button id="jia_id" (click)="addnum(index)">+</button>
 
           </div>
-          <li id="price">{{mes1.total}}</li>
+          <li id="price">{{item.shopnum*item.goodsprice}}</li>
           <li class="del_line">
-            <input type="button" class="del" id={{mes1.del}} value="删除" (click)="del(index)">
+            <input type="button" class="del" value="删除" (click)="del(item.shopid)">
           </li>
         </ul>
       </div>
-
+      <!--============================================-->
       <div class="bottom">
         <ul class="Line_bottom">
           <li>

@@ -1,5 +1,5 @@
 <!--侧边栏-->
-<div style="position: absolute;">
+<div *ngIf="if_login" style="position: absolute;">
   <ul id="dock">
     <!--用户头像====================-->
     <li id="links" (click)="fixation_links()"><span class="fa fa-user"></span>
@@ -41,10 +41,10 @@
       <!--<li>我的购物车</li>-->
       <div *ngIf="user_id">
         <!--循环=========-->
-        <li  *ngFor="let item of shopresult">
+        <li  *ngFor="let item of shopresult" style="cursor: pointer">
           <!--<span><img width="80" height="120" (click)="goshop()" src="http://owo22ooz3.bkt.clouddn.com/{{item.goodspic}}"></span>-->
           <span><img width="80" height="120" (click)="goshop()" src="http://localhost:3001/images/{{item.goodspic}}"></span>
-          <span style="width: 80px;height: 50px;display: inline-block">{{item.goodsname}}</span>
+          <span style="width: 80px;height: 50px;display: inline-block" (click)="goshop()">{{item.goodsname}}</span>
         </li>
         <!--=============-->
       </div>

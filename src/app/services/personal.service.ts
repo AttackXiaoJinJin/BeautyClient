@@ -28,15 +28,7 @@ export class PersonalService {
     )
   }
 
-  showshop(body,callback) {
-    this.http.post(this.url + '/showshop',body).subscribe(function (result) {
-        callback(result);
-      },
-      function (error) {
-        console.log(error.message);
-      }
-    )
-  }
+
   getUserIcon(user, callback) {
     this.http.post(this.url + '/getUserIcon', user).subscribe(function (result) {
         callback(result);
@@ -47,24 +39,8 @@ export class PersonalService {
     )
   }
 
-  addorder (body, callback ) {
-    this.http.post(this.url + '/addorder', body ).subscribe(function (result) {
-        callback(result);
-      },
-      function (error) {
-        console.log(error.message);
-      }
-    )
-  }
-  delorder (body, callback ) {
-    this.http.post(this.url + '/delorder', body ).subscribe(function (result) {
-        callback(result);
-      },
-      function (error) {
-        console.log(error.message);
-      }
-    )
-  }
+
+
   del (body, callback ) {
     this.http.post(this.url + '/del', body ).subscribe(function (result) {
         callback(result);
@@ -85,24 +61,8 @@ export class PersonalService {
   }
 
 
-  delshop(body, callback ) {
-    this.http.post(this.url + '/delshop', body ).subscribe(function (result) {
-        callback(result);
-      },
-      function (error) {
-        console.log(error.message);
-      }
-    )
-  }
-  // all(body, callback ) {
-  //   this.http.post(this.url + '/all', body ).subscribe(function (result) {
-  //       callback(result);
-  //     },
-  //     function (error) {
-  //       console.log(error.message);
-  //     }
-  //   )
-  // }
+
+
   addhome(body,callback ) {
   this.http.post(this.url + '/addhome',body).subscribe(function (result) {
       callback(result);

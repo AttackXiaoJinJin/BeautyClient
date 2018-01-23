@@ -218,9 +218,9 @@ if(sessionStorage.getItem('userId')){
   let sum=(that.detail[0].goodsprice)*($('#number_center_id2').val())
   const body={'shopsum':$('#number_center_id2').val(),'size':that.size1,
     'tel':sessionStorage.getItem('userId'),'id':that.id}
-  that.userSer.addorder(body,function (result) {
-    that.router.navigate(['/personal-center/pay',sum]);
-  })
+  // that.userSer.addorder(body,function (result) {
+  //   that.router.navigate(['/personal-center/pay',sum]);
+  // })
 }
 else{
   that.nologin=true;
