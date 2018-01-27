@@ -115,7 +115,7 @@ statef:any;
     }
 
   }
-
+  //删除商品
   del(shopid,index,price,num){
     let that=this
     if(window.confirm('你确定要删除该商品吗？')){

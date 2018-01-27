@@ -1,5 +1,7 @@
 <div class="container">
+  <!--修改地址成功-->
   <div  class="shareNews animated fadeInDown" *ngIf="address_succ==1"  ><span class="fa fa-3x fa-check" style="color: green"></span>修改地址成功</div>
+  <!--选择地址-->
   <div  class="shareNews animated fadeInDown" *ngIf="address_succ==2"  ><span class="fa fa-3x fa-check" style="color: green"></span>请选择地址</div>
 
   <div class="row">
@@ -32,43 +34,47 @@
       <div id="con_id" class="con">
 
   <div id="confirm_address_id">选择收货地址</div>
-        <div class="kuang">
-          <div class="name_add">
-            <ul class="information">
-              <li>娟娟</li>
-              <li>----------------------------------</li>
-              <li>
-                江苏苏州工业园区
-              </li>
-              <li>独墅湖苏州大学分校</li>
-              <li >18852995180</li>
-              <a >删除</a>
-              <a >编辑</a>
-            </ul>
-          </div>
-    <div class="name_add" *ngFor="let item of address;let index=index" (click)="choose(index)">
+        <!--显示所有收货地址-->
+        <!--<div class="kuang">-->
+          <!--<div class="name_add">-->
+            <!--<ul class="information">-->
+          <!--<li>娟娟</li>-->
+          <!--<li>&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</li>-->
+          <!--<li>-->
+            <!--江苏苏州工业园区-->
+          <!--</li>-->
+          <!--<li>独墅湖苏州大学分校</li>-->
+          <!--<li >18852995180</li>-->
+          <!--<a >删除</a>-->
+          <!--<a >编辑</a>-->
+        <!--</ul>-->
+        <!--</div>-->
+    <!--<div class="name_add" [class]="real_del===index?'Line2none':'center'" *ngFor="let item of addressresult;let index=index" (click)="chooseaddress(index)">-->
+    <div *ngFor="let item of addressresult;let index=index;" (click)="chooseaddress(index)" [class]="addressArray[index]===index?'name_add':'name_addnone'">
       <ul class="information">
-        <li>{{item.shopname}}</li>
+        <li>{{item.username}}</li>
         <li>----------------------------------</li>
         <li>
          {{item.address }}
         </li>
-        <li>{{item.detailadd}}</li>
-        <li >{{item.shoptel}}</li>
-        <a (click)="delhome(index)" id={{item.del}}>删除</a>
+        <!--<li>{{item.detailadd}}</li>-->
+        <li >{{item.usertel}}</li>
+        <a (click)="deladdress(index,item.addressid)">删除</a>
         <a id="editor" (click)="editor(index,addForm)">编辑</a>
-       <img *ngIf=item.state id="dagou"src="../../../assets/shopping_images/pay_images/dagou.png" height="35" width="35"/>
+       <img *ngIf="if_choose===index" id="dagou" src="../../../assets/shopping_images/pay_images/dagou.png" height="35" width="35"/>
       </ul>
     </div>
-        </div>
-  <div class="manage_address">
+        <!--</div>-->
+
+  <div id="manage_address">
     <ul id="manage_address_id" >
-      <li><a (click)="usenew()">使用新地址</a></li>
+      <li><a class="btn btn-primary" (click)="usenew()">使用新地址</a></li>
     </ul>
   </div>
+  <!--<div ></div>      -->
 
 
-  <div  *ngIf=state1 class="center_hidden">
+  <div  *ngIf="if_addaddress" class="center_hidden">
     <form  #addForm="ngForm" class="form-horizontal" id="myform">
       <input type="text" name="homeid" #id="ngModel" [(ngModel)]="_id" style="display: none">
       <div class="main_address">
@@ -193,7 +199,7 @@
       <li class="number_goods">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{good.ordnumber}}</li>
       <li><button class="btn" (click)="ded(good.goodsid,index)">删除</button></li>
     </ul>
-    <div *ngIf="sum==0"id="no">这里空空如也~~快去购买你喜欢的衣服吧！！！</div>
+    <div *ngIf="sum==0" id="no">这里空空如也~~快去购买你喜欢的衣服吧！！！</div>
 
     <ul class="center1_goods">
       <li class="beizhu">

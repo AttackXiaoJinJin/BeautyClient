@@ -82,15 +82,7 @@ export class PersonalService {
       }
     )
   }
-  delhome(body,callback ) {
-    this.http.post(this.url + '/delhome', body).subscribe(function (result) {
-        callback(result);
-      },
-      function (error) {
-        console.log(error.message);
-      }
-    )
-  }
+
   chhome (body, callback ) {
     this.http.post(this.url + '/chhome', body ).subscribe(function (result) {
         callback(result);

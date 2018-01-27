@@ -119,8 +119,8 @@ url:string = 'http://localhost:3001/users';
     )
   }
   //显示地址==============
-  showaddress(body,callback ) {
-    this.http.post(this.url + '/showhome', body).subscribe(function (result) {
+  showaddress(user_id,callback ) {
+    this.http.post(this.url + '/showaddress', {id:user_id}).subscribe(function (result) {
         callback(result);
       },
       function (error) {
@@ -128,7 +128,16 @@ url:string = 'http://localhost:3001/users';
       }
     )
   }
-
+  //删除地址==================
+  deladdress(addressid,callback ) {
+    this.http.post(this.url + '/deladdress', {addressid:addressid}).subscribe(function (result) {
+        callback(result);
+      },
+      function (error) {
+        console.log(error.message);
+      }
+    )
+  }
 
 
 
