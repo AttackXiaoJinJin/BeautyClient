@@ -41,24 +41,24 @@ export class PersonalService {
 
 
 
-  del (body, callback ) {
-    this.http.post(this.url + '/del', body ).subscribe(function (result) {
-        callback(result);
-      },
-      function (error) {
-        console.log(error.message);
-      }
-    )
-  }
-  showorder (body, callback ) {
-    this.http.post(this.url + '/showorder', body ).subscribe(function (result) {
-        callback(result);
-      },
-      function (error) {
-        console.log(error.message);
-      }
-    )
-  }
+  // del (body, callback ) {
+  //   this.http.post(this.url + '/del', body ).subscribe(function (result) {
+  //       callback(result);
+  //     },
+  //     function (error) {
+  //       console.log(error.message);
+  //     }
+  //   )
+  // }
+  // showorder (body, callback ) {
+  //   this.http.post(this.url + '/showorder', body ).subscribe(function (result) {
+  //       callback(result);
+  //     },
+  //     function (error) {
+  //       console.log(error.message);
+  //     }
+  //   )
+  // }
 
 
 
@@ -72,15 +72,7 @@ export class PersonalService {
     }
   )
 }
-  showhome(body,callback ) {
-    this.http.post(this.url + '/showhome', body).subscribe(function (result) {
-        callback(result);
-      },
-      function (error) {
-        console.log(error.message);
-      }
-    )
-  }
+
   showflow(body,callback ) {
     this.http.post(this.url + '/showflow', body).subscribe(function (result) {
         callback(result);

@@ -101,6 +101,11 @@ text-align: center;
   border-bottom:1px solid gainsboro;
   border-left:1px solid gainsboro;
   border-right:1px solid gainsboro;
+  display: block;
+}
+
+.Line2none{
+  display: none;
 }
 
 .Line1 li,.Line2 li{

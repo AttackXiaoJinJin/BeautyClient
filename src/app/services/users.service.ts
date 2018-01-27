@@ -118,8 +118,16 @@ url:string = 'http://localhost:3001/users';
       }
     )
   }
-
-
+  //显示地址==============
+  showaddress(body,callback ) {
+    this.http.post(this.url + '/showhome', body).subscribe(function (result) {
+        callback(result);
+      },
+      function (error) {
+        console.log(error.message);
+      }
+    )
+  }
 
 
 

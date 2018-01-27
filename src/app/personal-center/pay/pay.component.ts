@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {PersonalService} from '../../services/personal.service';
 import {ActivatedRoute, ParamMap} from '@angular/router';
+import {UsersService} from "../../services/users.service";
 declare var $: any ;
 @Component({
   selector: 'app-pay',
   templateUrl: './pay.component.html',
   styleUrls: ['./pay.component.css'],
-  providers: [PersonalService],
+  providers: [UsersService],
 })
 export class PayComponent implements OnInit {
   address:any;sum=0;
@@ -27,7 +28,7 @@ export class PayComponent implements OnInit {
     '江西':{'萍乡':['萍乡区','萍乡市'], '宜春':['宜春区','宜春市']}
   };
   constructor(
-    private perSer: PersonalService,
+    private userSer: UsersService,
     private router: Router,
     private route: ActivatedRoute,
   ) { }
@@ -35,7 +36,7 @@ export class PayComponent implements OnInit {
   ngOnInit() {
     this.a=Object.keys(this.shuzu);
     let that=this;
-    that.perSer.showhome({'tel':sessionStorage.getItem('userId')},function (result) {
+    that.userSer.showaddress({'tel':sessionStorage.getItem('userId')},function (result) {
       if ( result.StateCode==0) {
       }else {
         that.address=result[0];

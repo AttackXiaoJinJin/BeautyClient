@@ -18,6 +18,8 @@ export class ShappingCarComponent implements OnInit {
   timer:any=null
  // 是否删除物品
   if_del:boolean=false
+ // 商品是否成功删除
+  real_del:boolean=false
  // 物品的总数
   allnum:any
  // 所有商品总价
@@ -44,6 +46,7 @@ statef:any;
 
     }
   }
+  //=========================
 
   // showshop(){
   //   let that=this
@@ -59,6 +62,7 @@ statef:any;
   //     }
   //   })
   // }
+
 //  我的购物车
   myshop(){
     let that=this
@@ -68,6 +72,9 @@ statef:any;
         that.none='空空如也~~~~'
       } else {
         that.shopresult = result
+        for(let i=0,m=result.length;i<m;i++){
+          that.allprice+=result[i].shopnum*result[i].goodsprice
+        }
       }
       // that.mes.unshift(that.detail);
       // that.mesf=result[1];
@@ -82,44 +89,67 @@ statef:any;
     let that=this
     // let mes=this.mes;
     // if(  mes[index].shopsum>0) {
-    if(that.shopresult&&that.shopresult[index].shopnum>0) {
+    if(that.shopresult&&that.shopresult[index].shopnum>1) {
       that.shopresult[index].shopnum -= 1;
       // mes[index].total = (mes[index].goodsprice) * (mes[index].shopsum);
-      if ($('#' + index).is(':checked')) {
+      // if ($('#' + index).is(':checked')) {
         // this.sum = this.sum - mes[index].goodsprice;
-        that.allprice -= that.shopresult[index].shopnum*that.shopresult[index].goodsprice
-      }
+        that.allprice -= that.shopresult[index].goodsprice
+      // }
     }
   }
   addnum(index) {
-    let mes = this.mes;
-    mes[index].shopsum = mes[index].shopsum + 1;
-    mes[index].total = (mes[index].goodsprice) * (mes[index].shopsum);
-    if ($('#' + index).is(':checked') && this.sum >= 0) {
-      this.sum = this.sum + mes[index].goodsprice;
+    let that=this
+    // mes[index].shopsum = mes[index].shopsum + 1;
+    // mes[index].total = (mes[index].goodsprice) * (mes[index].shopsum);
+    // if ($('#' + index).is(':checked') && this.sum >= 0) {
+    //   this.sum = this.sum + mes[index].goodsprice;
+    // }
+    if(that.shopresult&&that.shopresult[index].shopnum<10) {
+      that.shopresult[index].shopnum += 1;
+      // mes[index].total = (mes[index].goodsprice) * (mes[index].shopsum);
+      // if ($('#' + index).is(':checked')) {
+      // this.sum = this.sum - mes[index].goodsprice;
+      that.allprice += that.shopresult[index].goodsprice
+      // }
     }
+
   }
 
-  del(shopid){
+  del(shopid,index,price,num){
     let that=this
-    clearInterval(that.timer)
+    if(window.confirm('你确定要删除该商品吗？')){
+      that.if_del=true
+    }else{
+      that.if_del=false
+    }
+    // clearInterval(that.timer)
      // mes[index].del = index+'s';
-    that.userSer.delshop(shopid+'', function (result) {
-      if ( result.statusCode===8){
-        // $('#'+index+'s').parent().parent().parent().remove();
-        //删除物品
+    if(that.if_del){
+      that.userSer.delshop(shopid+'', function (result) {
+        if ( result.statusCode===8){
+          alert("删除成功!")
+          that.real_del=index
+          that.allprice -= price*num
+          // $('#'+index+'s').parent().parent().parent().remove();
+          //删除物品
 
-        if($('.circle').html()>0){
-        $('.circle').html($('.circle').html()-1)
+          // if($('.circle').html()>0){
+          // $('.circle').html($('.circle').html()-1)
+          // }
+
+          // that.statef=true
+          // that.timer=setInterval(function(){
+          //   that.statef=false
+          // },2000)
+
+        }else{
+          alert("删除失败!")
+          that.real_del=false
         }
+      })
+    }
 
-        that.statef=true
-        that.timer=setInterval(function(){
-          that.statef=false
-        },2000)
-
-      }
-    })
   }
 
   selectCheck(shopid){
@@ -153,7 +183,7 @@ statef:any;
     //去支付页面
     gopay (){
       let that=this
-      that.router.navigate(['/personal-center/pay',that.allnum]);
+      that.router.navigate(['/personal-center/pay']);
     }
    // 添加订单
    addorder(index){
