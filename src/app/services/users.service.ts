@@ -138,6 +138,17 @@ url:string = 'http://localhost:3001/users';
       }
     )
   }
+  //添加收货信息
+  addaddress(address,username,usertel,id,mail,callback ) {
+    this.http.post(this.url + '/addaddress',
+      {address:address,username:username,usertel:usertel,id:id,mail:mail}).subscribe(function (result) {
+        callback(result);
+      },
+      function (error) {
+        console.log(error.message);
+      }
+    )
+  }
 
 
 

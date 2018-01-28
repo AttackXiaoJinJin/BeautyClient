@@ -68,12 +68,12 @@ body{
 
 
 .con{
-  width:1130px;
-  min-height:813px;
-  margin-left: auto;
+  width: 1131px;
+  min-height: 813px;
+  margin-left: -16px;
   margin-right: auto;
-  margin-top:0px;
-  background-color:white;
+  margin-top: 0px;
+  background-color: white;
 }
 .xinghao{
   color: red;
@@ -123,9 +123,9 @@ ul{
 
 }
 .name_add ul li{
-  padding-top:3px;
-  margin-left:-20px;
-  height:27px;
+  padding-top: 3px;
+  margin-left: auto;
+  height: 28px;
 
 }
 #editor{
@@ -150,7 +150,7 @@ ul{
 }
 #manage_address ul li{
   float: left;
-  margin-left:180px;
+  margin-left: 110px;
   margin-top:5px;
 
 }
@@ -166,6 +166,7 @@ ul{
   height:420px;
   margin-top:-30px;
   clear: both;
+  margin-left: auto;
 }
 #province_id{
   border:1px solid darkgrey;
@@ -253,6 +254,7 @@ ul{
 .cancel_address{
   height:40px;
   width:600px;
+  margin-left: 105px;
 }
 .cancel_address li{
   float: left;
@@ -264,7 +266,6 @@ ul{
   width:150px;
   height:40px;
   margin-left:100px;
-  margin-top:15px;
   border:1px solid grey;
   background-color: #FDFDFB;
 }
@@ -287,7 +288,7 @@ ul{
 }
 .miss{width:150px;
   color: rgba(255, 0, 0, 0.58);
-  margin-left: 150px;
+  margin-left: 165px;
 }
 a{cursor: pointer;}
 
@@ -295,6 +296,7 @@ a{cursor: pointer;}
   width:1060px;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 60px;
 }
 .title_goods{
   width:1060px;
@@ -381,7 +383,7 @@ a{cursor: pointer;}
   height:60px;
   border-top:1px solid gainsboro;
   border-bottom:1px solid gainsboro;
-  margin-top:40px;
+  margin-top: 280px;
 }
 .summary{
   float:left;
@@ -424,7 +426,7 @@ ul{
 }
 .container{
   width:1350px;
-  height:820px;
+  height: 100%;
   margin-top:-18px;
   background-color:#F2F2F2;
 }

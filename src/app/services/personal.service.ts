@@ -63,15 +63,7 @@ export class PersonalService {
 
 
 
-  addhome(body,callback ) {
-  this.http.post(this.url + '/addhome',body).subscribe(function (result) {
-      callback(result);
-    },
-    function (error) {
-      console.log(error.message);
-    }
-  )
-}
+
 
   showflow(body,callback ) {
     this.http.post(this.url + '/showflow', body).subscribe(function (result) {

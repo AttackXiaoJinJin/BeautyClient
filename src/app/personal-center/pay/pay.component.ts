@@ -31,30 +31,55 @@ export class PayComponent implements OnInit {
   address_length=0
   //是否新增地址
   if_addaddress:boolean=false
-
+  //选中的省市区数组
+  pro: any
+  cit: any
+  dis: any
+  //编辑地址================
+  //选择的省
+  _province: any
+  //选择的市
+  _city: any
+  //选择的区
+  _district: any
+  //详细地址
+  _detail: any
+  //集合的地址
+  _alladdress:any
+  //邮政
+  _mail: any;
+  //购物车商品
+  goods: any;
+  //总价
   sum = 0;
   address_succ: any;
   state1: any;
-  a: any;
-  b: any;
-  c: any;
+
   x1 = 2;
-  state_pay: any;
+  state_pay: any=1;
   x = true;
   homeid = '';
-  goods: any;
+
 
   every: any;
-  _shen: any;
-  _city: any;
-  _qu: any;
-  value: any;
-  _detail: any;
 
 
+
+
+
+
+  //省市区数组================
   shuzu = {
-    '江苏': {'苏州': ['姑苏区', '常熟市'], '南京': ['南京区', '南京市'],},
-    '江西': {'萍乡': ['萍乡区', '萍乡市'], '宜春': ['宜春区', '宜春市']}
+    '江苏':
+      { '苏州':
+          ['吴中', '常熟','相城'],
+        '南京':
+          ['玄武', '鼓楼','江宁']
+      },
+    '上海':
+      { '上海':
+          ['浦东新区', '杨浦']
+      }
   };
 
   constructor(private userSer: UsersService,
@@ -62,12 +87,15 @@ export class PayComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.a = Object.keys(this.shuzu);
+
+    //选择省
+    this.pro = Object.keys(this.shuzu);
     let that = this;
     if (sessionStorage.getItem('userId')) {
       that._tel = sessionStorage.getItem('userPhone')
       that._id = sessionStorage.getItem('userId')
       that.showaddress()
+      that.myshop()
     } else {
       //  弹出模态框
 
@@ -78,6 +106,7 @@ export class PayComponent implements OnInit {
   //=================init
 
   showaddress() {
+
     let that = this
     that.userSer.showaddress(that._id + '', function (result) {
         if (result.statusCode == 0) {
@@ -89,6 +118,7 @@ export class PayComponent implements OnInit {
           //   that.sum = that.sum + (that.goods[i].ordnumber) * (that.goods[i].goodsprice)
           // }
           that.addressresult = result
+          // console.log(that.addressresult)
           that.address_length=result.length
           for(let i=0;i<result.length;i++){
             that.addressArray.push(i)
@@ -99,21 +129,53 @@ export class PayComponent implements OnInit {
     );
   }
 
+  //我的购物车
+  //  我的购物车
+  myshop(){
+    let that=this
+    //购物车
+    that.userSer.myshop(that._tel+'', function (result) {
+      if ( result.statusCode!==0){
+        that.goods = result
+        for(let i=0,m=result.length;i<m;i++){
+          that.sum+=result[i].shopnum*result[i].goodsprice
+        }
+      }
+      // that.mes.unshift(that.detail);
+      // that.mesf=result[1];
+    })
+  }
 
-//   addhome(addForm){
-//     var form=addForm.form.value;
-//     var address=form.shen+form.city+form.qu;
-//     const body={'address':address,'you':form.you,'detail':form.detail,'name':
-//       form.name,'tel':form.tel,'usertel':sessionStorage.getItem('userId')}
-//     let that = this;
-//     that.perSer.addhome(body,function (result) {
-//       if ( result.StateCode==0) {
-//       }else {
-//         that.state1=false;
-//         that.address.unshift(result[0][0]);
-//       }
-//     })
-//   }
+
+
+  addaddress(){
+    let that = this
+    that._alladdress=that._province+that._city+that._district+that._detail
+    console.log(that._alladdress+'',that._name+'',that._tel+'',that._id+'',that._mail+'')
+    that.userSer.addaddress(that._alladdress+'',that._name+'',that._tel+'',that._id+'',that._mail+'',function (result) {
+      if ( result.statusCode===0) {
+        this.router.navigate(['/**'])
+      }else {
+        if(result.statusCode===15){
+          //success
+          // that.state1=false
+          // that.address.unshift(result[0][0])
+          that.showaddress()
+          that.if_addaddress=false
+        //  清空表单
+          that.pro = Object.keys(that.shuzu)
+          that._detail=''
+          that._name=''
+          that._tel=''
+          that._mail=''
+        }else if(result.statusCode===16){
+          //false
+          console.log("添加地址失败")
+        }
+
+      }
+    })
+  }
 
   //选择收货地址
   chooseaddress(index){
@@ -141,11 +203,8 @@ export class PayComponent implements OnInit {
 
           }
         }
-
-
         alert("删除地址成功！")
       }else if ( result.statusCode==14){
-
         alert("删除地址失败！")
        // $('#'+index+'w').parent().parent().remove();
       }
@@ -188,31 +247,47 @@ export class PayComponent implements OnInit {
 //       }
 //     })
 //   }
+
+  //使用新地址
   usenew(){
 //     this.state1=true;
 //     this.x1=1;
 //     $('#myform')[0].reset();
     this.if_addaddress=true
   }
-//   cancel() {
-//     this.state_pay=0;
-//     this.state1=false;
-//     $('#myform')[0].reset();
-//   }
-// pay(){let that=this;
-// if(that.homeid=='')
-// {  that.address_succ=2;
-//   setTimeout(function(){
-//     that.address_succ=false;
-//   }, 3000 );}
-// else{
-//   that.state_pay=1;$('.slideCircle1').css('background-color','red');
-//   $('#slideLine_id3').css('background-color','red');
-//   if($('.circle').html()>0){
-//     $('.circle').html($('.circle').html()-1);}
+  cancel() {
+    let that=this
+    that.if_addaddress=false
+    //  清空表单
+    that.pro = Object.keys(that.shuzu)
+    that._detail=''
+    that._name=''
+    that._tel=''
+    that._mail=''
+    // this.state_pay=0;
+    // this.state1=false;
+    // $('#myform')[0].reset();
+  }
+pay(){
+    let that=this;
+  //   if(that.homeid=='')
+  // {
+  //   that.address_succ=2;
+  //   setTimeout(function(){
+  //   that.address_succ=false
+  //   }, 3000 )
+  // }
+  // else{
+  //   that.state_pay=1;$('.slideCircle1').css('background-color','red')
+  //   $('#slideLine_id3').css('background-color','red')
+  //   if($('.circle').html()>0){
+  //     $('.circle').html($('.circle').html()-1)
+  //   }
 // }
-//
-//   };
+
+
+
+  }
 //
 // pays(){let that=this;
 //   that.perSer.chhome({'homeid':that.homeid,'tel':sessionStorage.getItem('userId')},function (result) {
@@ -221,20 +296,32 @@ export class PayComponent implements OnInit {
 //     that.state_pay=0;
 //   })
 // }
-//   sh(){
-//     this.b=Object.keys(this.shuzu[this._shen]);
-//   }
-//   sh1(){
-//     this.c=this.shuzu[this._shen][this._city];
-//     this._qu =this.c[0];
-//   }
-//  back(){
-//   let that=this;
+
+//  选好省后要弹出选择的市
+  choosecity(){
+    this.cit=Object.keys(this.shuzu[this._province])
+    console.log(this.cit)
+  }
+  //选择好市后要弹出区
+  choosedistrict(){
+    this.dis=this.shuzu[this._province][this._city]
+    console.log(this._city)
+    console.log(this.dis)
+  }
+
+
+
+ back(){
+  let that=this;
 //   that.sum=0;
 //   that.perSer.del({'tel':sessionStorage.getItem('userId')},function (result) {
 //   });
-//   that.router.navigate(['personal-center/shapping-car']);
-// }
+  that.router.navigate(['personal-center/shapping-car']);
+}
+
+
+
+
 // del1(){
 //     let that=this;
 //     that.sum=0;
@@ -242,6 +329,9 @@ export class PayComponent implements OnInit {
 //     });
 //   $('.center_goods').remove();
 // }
+
+
+
 //   ded(id,index){
 //       let that = this;
 //       that.perSer.deldan({'tel': sessionStorage.getItem('userId'),'id':id}, function (result) {
