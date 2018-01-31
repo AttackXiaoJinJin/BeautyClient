@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {PersonalService} from '../../services/personal.service';
-import {ActivatedRoute, ParamMap} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {UsersService} from "../../services/users.service";
+import {ShappingCarComponent} from "../shapping-car/shapping-car.component";
 declare var $: any ;
 @Component({
   selector: 'app-pay',
@@ -52,7 +53,18 @@ export class PayComponent implements OnInit {
   goods: any;
   //总价
   sum = 0;
-  address_succ: any;
+  //选中的地址的信息
+  choose_name:any
+  choose_mail:any
+  choose_address:any
+  choose_tel:any
+  //创建订单号
+  order_numbering:any
+  //在编辑订单的时候存储衣服的数量的数组，这样方便插入
+  // clothesArray=[]
+  clothesArray:any
+  //选择地址的id
+  address_id: any;
   state1: any;
 
   x1 = 2;
@@ -82,15 +94,27 @@ export class PayComponent implements OnInit {
       }
   };
 
-  constructor(private userSer: UsersService,
-              private router: Router,) {
+  constructor(
+    private route:ActivatedRoute,
+    private userSer: UsersService,
+    private router: Router,
+    // private shopping: ShappingCarComponent
+              ) {
   }
+
+
+
+
+
 
   ngOnInit() {
 
     //选择省
     this.pro = Object.keys(this.shuzu);
     let that = this;
+    that.clothesArray = that.route.snapshot.paramMap.get('sum')
+    console.log(that.route.snapshot.paramMap,'')
+    // that.clothesArray=that.clothesArray.split("-")
     if (sessionStorage.getItem('userId')) {
       that._tel = sessionStorage.getItem('userPhone')
       that._id = sessionStorage.getItem('userId')
@@ -151,7 +175,7 @@ export class PayComponent implements OnInit {
   addaddress(){
     let that = this
     that._alladdress=that._province+that._city+that._district+that._detail
-    console.log(that._alladdress+'',that._name+'',that._tel+'',that._id+'',that._mail+'')
+    // console.log(that._alladdress+'',that._name+'',that._tel+'',that._id+'',that._mail+'')
     that.userSer.addaddress(that._alladdress+'',that._name+'',that._tel+'',that._id+'',that._mail+'',function (result) {
       if ( result.statusCode===0) {
         this.router.navigate(['/**'])
@@ -178,8 +202,13 @@ export class PayComponent implements OnInit {
   }
 
   //选择收货地址
-  chooseaddress(index){
+  chooseaddress(index,item){
     this.if_choose=index
+    this.choose_name=item.username
+    this.choose_mail=item.mail
+    this.choose_address=item.address
+    this.choose_tel=item.usertel
+    this.address_id=item.addressid
   //   for(let i=0;i<this.address.length;i++)
   //   {this.address[i].state= false;}
   //   this.address[index].state=true;
@@ -269,12 +298,45 @@ export class PayComponent implements OnInit {
     // $('#myform')[0].reset();
   }
 pay(){
-    let that=this;
+    let that=this
+    this.createOrderNum()
+  // console.log(that.address_id,'294')
+  // console.log(that.goods,'295');
+
+  // for(let i=0,m=that.goods.length;i<m;i++){
+  //   that.userSer.addorder(that._id+'',that.address_id+'',that.goods[i].goodsid+'',that.clothesArray[i]+'',that._mail+'',function (result) {
+  //     if ( result.statusCode===0) {
+  //       this.router.navigate(['/**'])
+  //     }else {
+  //       if(result.statusCode===15){
+  //         //success
+  //         // that.state1=false
+  //         // that.address.unshift(result[0][0])
+  //         that.showaddress()
+  //         that.if_addaddress=false
+  //         //  清空表单
+  //         that.pro = Object.keys(that.shuzu)
+  //         that._detail=''
+  //         that._name=''
+  //         that._tel=''
+  //         that._mail=''
+  //       }else if(result.statusCode===16){
+  //         //false
+  //         console.log("添加地址失败")
+  //       }
+  //     }
+  //   })
+  // }
+
+
+
+
+
   //   if(that.homeid=='')
   // {
   //   that.address_succ=2;
   //   setTimeout(function(){
-  //   that.address_succ=false
+  //     that.address_succ=false
   //   }, 3000 )
   // }
   // else{
@@ -283,11 +345,10 @@ pay(){
   //   if($('.circle').html()>0){
   //     $('.circle').html($('.circle').html()-1)
   //   }
-// }
-
-
-
+  // }
   }
+
+
 //
 // pays(){let that=this;
 //   that.perSer.chhome({'homeid':that.homeid,'tel':sessionStorage.getItem('userId')},function (result) {
@@ -319,7 +380,37 @@ pay(){
   that.router.navigate(['personal-center/shapping-car']);
 }
 
-
+  //创建唯一的订单号
+  createOrderNum(){
+    let nowtime = new Date();
+    this.order_numbering+=nowtime.getFullYear();
+    if(nowtime.getMonth()<9){
+      this.order_numbering = this.order_numbering+"0"+(nowtime.getMonth()+1);
+    }else{
+      this.order_numbering = this.order_numbering+(nowtime.getMonth()+1);
+    }
+    if(nowtime.getDate()<10){
+      this.order_numbering = this.order_numbering+"0"+nowtime.getDate();
+    }else{
+      this.order_numbering = this.order_numbering+nowtime.getDate();
+    }
+    if(nowtime.getHours()<10){
+      this.order_numbering = this.order_numbering+"0"+nowtime.getHours();
+    }else{
+      this.order_numbering = this.order_numbering+nowtime.getHours();
+    }
+    if(nowtime.getMinutes()<10){
+      this.order_numbering = this.order_numbering+"0"+nowtime.getMinutes();
+    }else{
+      this.order_numbering = this.order_numbering+nowtime.getMinutes();
+    }
+    if(nowtime.getSeconds()<10){
+      this.order_numbering = this.order_numbering+"0"+nowtime.getSeconds();
+    }else{
+      this.order_numbering = this.order_numbering+nowtime.getSeconds();
+    }
+    this.order_numbering = this.order_numbering+this._id+this.choose_tel+this.choose_mail;
+  }
 
 
 // del1(){

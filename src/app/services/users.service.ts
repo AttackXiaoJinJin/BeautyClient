@@ -98,9 +98,9 @@ url:string = 'http://localhost:3001/users';
       }
     )
   }
-  //添加订单????=====================
-  addorder (goodsid,shopsum,tel,size, callback ) {
-    this.http.post(this.url + '/addorder', {goodsid:goodsid,shopsum:shopsum,tel:tel,size:size} ).subscribe(function (result) {
+  //添加订单=====================
+  addorder (id,addressid,goodsid,goodsnum,goodsprice,orderbianhao, callback ) {
+    this.http.post(this.url + '/addorder', {id:id,addressid:addressid,goodsid:goodsid,goodsnum:goodsnum,goodsprice:goodsprice,orderbianhao:orderbianhao} ).subscribe(function (result) {
         callback(result);
       },
       function (error) {
@@ -108,7 +108,7 @@ url:string = 'http://localhost:3001/users';
       }
     )
   }
-  //删除订单????================================
+  //删除订单================================
   delorder (goodsid, callback ) {
     this.http.post(this.url + '/delorder', {goodsid:goodsid} ).subscribe(function (result) {
         callback(result);
@@ -118,6 +118,8 @@ url:string = 'http://localhost:3001/users';
       }
     )
   }
+
+
   //显示地址==============
   showaddress(user_id,callback ) {
     this.http.post(this.url + '/showaddress', {id:user_id}).subscribe(function (result) {
@@ -138,7 +140,7 @@ url:string = 'http://localhost:3001/users';
       }
     )
   }
-  //添加收货信息
+  //添加收货地址=========
   addaddress(address,username,usertel,id,mail,callback ) {
     this.http.post(this.url + '/addaddress',
       {address:address,username:username,usertel:usertel,id:id,mail:mail}).subscribe(function (result) {
@@ -149,7 +151,6 @@ url:string = 'http://localhost:3001/users';
       }
     )
   }
-
 
 
   //===========================

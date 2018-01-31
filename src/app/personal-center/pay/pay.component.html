@@ -50,7 +50,7 @@
         <!--</ul>-->
         <!--</div>-->
     <!--<div class="name_add" [class]="real_del===index?'Line2none':'center'" *ngFor="let item of addressresult;let index=index" (click)="chooseaddress(index)">-->
-    <div *ngFor="let item of addressresult;let index=index;" (click)="chooseaddress(index)" [class]="addressArray[index]===index?'name_add':'name_addnone'">
+    <div *ngFor="let item of addressresult;let index=index;" (click)="chooseaddress(index,item)" [class]="addressArray[index]===index?'name_add':'name_addnone'">
       <ul class="information">
         <li>收货人姓名：{{item.username}}</li>
         <li>----------------------------------</li>
@@ -63,7 +63,7 @@
         <!--<li>{{item.detailadd}}</li>-->
         <li >收货人手机号：{{item.usertel}}</li>
         <a (click)="deladdress(index,item.addressid)">删除</a>
-        <a id="editor" (click)="editor(index,addForm)">编辑</a>
+        <!--<a id="editor" (click)="editor(index,addForm)">编辑</a>-->
        <img *ngIf="if_choose===index" id="dagou" src="../../../assets/shopping_images/pay_images/dagou.png" height="35" width="35"/>
       </ul>
     </div>
@@ -290,3 +290,4 @@
 
   <!--</ul>-->
 <!--</div>-->
+

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {UsersService} from "../../services/users.service";
 declare var $: any ;
 @Component({
@@ -24,6 +24,8 @@ export class ShappingCarComponent implements OnInit {
   allnum:any
  // 所有商品总价
   allprice:any=0
+  //在编辑订单的时候存储衣服的数量的数组，这样方便插入
+  clothesArray:any
 
  // ============
  mes:any;
@@ -32,11 +34,13 @@ sum=0;
 none:any;
 statef:any;
   constructor(
+    private route:ActivatedRoute,
     private userSer: UsersService,
     private router: Router,
   ) { }
   ngOnInit() {
-    let that = this;
+    let that = this
+    that.clothesArray=[]
     if(sessionStorage.getItem('userId')) {
       that.tel=sessionStorage.getItem('userPhone')
       that.id=sessionStorage.getItem('userId')
@@ -47,7 +51,9 @@ statef:any;
     }
   }
   //=========================
+  ngOnDestroy(){
 
+  }
   // showshop(){
   //   let that=this
   //   that.userSer.showshop(that.tel+'', function (result) {
@@ -74,6 +80,7 @@ statef:any;
         that.shopresult = result
         for(let i=0,m=result.length;i<m;i++){
           that.allprice+=result[i].shopnum*result[i].goodsprice
+          that.clothesArray.push(result[i].shopnum)
         }
       }
       // that.mes.unshift(that.detail);
@@ -90,7 +97,8 @@ statef:any;
     // let mes=this.mes;
     // if(  mes[index].shopsum>0) {
     if(that.shopresult&&that.shopresult[index].shopnum>1) {
-      that.shopresult[index].shopnum -= 1;
+      that.shopresult[index].shopnum -= 1
+      that.clothesArray[index]=that.shopresult[index].shopnum
       // mes[index].total = (mes[index].goodsprice) * (mes[index].shopsum);
       // if ($('#' + index).is(':checked')) {
         // this.sum = this.sum - mes[index].goodsprice;
@@ -106,7 +114,8 @@ statef:any;
     //   this.sum = this.sum + mes[index].goodsprice;
     // }
     if(that.shopresult&&that.shopresult[index].shopnum<10) {
-      that.shopresult[index].shopnum += 1;
+      that.shopresult[index].shopnum += 1
+      that.clothesArray[index]=that.shopresult[index].shopnum
       // mes[index].total = (mes[index].goodsprice) * (mes[index].shopsum);
       // if ($('#' + index).is(':checked')) {
       // this.sum = this.sum - mes[index].goodsprice;
@@ -118,11 +127,7 @@ statef:any;
   //删除商品
   del(shopid,index,price,num){
     let that=this
-    if(window.confirm('你确定要删除该商品吗？')){
-      that.if_del=true
-    }else{
-      that.if_del=false
-    }
+    window.confirm('你确定要删除该商品吗？')? that.if_del=true: that.if_del=false
     // clearInterval(that.timer)
      // mes[index].del = index+'s';
     if(that.if_del){
@@ -183,7 +188,9 @@ statef:any;
     //去支付页面
     gopay (){
       let that=this
-      that.router.navigate(['/personal-center/pay']);
+      that.clothesArray=that.clothesArray.join("-")
+      that.router.navigate(['/personal-center/pay',that.clothesArray])
+      console.log(that.clothesArray,'shop')
     }
    // 添加订单
    addorder(index){
@@ -207,3 +214,5 @@ statef:any;
 
 
 }
+
+

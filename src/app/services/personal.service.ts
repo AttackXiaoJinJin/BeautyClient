@@ -75,15 +75,15 @@ export class PersonalService {
     )
   }
 
-  chhome (body, callback ) {
-    this.http.post(this.url + '/chhome', body ).subscribe(function (result) {
-        callback(result);
-      },
-      function (error) {
-        console.log(error.message);
-      }
-    )
-  }
+  // chhome (body, callback ) {
+  //   this.http.post(this.url + '/chhome', body ).subscribe(function (result) {
+  //       callback(result);
+  //     },
+  //     function (error) {
+  //       console.log(error.message);
+  //     }
+  //   )
+  // }
   updatehome(body,callback ) {
     this.http.post(this.url + '/updatehome', body).subscribe(function (result) {
         callback(result);
@@ -93,6 +93,7 @@ export class PersonalService {
       }
     )
   }
+
   changee(body,callback ) {
     this.http.post(this.url + '/changee', body).subscribe(function (result) {
         callback(result);
@@ -102,6 +103,7 @@ export class PersonalService {
       }
     )
   }
+
   name(body, callback ) {
     this.http.post(this.url + '/name', body).subscribe(function (result) {
         callback(result);
@@ -111,6 +113,8 @@ export class PersonalService {
       }
     )
   }
+
+
   change(body, callback ){
     this.http.post(this.url + '/change', body).subscribe(function (result) {
         callback(result);
@@ -120,13 +124,16 @@ export class PersonalService {
       }
     )
   }
-  deldan(body, callback ){
-    this.http.post(this.url + '/deldan', body).subscribe(function (result) {
-        callback(result);
-      },
-      function (error) {
-        console.log(error.message);
-      }
-    )
-  }
+
+
+  // deldan(body, callback ){
+  //   this.http.post(this.url + '/deldan', body).subscribe(function (result) {
+  //       callback(result);
+  //     },
+  //     function (error) {
+  //       console.log(error.message);
+  //     }
+  //   )
+  // }
+
 }
