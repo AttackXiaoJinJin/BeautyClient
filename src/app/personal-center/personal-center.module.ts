@@ -5,7 +5,7 @@ import {FormsModule} from '@angular/forms';
 import { PersonalCenterComponent } from './personal-center.component';
 import { MyflowComponent } from './myflow/myflow.component';
 import { PayComponent } from './pay/pay.component';
-import { ShappingCarComponent } from './shapping-car/shapping-car.component';
+import { ShappingCarComponent } from './shopping-car/shopping-car.component';
 
 //导入路由模块
 

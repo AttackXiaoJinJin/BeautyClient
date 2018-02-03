@@ -29,16 +29,6 @@ export class PersonalService {
   }
 
 
-  getUserIcon(user, callback) {
-    this.http.post(this.url + '/getUserIcon', user).subscribe(function (result) {
-        callback(result);
-      },
-      function (error) {
-        console.log(error.message);
-      }
-    )
-  }
-
 
 
   // del (body, callback ) {

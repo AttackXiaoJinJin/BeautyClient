@@ -151,6 +151,28 @@ url:string = 'http://localhost:3001/users';
       }
     )
   }
+  //获取用户基本信息
+  showuserinfo(user_id,callback ) {
+    this.http.post(this.url + '/showuserinfo', {id:user_id}).subscribe(function (result) {
+        callback(result);
+      },
+      function (error) {
+        console.log(error.message);
+      }
+    )
+  }
+  //上传头像====
+  upLoad(formData,callback){
+    this.http.post(this.url+'/upload', formData).subscribe(
+      function (result) {
+        callback(result);
+      },
+      function (error) {
+        console.log(error.message);
+      }
+    )
+  }
+
 
 
   //===========================

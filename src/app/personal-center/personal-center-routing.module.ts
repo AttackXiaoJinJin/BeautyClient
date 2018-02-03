@@ -7,7 +7,7 @@ import { PersonalCenterComponent } from './personal-center.component';
 import { MyflowComponent } from './myflow/myflow.component';
 import { PayComponent } from './pay/pay.component';
 import { CenterComponent } from './center/center.component';
-import { ShappingCarComponent } from './shapping-car/shapping-car.component';
+import { ShappingCarComponent } from './shopping-car/shopping-car.component';
 
 const routes: Routes = [
 
@@ -25,7 +25,7 @@ const routes: Routes = [
         component: CenterComponent,
       },
       {
-        path: 'shapping-car',
+        path: 'shopping-car',
         component: ShappingCarComponent,
       },
       {

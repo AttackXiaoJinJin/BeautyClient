@@ -4,8 +4,8 @@ import {UsersService} from "../../services/users.service";
 declare var $: any ;
 @Component({
   selector: 'app-shapping-car',
-  templateUrl: './shapping-car.component.html',
-  styleUrls: ['./shapping-car.component.css'],
+  templateUrl: './shopping-car.component.html',
+  styleUrls: ['./shopping-car.component.css'],
   providers: [UsersService],
 })
 export class ShappingCarComponent implements OnInit {

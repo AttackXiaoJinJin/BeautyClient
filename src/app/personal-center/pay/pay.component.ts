@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {PersonalService} from '../../services/personal.service';
 import {ActivatedRoute} from '@angular/router';
 import {UsersService} from "../../services/users.service";
-import {ShappingCarComponent} from "../shapping-car/shapping-car.component";
+import {ShappingCarComponent} from "../shopping-car/shopping-car.component";
 declare var $: any ;
 @Component({
   selector: 'app-pay',
@@ -377,7 +377,7 @@ pay(){
 //   that.sum=0;
 //   that.perSer.del({'tel':sessionStorage.getItem('userId')},function (result) {
 //   });
-  that.router.navigate(['personal-center/shapping-car']);
+  that.router.navigate(['personal-center/shopping-car']);
 }
 
   //创建唯一的订单号

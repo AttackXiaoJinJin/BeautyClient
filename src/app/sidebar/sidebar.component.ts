@@ -81,7 +81,7 @@ export class SidebarComponent implements OnInit {
 
 // 个人中心—购物车
   goshop(){
-    this.router.navigate(['personal-center/shapping-car']);
+    this.router.navigate(['personal-center/shopping-car']);
   }
 
   //点击固定0

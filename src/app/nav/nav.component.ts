@@ -90,7 +90,7 @@ export class NavComponent implements OnInit {
   }
 
   goshop(){
-    this.router.navigate(['personal-center/shapping-car']);
+    this.router.navigate(['personal-center/shopping-car']);
   }
 
   godetail(id){

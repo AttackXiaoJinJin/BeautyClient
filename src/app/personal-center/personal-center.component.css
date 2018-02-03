@@ -1,6 +1,6 @@
 .nav1{
-  position: relative;
-  top: -20px;
+  /*position: relative;*/
+  /*top: -20px;*/
 }
 ul{
   padding-left:10px;
@@ -12,15 +12,22 @@ ul a{
 
 .nav{
   padding-left: 150px;
-  margin-top: 20px;
+  /*margin-top: 20px;*/
   background:linear-gradient(90deg, rgba(6, 6, 6, 0.27) 25%, #ffffff 10%, rgba(6, 6, 6, 0.27) 2%,white);
   width: 650px;
 }
+.navbar1 {
+  position: relative;
+  min-height: 50px;
+  /*margin-bottom: 20px;*/
+  border: 1px solid transparent;
+}
+
 .first{
-  z-index: 3;
+  /*z-index: 3;*/
   right: 40px;
   position: relative;
-  top: 30px;
+  top: 15px;
   float: right;
   color: black;
   font-weight: 600;
