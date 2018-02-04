@@ -1,28 +1,38 @@
 <div class=" body">
 <div class="col-xs-12 col-sm-12 col-md-12" style="margin-top: -20px">
-  <img class="img-responsive" src="http://owo22ooz3.bkt.clouddn.com/woman1.jpg">
-</div>
+  <!--秋意萌动-->
+  <img class="img-responsive" src="../../assets/looks/woman1.jpg" height="316" width="1365"/></div>
+  <!--男生女生爱搭-->
 <div class="row " style="height:150px;width:100%">
 <div class="man fl" routerLink="/boys"><a>男生爱搭</a></div>
 <div class="woman fr" routerLink="/girls"><a>女生爱搭 </a> </div>
 </div>
-  <div class="col-xs-12 col-sm-12 col-md-12"></div>
-<div class="container">
+  <!--==============-->
+  <!--<div class="col-xs-12 col-sm-12 col-md-12"></div>-->
+  <div class="container">
   <div class="col-md-12" style="margin-bottom:30px">
     <div class="col-xs-6 col-sm-6 col-md-6">
-      <img class="img-responsive" src="http://owo22ooz3.bkt.clouddn.com/looks-man-big.jpg">
+      <!--<img src="http://owo22ooz3.bkt.clouddn.com/looks-man-big.jpg">-->
+      <img class="img-responsive" src="../../assets/looks/looks-man-big.jpg" height="536" width="525"/>
     </div>
     <div class="col-xs-6 col-sm-6 col-md-6">
-      <img class="img-responsive" src="http://owo22ooz3.bkt.clouddn.com/looks-woman-big.png">
+      <!--<img class="img-responsive" src="http://owo22ooz3.bkt.clouddn.com/looks-woman-big.png">-->
+      <img src="../../assets/looks/looks-woman-big.png"/>
     </div>
   </div>
   <div class=" col-xs-6 col-sm-6 col-md-6">
       <div class="looks-1">
-        <a routerLink="/girls"><img class="img-responsive" src="http://owo22ooz3.bkt.clouddn.com/looks-1.jpg"></a>
+        <a routerLink="/girls">
+          <!--<imgsrc="http://owo22ooz3.bkt.clouddn.com/looks-1.jpg">-->
+          <img class="img-responsive"  src="../../assets/looks/looks-1.jpg" height="660" width="529"/>
+        </a>
       </div>
   </div>
+    <!--撩妹小能手==========================-->
   <div class="col-xs-6 col-sm-6 col-md-6">
-    <div><img class="img-responsive " src="http://owo22ooz3.bkt.clouddn.com/looks-man1.png"></div>
+    <div>
+      <!--<img src="http://owo22ooz3.bkt.clouddn.com/looks-man1.png">-->
+      <img class="img-responsive" src="../../assets/looks/looks-man1.png"/></div>
     <div class="looks-man">
       <div class="animated swing infinite look1">
         <h4 routerLink="/boys">撩妹小能手</h4>
@@ -40,20 +50,39 @@
        <span class="word1">阳光男孩</span>
         </span>
     </div>
-
   </div>
+    <!--====================-->
   <div class="col-xs-12 col-sm-12 col-md-12 foot2">
     <div class="col-md-12"style="text-align: center;color: white"><h2>搭配小能手</h2>
       <br>
       <h4>纯妹子的纯色LOOK搭配药丸包真是自带小清新，时髦又减龄两不误</h4></div>
-    <div class="col-xs-1 col-sm-1 col-md-1 bg1" style="z-index: 1"><img  src="http://owo22ooz3.bkt.clouddn.com/bg2.png"></div>
-    <div class="col-xs-5 col-sm-5 col-md-5" style="margin-top:40px;margin-left: -60px"><img class="img-responsive " src="http://owo22ooz3.bkt.clouddn.com/looks-woman.jpg"></div>
-    <div class="col-xs-3 col-sm-3 col-md-3 bg2" style=""><img  src="http://owo22ooz3.bkt.clouddn.com/bg3.png"></div>
+    <div class="col-xs-1 col-sm-1 col-md-1 bg1" style="z-index: 1">
+      <!--<img  src="http://owo22ooz3.bkt.clouddn.com/bg2.png">-->
+      <img src="../../assets/looks/bg2.png" height="206" width="166"/>
+    </div>
+    <div class="col-xs-5 col-sm-5 col-md-5" style="margin-top:40px;margin-left: -60px">
+      <!--<img src="http://owo22ooz3.bkt.clouddn.com/looks-woman.jpg">-->
+      <img class="img-responsive " src="../../assets/looks/looks-woman.jpg"/></div>
+    <div class="col-xs-3 col-sm-3 col-md-3 bg2" style="">
+      <!--<img  src="http://owo22ooz3.bkt.clouddn.com/bg3.png">-->
+      <img src="../../assets/looks/bg3.png"/>
+    </div>
     <div class="col-xs-5 col-sm-5 col-md-5" style="margin-top: 40px;margin-left:20px">
-      <div class="text col-xs-12 col-sm-12 col-md-12" #text style="margin-bottom: 0px"> <img class="img-responsive" src="http://owo22ooz3.bkt.clouddn.com/looks-woman-d1.jpg"></div>
-      <div class="text col-xs-12 col-sm-12 col-md-12 dapei" style=""><h2>搭 配 灵 感</h2></div>
-        <div class="col-xs-6"><img class="text  img-responsive fl" src="http://owo22ooz3.bkt.clouddn.com/looks-woman-d2.jpg"></div>
-        <div class="col-xs-6"><img class="text img-responsive fr" src="http://owo22ooz3.bkt.clouddn.com/looks-woman-d3.jpg"></div>
+      <!--<div class="text col-xs-12 col-sm-12 col-md-12" #text style="margin-bottom: 0px">-->
+      <div [class]="if_hover?'animated  pulse col-xs-12 col-sm-12 col-md-12':'col-xs-12 col-sm-12 col-md-12'" #text style="margin-bottom: 0px" (mouseover)="bebig()" (mouseleave)="besmall()">
+        <!--<img src="http://owo22ooz3.bkt.clouddn.com/looks-woman-d1.jpg">-->
+        <img class="img-responsive" src="../../assets/looks/looks-woman-d1.jpg"/>
+      </div>
+      <div [class]="if_hover?'animated  pulse col-xs-12 col-sm-12 col-md-12 dapei':'col-xs-12 col-sm-12 col-md-12 dapei'" (mouseover)="bebig()" (mouseleave)="besmall()"><h2>搭 配 灵 感</h2></div>
+        <div class="col-xs-6">
+          <!--<img src="http://owo22ooz3.bkt.clouddn.com/looks-woman-d2.jpg">-->
+          <!--<img class="text  img-responsive fl"  src="../../assets/looks/looks-woman-d2.jpg" (mouseover)="bebig()"/></div>-->
+          <img [class]="if_hover?'animated  pulse img-responsive fl':'img-responsive fl'" src="../../assets/looks/looks-woman-d2.jpg" (mouseover)="bebig()" (mouseleave)="besmall()"/></div>
+        <div class="col-xs-6">
+          <!--<img src="http://owo22ooz3.bkt.clouddn.com/looks-woman-d3.jpg">-->
+          <!--<img class="text img-responsive fr" src="../../assets/looks/looks-woman-d3.jpg" (mouseover)="bebig()"/>-->
+          <img [class]="if_hover?'animated  pulse img-responsive fr':'img-responsive fr'" src="../../assets/looks/looks-woman-d3.jpg" (mouseover)="bebig()" (mouseleave)="besmall()"/>
+        </div>
     </div>
   </div>
 </div>

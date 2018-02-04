@@ -1,6 +1,9 @@
 .body{
   background-color: #fcd45a;
 }
+img{
+  cursor: pointer;
+}
 #mycarousel img{
   margin: 0 auto;
 }
@@ -189,6 +192,8 @@ h2{
   margin-top: 30px;
   margin-bottom: 30px
 }
+
+
 @media (min-width:768px){
   .man,.woman{
     font-weight: 800;

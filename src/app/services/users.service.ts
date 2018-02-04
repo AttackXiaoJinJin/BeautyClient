@@ -172,7 +172,16 @@ url:string = 'http://localhost:3001/users';
       }
     )
   }
-
+  //加入购物车============
+  addshop (shopnum,goodspic,goodsname,goodsid,goodssize,id,goodsprice, callback ) {
+    this.http.post(this.url + '/addshop',{shopnum:shopnum,goodspic:goodspic,goodsname:goodsname,goodsid:goodsid,goodssize:goodssize,id:id,goodsprice:goodsprice} ).subscribe(function (result) {
+        callback(result);
+      },
+      function (error) {
+        console.log(error.message);
+      }
+    )
+  }
 
 
   //===========================
@@ -250,15 +259,9 @@ url:string = 'http://localhost:3001/users';
       }
     )
   }
-  showboys( body, callback ) {
-    this.http.post(this.url + '/showboys', body).subscribe(function (result) {
-        callback(result);
-      },
-      function (error) {
-        console.log(error.message);
-      }
-    )
-  }
+
+
+
   showgirls( callback ) {
     this.http.post(this.url + '/showgirls','').subscribe(function (result) {
         callback(result);
@@ -268,15 +271,7 @@ url:string = 'http://localhost:3001/users';
       }
     )
   }
-  showdetails (body, callback ) {
-    this.http.post(this.url + '/showdetails', body ).subscribe(function (result) {
-        callback(result);
-      },
-      function (error) {
-        console.log(error.message);
-      }
-    )
-  }
+
   showloves(body,callback ) {
     this.http.post(this.url + '/showloves',body).subscribe(function (result) {
         callback(result);
@@ -296,15 +291,7 @@ url:string = 'http://localhost:3001/users';
     )
   }
 
-  addshop (body, callback ) {
-    this.http.post(this.url + '/addshop', body ).subscribe(function (result) {
-        callback(result);
-      },
-      function (error) {
-        console.log(error.message);
-      }
-    )
-  }
+
   addthum (body, callback ) {
     this.http.post(this.url + '/addthum', body ).subscribe(function (result) {
         callback(result);

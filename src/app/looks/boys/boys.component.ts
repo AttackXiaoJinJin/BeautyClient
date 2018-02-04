@@ -3,12 +3,13 @@ import {UsersService} from '../../services/users.service';
 
 import {Router} from '@angular/router';
 import {offsetSpan} from "@angular/language-service/src/utils";
+import {LooksService} from "../../services/looks.service";
 declare var $ :any;
 @Component({
   selector: 'app-boys',
   templateUrl: './boys.component.html',
   styleUrls: ['./boys.component.css'],
-  providers: [UsersService]
+  providers: [UsersService,LooksService]
 })
 
 export class BoysComponent implements OnInit {
@@ -41,31 +42,17 @@ export class BoysComponent implements OnInit {
   url2:string;
   url3:string;
   url4:string;
-  shows:any;
+  showboysresult:any;
   constructor(
     private userSer: UsersService,
+    private lookSer: LooksService,
     private router: Router,
   ) {
-  }
-  show(ny, start, end) {
-    let that = this;
-    const body = {'start': start, 'end': end};
-    that.userSer.showboys(body, function (result) {
-      if (result.StateCode == 0) {
-        alert('erro');
-      }
-      else {
-        that.shows = result;
-      }
-    })
-    that.url2 = ny[0];
-    that.url3 = ny[1];
-    that.url4 = ny[2];
   }
 
   ngOnInit() {
     let that = this;
-    that.show(that.sunny, 0 , 8);
+    that.showboys(that.sunny, 0 , 8);
     $(document).ready(function () {
       $('ul.nav > li').click(function (e) {
         e.preventDefault();
@@ -75,24 +62,42 @@ export class BoysComponent implements OnInit {
 
     });
     function Add_Data() {
-     if($("#fix").offset()){
-      const tops = $("#fix").offset().top;
-     const title = $("#title").offset().top;
+      if($("#fix").offset()){
+        const tops = $("#fix").offset().top;
+        const title = $("#title").offset().top;
 
-      const scrolla = $(window).scrollTop();
-      const cha = parseInt(tops) - parseInt(scrolla);
-      if (cha <= 0) {
-        $("#fix").addClass("navbar-fixed-top");
+        const scrolla = $(window).scrollTop();
+        const cha = parseInt(tops) - parseInt(scrolla);
+        if (cha <= 0) {
+          $("#fix").addClass("navbar-fixed-top");
+        }
+        if (parseInt(scrolla) < parseInt(title)) {
+          $("#fix").removeClass("navbar-fixed-top");
+        }
       }
-      if (parseInt(scrolla) < parseInt(title)) {
-        $("#fix").removeClass("navbar-fixed-top");
-      }
-    }
     }
     $(window).scroll(Add_Data);
     $(document).scrollTop(0);
 
   }
+
+
+  showboys(ny, start, end) {
+    let that = this;
+    that.lookSer.showboys(start+'', end+'',function (result) {
+      if (result.statusCode == 0) {
+        console.log('erro');
+      }
+      else {
+        that.showboysresult = result;
+      }
+    })
+    that.url2 = ny[0];
+    that.url3 = ny[1];
+    that.url4 = ny[2];
+  }
+
+
   godetail(id){
     this.router.navigate(['/shopping',id]);
   }

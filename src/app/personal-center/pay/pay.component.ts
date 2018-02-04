@@ -122,7 +122,7 @@ export class PayComponent implements OnInit {
       that.myshop()
     } else {
       //  弹出模态框
-
+      that.router.navigate(['/login']);
     }
 
   }

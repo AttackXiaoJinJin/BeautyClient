@@ -13,14 +13,24 @@ export class LooksComponent implements OnInit {
   constructor(
     private router:Router,
   ) { }
+
+  if_hover=false
   ngOnInit() {
-    $(".text").mouseover(function () {
-      $(".text").addClass('animated  pulse')
-    })
-    $(".text").mouseout(function () {
-      $(".text").removeClass('animated'+ 'animated pulse')
-    })
-    $(document).scrollTop(0);
+    //移到顶部
+    window.scrollTo(0,0)
+    // $(".text").mouseover(function () {
+    //   $(".text").addClass('animated  pulse')
+    // })
+    // $(".text").mouseout(function () {
+    //   $(".text").removeClass('animated'+ 'animated pulse')
+    // })
+  }
+
+  bebig(){
+    this.if_hover=true
+  }
+  besmall(){
+    this.if_hover=false
   }
 
 }

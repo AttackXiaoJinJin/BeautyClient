@@ -5,30 +5,32 @@
       <div class="outer">
         <div class="left">
         <div id="d1">
-          <img src="http://owo22ooz3.bkt.clouddn.com/{{detail[0].goodspic}}" width="400px" height="600px"/>
+          <!--<img src="http://owo22ooz3.bkt.clouddn.com/{{gooddetail.goodspic}}" width="400px" height="600px"/>-->
+          <img src="http://localhost:3001/images/{{gooddetail&&gooddetail.goodspic}}" width="400px" height="600px"/>
           <div id="d3">
           </div>
         </div>
-          {{detail[0].goodspicb}}
+          <!--{{detail.goodspicb}}-->
         <!--<div id="d4" style="background: red" [ngstyle]="{'background-image':url('http://localhost:3000/images/{{detail[0].goodspicb}}')"}>-->
-        <div id="d4" [ngStyle]="{'background-image':'url('+'http://owo22ooz3.bkt.clouddn.com/' + detail[0].goodspic + ')'}"  >
+        <!--<div id="d4" [ngStyle]="{'background-image':'url('+'http://owo22ooz3.bkt.clouddn.com/' + detail[0].goodspic + ')'}"  >-->
+        <div id="d4" [ngStyle]="{'background-image':'url('+'http://localhost:3001/images/'+gooddetail?.goodspic+')'}"  >
         </div>
         <div class="right">
           <div class="cname">
-            <B>{{detail[0].goodsname}}</B>
+            <B>{{gooddetail&&gooddetail.goodsname}}</B>
           </div>
           <div class="price">
             <div class="priceCenter">
             <span class="priceCenter_inner">
                  <p class="priceCenter_inner_name">促销价:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                 <p class="priceCenter_inner_price">￥{{detail[0].goodsprice}}</p>
+                 <p class="priceCenter_inner_price">￥{{gooddetail&&gooddetail.goodsprice}}</p>
             </span>
               <span class="priceCenter_inner">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 评价：23
-                 累计销量：{{detail[0].goodsnumber}}
+                 累计销量：{{gooddetail&&gooddetail.goodsnumber}}
             </span>
             </div>
             <div class="priceDown">
@@ -43,7 +45,7 @@
           </div>
 
           <div  class="shareNews animated fadeInDown" *ngIf="state" id='kuang' style="width: 370px;height: 100px; position: absolute;left: 540px;line-height: 100px; background-color: rgba(255,251,254,0.91);top: 320px;  ;z-index:15;"><span class="fa fa-3x fa-check" style="color: green"></span>已加入购物车  </div>
-          <div  class="shareNews animated fadeInDown" *ngIf="nologin" style="left:580px;background-color: white" >你还未登录，即将进入登陆页面！</div>
+          <!--<div  class="shareNews animated fadeInDown" *ngIf="nologin" style="left:580px;background-color: white" >你还未登录，即将进入登陆页面！</div>-->
 
           <div class="serve">
             <span class="serve_left">客服:</span>
@@ -54,12 +56,13 @@
           <div class="picture">
             <!--<div class="picture_right">颜色:</div>-->
             <div class="picture_right">
-              <img *ngIf="detail[0].goods2==null" src="http://owo22ooz3.bkt.clouddn.com/{{detail[0].goodspic}}" height="70" width="70">
-              <img *ngIf="detail[0].goods2!==null" src="http://owo22ooz3.bkt.clouddn.com/{{detail[0].goods2}}" height="70" width="70">
-              <img *ngIf="detail[0].goods1!==null"src="http://owo22ooz3.bkt.clouddn.com/{{detail[0].goods1}}" height="70" width="70">
-              <img *ngIf="detail[0].goods3!==null"src="http://owo22ooz3.bkt.clouddn.com/{{detail[0].goods3}}" height="70" width="70">
+              <img *ngIf="gooddetail&&gooddetail.goodspic" src="http://localhost:3001/images/{{gooddetail&&gooddetail?.goodspic}}" height="70" width="70">
+              <img *ngIf="gooddetail&&gooddetail.goods2" src="http://localhost:3001/images/{{gooddetail&&gooddetail?.goods2}}" height="70" width="70">
+              <img *ngIf="gooddetail&&gooddetail.goods1" src="http://localhost:3001/images/{{gooddetail&&gooddetail?.goods1}}" height="70" width="70">
+              <img *ngIf="gooddetail&&gooddetail.goods3" src="http://localhost:3001/images/{{gooddetail&&gooddetail?.goods3}}" height="70" width="70">
             </div>
           </div>
+          <!--尺码=================-->
           <div class="size">
             <div class="size_left">尺码:</div>
             <input type="button" id="size_right_id" class="size_right" value="S" (click)="size_click(1)">
@@ -68,20 +71,21 @@
             <img id="Mzhijiao" src="../../assets/shopping_images/gou.png" height="15" width="15"  *ngIf="sh==2">
             <input type="button" id="size_right_id2" class="size_right" value="L"  (click)="size_click(3)">
             <img id="Lzhijiao" src="../../assets/shopping_images/gou.png" height="15" width="15" *ngIf="sh==3">
-
           </div>
+          <!--商品数量================-->
           <div class="number">
             <div class="number_left">数量:</div>
-            <input type="button" id="number_right_id" class="number_right" value="-" #btn (click)="numClick()" >
-            <input type="text" id="number_center_id" class="number_center" value="1">
-            <input type="button" id="number_right_id1" class="number_right" value="+" #btn (click)="numClick2()">
+            <input type="button" id="number_right_id" class="number_right" value="-" #btn (click)="cutnum()" >
+            <input type="text" id="number_center_id" class="number_center" value="{{spnum}}">
+            <input type="button" id="number_right_id1" class="number_right" value="+" #btn (click)="addnum()">
           </div>
+          <!--立即购买或加入购物车==============-->
           <div class="purchase">
             <input type="button" id="purchase_left_id" class="purchase_left" value="立即购买" #btn (click)="buy()">
-            <input type="button" id="purchase_left_id1" class="purchase_left" value="加入购物车" #btn (click)="pur(0)">
-
-
+            <input type="button" id="purchase_left_id1" class="purchase_left" value="加入购物车" #btn (click)="addshop()">
           </div>
+
+          <!--商品特色================-->
           <div class="feature">
             <div class="feature_left">商品特色:</div>
             <div class="feature_right">
@@ -95,6 +99,7 @@
             <div class="feature_right"><img src="../../assets/shopping_images/shipai.png" height="18" width="18">
               实拍认证</div>
           </div>
+          <!--服务承诺==============================-->
           <div class="promise">
             <div class="promise_left">服务承诺:</div>
             <div class="promise_right"><img src="../../assets/shopping_images/24.png" height="22" width="22">24小时发货</div>
@@ -106,37 +111,12 @@
             <div class="promise_right"><img src="../../assets/shopping_images/zhi.png" height="24" width="24">劣一赔三服务</div>
 
           </div>
+          <!--=================-->
           <div class="payment"></div>
         </div>
-        <div class="cpm" id="cpm_id">
-          <div class="shop_infor">选择商品信息
-            <input id="cancel_id" class="cancel" type="button" value="X" #btn (click)="cel()">
-          </div>
+          <!--选择商品信息-->
 
-          <div class="color">
-            <div class="picture_right1">颜色:</div>
-            <div class="picture_right1">
-              <img src="http://owo22ooz3.bkt.clouddn.com/1439880982560.jpg" height="50" width="50">
-            </div>
-          </div>
-          <div class="size1">
-            <div class="size_left1">尺码:</div>
-            <input type="button" id="size_right2_id1" class="size_right" value="S"  (click)="size_click1(1)">
-            <img id="Szhijiao1" src="../../assets/shopping_images/gou.png" height="15"  width="15" *ngIf="sh==1">
-            <input type="button"  id="size_right2_id2" class="size_right" value="M"  (click)="size_click1(2)">
-            <img id="Mzhijiao1" src="../../assets/shopping_images/gou.png" height="15" width="15" *ngIf="sh==2">
-            <input type="button" id="size_right2_id3" class="size_right" value="L"  (click)="size_click1(3)">
-            <img id="Lzhijiao1" src="../../assets/shopping_images/gou.png" height="15" width="15" *ngIf="sh==3">
-
-          </div>
-          <div class="number1">
-            <div class="number_left1">数量:</div>
-            <input type="button" id="number_right2_id" class="number_right2" value="-" #btn (click)="numClick3()" >
-            <input type="text" id="number_center_id2" name="num" class="number_center2" value="1" >
-            <input type="button" id="number_right2_id1" class="number_right2" value="+" #btn (click)="numClick4()">
-          </div>
-          <input type="button" class="confirm" value="确认" (click)="load()">
-        </div>
+          <!--==========================-->
       </div>
     </div>
   </div>
