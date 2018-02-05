@@ -113,7 +113,7 @@ export class PayComponent implements OnInit {
     this.pro = Object.keys(this.shuzu);
     let that = this;
     that.clothesArray = that.route.snapshot.paramMap.get('sum')
-    console.log(that.route.snapshot.paramMap,'')
+    // console.log(that.route.snapshot.paramMap,'')
     // that.clothesArray=that.clothesArray.split("-")
     if (sessionStorage.getItem('userId')) {
       that._tel = sessionStorage.getItem('userPhone')

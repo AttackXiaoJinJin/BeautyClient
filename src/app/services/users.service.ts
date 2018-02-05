@@ -262,15 +262,7 @@ url:string = 'http://localhost:3001/users';
 
 
 
-  showgirls( callback ) {
-    this.http.post(this.url + '/showgirls','').subscribe(function (result) {
-        callback(result);
-      },
-      function (error) {
-        console.log(error.message);
-      }
-    )
-  }
+
 
   showloves(body,callback ) {
     this.http.post(this.url + '/showloves',body).subscribe(function (result) {

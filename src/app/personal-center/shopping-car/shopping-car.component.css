@@ -7,7 +7,7 @@ ul{list-style: none;
   height:80px;
   background-color:#F2F2F2;
   margin-left:-124px;
-  margin-top:-18px;
+  /*margin-top:-18px;*/
   border-bottom:1px solid rgba(176, 176, 176, 0.33);
 }
 #shine_id{

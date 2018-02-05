@@ -16,12 +16,9 @@ url:string = 'http://localhost:3001/looks';
       }
     )
   }
-
-
-
-
-  showgirls( callback ) {
-    this.http.post(this.url + '/showgirls','').subscribe(function (result) {
+  //女生穿搭
+  showgirls( start,end,callback ) {
+    this.http.post(this.url + '/showgirls',{start:start,end:end}).subscribe(function (result) {
         callback(result);
       },
       function (error) {
@@ -29,15 +26,8 @@ url:string = 'http://localhost:3001/looks';
       }
     )
   }
-  showdetails (body, callback ) {
-    this.http.post(this.url + '/showdetails', body ).subscribe(function (result) {
-        callback(result);
-      },
-      function (error) {
-        console.log(error.message);
-      }
-    )
-  }
+
+
 
 
 }

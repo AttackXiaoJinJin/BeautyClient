@@ -70,8 +70,8 @@ export class SidebarComponent implements OnInit {
     //购物车
     that.userSer.myfoot(that.tel+'', function (result) {
       that.footresult=result
-      console.log(result)
-      console.log("aaaa")
+      // console.log(result)
+      // console.log("aaaa")
       // that.mes.unshift(that.detail);
       // that.mesf=result[1];
     })
