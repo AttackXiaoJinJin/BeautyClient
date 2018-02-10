@@ -1,28 +1,48 @@
 <div style="">
   <div class="container" style="margin-left:200px">
-    <div class="row" >
-    <div class="col-xs-4 col-sm-4 col-md-4 ">
-      <img class="img-responsive" src="http://owo22ooz3.bkt.clouddn.com/love-1.jpg">
+    <!--<div class="row" >-->
+    <!--<div class="col-xs-4 col-sm-4 col-md-4 ">-->
+    <div style="float: left">
+      <!--<img src="http://owo22ooz3.bkt.clouddn.com/love-1.jpg">-->
+      <img class="img-responsive" src="../../assets/loves/love-1.jpg"/>
     </div>
-    <div class="col-xs-7 col-sm-7 col-md-7">
-       <img src="http://owo22ooz3.bkt.clouddn.com/love-2.jpg">
-       <img src="http://owo22ooz3.bkt.clouddn.com/love-3.jpg">
-      <img src="http://owo22ooz3.bkt.clouddn.com/love-4.jpg">
-      <div  style="margin-top: 3px"> <img src="http://owo22ooz3.bkt.clouddn.com/love-5.jpg">
-        <img src="http://owo22ooz3.bkt.clouddn.com/love-6.jpg">
-        <img src="http://owo22ooz3.bkt.clouddn.com/love-7.jpg">
-      </div>
+    <!--<div class="col-xs-7 col-sm-7 col-md-7">-->
+    <div style="float: left">
+       <!--<img src="http://owo22ooz3.bkt.clouddn.com/love-2.jpg">-->
+      <img src="../../assets/loves/love-2.jpg"/>
+      <!--<img src="http://owo22ooz3.bkt.clouddn.com/love-3.jpg">-->
+      <img src="../../assets/loves/love-3.jpg"/>
+      <!--<img src="http://owo22ooz3.bkt.clouddn.com/love-4.jpg">-->
+      <img src="../../assets/loves/love-4.jpg"/>
+      <div style="margin-top: 3px">
+        <!--<img src="http://owo22ooz3.bkt.clouddn.com/love-5.jpg">-->
+        <img src="../../assets/loves/love-5.jpg"/>
+        <!--<img src="http://owo22ooz3.bkt.clouddn.com/love-6.jpg">-->
+        <img src="../../assets/loves/love-6.jpg"/>
+        <!--<img src="http://owo22ooz3.bkt.clouddn.com/love-7.jpg">-->
+        <img src="../../assets/loves/love-7.jpg"/></div>
     </div>
-    </div>
-    <div class="yi col-md-12 col-md-offset-1">
-      <ul *ngFor="let love of loves;let index=index">
-        <li><img src="http://owo22ooz3.bkt.clouddn.com/{{love.goodspic}}" (click)="godetail(love.goodsid)"></li>
-        <li>MyLove时尚{{love.goodsname}}</li>
-        <li>￥{{love.goodsprice}} <span class="pra"><span id="{{index}}" class="xin" (click)="pra(index)"></span><span class="pra1">{{love.praise}}</span></span></li>
+    <!--</div>衣服列表-->
+    <div class="yi col-md-10 col-md-offset-2">
+      <ul *ngFor="let love of loves" >
+      <app-loveitem  [_love]="love"  (zitanchu)="getData($event)"></app-loveitem>
       </ul>
     </div>
   </div>
 </div>
-<div class="col-sm-12 col-md-6 " style="height:60px;margin-left: 35%">
-  <a><input class="b" type="button" *ngFor="let item of number;let index=index" value="{{item}}"(click)="show(index)"></a>
+<!--显示loves================-->
+<div class="fenye">
+  <!--分页===============-->
+  <a><input class="b" type="button" *ngFor="let item of number;let index=index" value="{{item}}" (click)="showloves(index)"></a>
 </div>
+<!--===========================-->
+<!--模态框======================== ====-->
+<div class="modal" *ngIf="modal_if"  [style.height]="full_height">
+  <div class="modal_content" [style.top]="scroll_top">
+    <p style="text-align: right; margin: 0"><span class="glyphicon glyphicon-remove" (click)="close()"></span></p>
+    <!--<p style="text-align: right; margin: 0"><span class="glyphicon glyphicon-remove" ></span></p>-->
+    <h2 style="margin: 40px 0px">还未登录，无法操作！</h2>
+    <h4><a (click)="toLogin()">前往登录</a></h4>
+  </div>
+</div>
+<!--====================================-->

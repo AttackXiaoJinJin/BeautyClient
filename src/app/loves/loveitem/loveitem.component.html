@@ -1,0 +1,10 @@
+  <!--<li><img src="http://owo22ooz3.bkt.clouddn.com/{{love.goodspic}}" (click)="godetail(love.goodsid)"></li>-->
+  <li><img src="http://localhost:3001/images/{{_love.goodspic}}" (click)="godetail(_love.goodsid)"></li>
+  <li>MyLove时尚{{_love.goodsname}}</li>
+  <li>
+    ￥{{_love.goodsprice}}
+    <span class="pra">
+            <span ngClass="{{className}}" (click)="changeLove(_love.goodsid)"></span>
+            <span class="pra1">{{loveNum}}</span>
+          </span>
+  </li>

@@ -264,15 +264,7 @@ url:string = 'http://localhost:3001/users';
 
 
 
-  showloves(body,callback ) {
-    this.http.post(this.url + '/showloves',body).subscribe(function (result) {
-        callback(result);
-      },
-      function (error) {
-        console.log(error.message);
-      }
-    )
-  }
+
   Show(callback ) {
     this.http.post(this.url + '/Show','').subscribe(function (result) {
         callback(result);
@@ -293,15 +285,7 @@ url:string = 'http://localhost:3001/users';
       }
     )
   }
-  addloves (body, callback ) {
-    this.http.post(this.url + '/addloves', body ).subscribe(function (result) {
-        callback(result);
-      },
-      function (error) {
-        console.log(error.message);
-      }
-    )
-  }
+
 userfoot(body, callback ) {
     this.http.post(this.url + '/userfoot', body ).subscribe(function (result) {
         callback(result);

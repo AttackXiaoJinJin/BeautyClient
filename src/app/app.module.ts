@@ -40,6 +40,7 @@ import { FooterComponent } from './footer/footer.component'
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import { NavComponent } from './nav/nav.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { LoveitemComponent } from './loves/loveitem/loveitem.component';
 
 
 
@@ -67,6 +68,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     NavComponent,
     BacktopComponent,
     SidebarComponent,
+    LoveitemComponent,
     SharesMyareaComponent
 
   ],
