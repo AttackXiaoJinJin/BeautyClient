@@ -182,6 +182,16 @@ url:string = 'http://localhost:3001/users';
       }
     )
   }
+  //============fashion wu show
+  Show(callback ) {
+    this.http.post(this.url + '/Show','').subscribe(function (result) {
+        callback(result);
+      },
+      function (error) {
+        console.log(error.message);
+      }
+    )
+  }
 
 
   //===========================
@@ -265,15 +275,6 @@ url:string = 'http://localhost:3001/users';
 
 
 
-  Show(callback ) {
-    this.http.post(this.url + '/Show','').subscribe(function (result) {
-        callback(result);
-      },
-      function (error) {
-        console.log(error.message);
-      }
-    )
-  }
 
 
   addthum (body, callback ) {

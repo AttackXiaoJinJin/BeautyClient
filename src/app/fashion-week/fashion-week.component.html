@@ -1,19 +1,23 @@
 <div class="top" >
-  <img  src="http://owo22ooz3.bkt.clouddn.com/fashion.jpg "  class="img-responsive"  >
+  <!--<img  src="http://owo22ooz3.bkt.clouddn.com/fashion.jpg "   >-->
+  <img src="../../assets/fashion/fashion.jpg" class="img-responsive"/>
 </div>
-
-
-
 <div>
-  <div class="show_title col-lg-12 col-md-12 col-sm-12"><img class="img-responsive p1_title" src="../../assets/images/p1_tit.png"  ></div>
+  <!--秀场===================-->
+  <div class="show_title col-lg-12 col-md-12 col-sm-12">
+    <img class="img-responsive p1_title" src="../../assets/images/p1_tit.png"  >
+  </div>
+  <!--选项卡==========================-->
     <div class="btn_all">
      <ul class="btns">
+       <!--active默认选中-->
       <li class="newyok active " (click)="show(newyok)"><a>纽约时装周</a>  </li>
       <li class="lundon"  (click)="show(lundon)"><a>伦敦时装周</a> </li>
       <li class="milan" (click)="show(milan)"><a>米兰时装周</a></li>
       <li class="paris"  (click)="show(paris)"><a>巴黎时装周</a></li>
     </ul>
-</div>
+  </div>
+  <!--============================-->
 
 
 
@@ -29,7 +33,6 @@
         </div>
       </div>
       <div class="item" style="background-color: rgba(0,0,0,0.97)">
-
         <ul>
           <li *ngFor ="let item of url2">  <img src="http://owo22ooz3.bkt.clouddn.com/{{item}}.jpg" alt=""></li>
 
@@ -55,25 +58,35 @@
 
 <div class="row">
   <div class=" col-lg-12 col-md-12 col-sm-12 middle_div">
-    <a href=""><img src="http://owo22ooz3.bkt.clouddn.com/red1.png" height="120" width="120"/></a>
-    <a href=""><img src="http://owo22ooz3.bkt.clouddn.com/red2.png" height="120" width="120"/></a>
+    <a>
+      <!--<img src="http://owo22ooz3.bkt.clouddn.com/red1.png" height="120" width="120"/>-->
+      <img src="../../assets/fashion/red1.png" height="120" width="120"/>
+    </a>
+    <a>
+      <!--<img src="http://owo22ooz3.bkt.clouddn.com/red2.png" height="120" width="120"/>-->
+      <img src="../../assets/fashion/red2.png" height="120" width="120"/>
+    </a>
     <div class="dao"><span>Show&秀场导Navigation</span></div>
-    <a href=""><img src="http://owo22ooz3.bkt.clouddn.com/red3.png" height="120" width="120"/></a>
-    <a href=""><img src="http://owo22ooz3.bkt.clouddn.com/red4.png" height="120" width="120"/></a>
+    <a>
+      <!--<img src="http://owo22ooz3.bkt.clouddn.com/red3.png" height="120" width="120"/>-->
+      <img src="../../assets/fashion/red3.png" height="120" width="120"/>
+    </a>
+    <a>
+      <!--<img src="http://owo22ooz3.bkt.clouddn.com/red4.png" height="120" width="120"/>-->
+      <img src="../../assets/fashion/red4.png" height="120" width="120"/>
+    </a>
   </div>
 </div>
 
 
 <div class=" col-lg-12 col-lg-offset-3  col-md-12 col-md-offset-3 col-sm-12 col-sm-offset-2 show_review">
   <div class="review"><span>Show&秀评专栏Reviews</span></div>
-
 </div>
 <div class="container-fluid" style="clear: both">
   <div class="review_show" >
     <div id="review1" (mouseenter)="b('#a')" (mouseleave)="f('#a')" >
       <div id="a">有人说古老的米兰时装周已经新意不再，可我却认为它亮点不断。在米兰时装周开始的前一天晚上，我意识到自己需要变得更加随心所欲一些，去尝试以前一直想要尝试的发型。第二天一早我就已经置身Tommy（意大利最出色的发型师）的美发沙龙My Place Studio了，他和他的剪刀正在那儿等着我。只是改变了一下刘海，一个全新的Patricia就诞生了。</div>
     </div>
-
     <div  id="review2"  > <div id="b"><h3>Colin McDowell：巴黎时装周的起源</h3>
       如今，人们早已对巴黎、米兰、伦敦和纽约四大时装周习以为常。世界各地更是出现了许许多多的全新时装周。而作为行业内当之无愧的王者，巴黎时装周又是缘何而起呢？</div>
       <div id="review3"  (mouseenter)="b('#c')" (mouseleave)="f('#c')"><div id="c">巴黎时装周期间，空气中已经开始洋溢着春天的气息，还有比这更美好的时刻吗？
@@ -90,7 +103,8 @@
   </div>
   <div class="container" >
     <div class="street_title  ">
-      <img src="http://owo22ooz3.bkt.clouddn.com/ti.jpg" class="img-responsive" >
+      <!--<img src="http://owo22ooz3.bkt.clouddn.com/ti.jpg" >-->
+      <img src="../../assets/fashion/ti.jpg" class="img-responsive"/>
     </div>
     <div class="street" >
       <div id="container">

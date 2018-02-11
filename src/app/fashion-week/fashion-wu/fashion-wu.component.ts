@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import {UsersService} from './../../services/users.service';
+import {UsersService} from '../../services/users.service';
 declare var $:any;
 @Component({
   selector: 'app-fashion-wu',
@@ -9,22 +9,26 @@ declare var $:any;
   providers: [UsersService],
 })
 export class FashionWuComponent implements OnInit {
+  //衣服===
   goods:any;
   constructor(private router: Router,
               private userSer: UsersService,) { }
 
   ngOnInit() {
     let that = this;
+    window.scrollTo(0,0);
     that.userSer.Show(function (result) {
       that.goods= result;
     })
 
-    $(document).scrollTop(0);
-    let  $window           = $(window),
+
+    let  $window = $(window),
       win_height_padded = $window.height() * 1.1,
       isTouch           = $('Modernizr').touch;
 
-    if (isTouch) { $('.revealOnScroll').addClass('animated'); }
+    if (isTouch) {
+      $('.revealOnScroll').addClass('animated');
+    }
 
     $window.on('scroll', revealOnScroll);
 
@@ -57,6 +61,9 @@ export class FashionWuComponent implements OnInit {
       });
     }
   }
+
+
+
   ying() {
     this.router.navigate(['/fashion-ying']);
   }
