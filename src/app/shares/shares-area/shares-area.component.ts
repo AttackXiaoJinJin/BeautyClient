@@ -3,6 +3,7 @@ import {UsersService} from '../../services/users.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import {Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
+import {stripComments} from "tslint/lib/utils";
 declare var $: any;
 
 @Component({
@@ -14,13 +15,20 @@ declare var $: any;
 export class SharesAreaComponent implements OnInit {
   state:any;
   dstate:any
+  //评论=============
   comments:any;
   back:any;
   index1:any;
   nologin:any;
-  tel=sessionStorage.getItem('userId');
-  h:any;src='';
+  user_id=sessionStorage.getItem('userId');
+  h:any;
+  src='';
   bigpic:any;
+  //显示大图片
+  // showbig:boolean=false
+  //是否点赞
+  like_if=[]
+
   constructor(
     private userSer: UsersService,
     private router: Router,
@@ -29,13 +37,19 @@ export class SharesAreaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    $(document).scrollTop(0);
+    window.scrollTo(0,0);
     let that = this;
+    //显示评论
     that.userSer.commentShow(function (result) {
-      that.comments= result[0];
-      that.back=result[1];
+      that.comments= result
+      for(let i=0;i<result.length;i++){
+        that.like_if[i]=false
+      }
+      // console.log(that.comments)
+      // that.back=result[1]
     })
   }
+  //========init
   sendshare(comment) {
     const body = {'com': comment .form.value.com, telephone: sessionStorage.getItem('userId'),
       'img':this.src};
@@ -63,26 +77,30 @@ export class SharesAreaComponent implements OnInit {
       },2000)
      }
   }
-
+  //刷新===============
   refresh () {
     location.reload();
   }
-  display(index)
-  {let comment=this.comments;
-    comment[index].state='true';}
-  add(index,n){
+
+
+  tocomment(index)
+  {
     let comment=this.comments;
-    let that=this;
-    if(!comment[index].thum)
-      comment[index].thum=0;
-    comment[index].thum= comment[index].thum+1;
-    const body={'shareid':comment[index].shareid,'thum':comment[index].thum}
-    that.userSer.addthum( body, function ( result) {
-      if (result.StateCode == 0) {
-        alert("失败");
-      } else {}
+    //显示回复
+    comment[index].state='true'
+  }
+
+    //点赞==============
+  dianzan(share_id,thum,index){
+    let that=this
+    that.userSer.dianzan({share_id}, function ( result) {
+      if (result.statusCode==27) {
+        that.like_if[index] = true;
+        that.comments[index].thum+=1
+      }
     })
   }
+
   backsend(index, form)
   {
     const body = {'backcom': form.form.value.backcom,'shareid':this.comments [index].shareid,
@@ -102,12 +120,12 @@ export class SharesAreaComponent implements OnInit {
       }
     })
   }
+
   cancel(index)
   {
-    this.comments[index].state=false;}
-  hidd(){
-
+    this.comments[index].state=false
   }
+
   dels(index){
     let that = this;
     that.userSer.delmys({'shareid':that.comments[index].shareid},function (result) {
@@ -115,6 +133,7 @@ export class SharesAreaComponent implements OnInit {
         $('.'+index).remove();
     })
   }
+
   onFileChanged(fileList: FileList) {
     this.preview(fileList[0]);
     if (fileList.length > 0) {
@@ -123,7 +142,7 @@ export class SharesAreaComponent implements OnInit {
       formData.append('file', file, file.name);
       const h=1000*Math.random();
       this.h=h;
-      formData.append('key','shares/'+this.tel+h+'.jpg');
+      formData.append('key','shares/'+this.user_id+h+'.jpg');
       formData.append('token', '2aOfl8mhZO6y1XkBaNtu-axhD3nO0EwZF6Og1kYh:qUQgKzUP77jPo_TgY6ZKKFUml00=:eyJzY29wZSI6InNoaW5lIiwiZGVhZGxpbmUiOjE1MTUxMTU5NjQyOTh9');
       let headers = new Headers({
         "Accept": "application/json"
@@ -134,10 +153,11 @@ export class SharesAreaComponent implements OnInit {
           data => console.log('success' + data),
           error => console.log(error)
         )
-      this.src='shares/'+this.tel+h+ '.jpg';
+      this.src='shares/'+this.user_id+h+ '.jpg';
     }
 
   }
+
   preview(file) {
     const img = new Image();
     img.src = URL.createObjectURL(file);
@@ -149,11 +169,14 @@ export class SharesAreaComponent implements OnInit {
       $('#imgg').append($img);
     }
   }
+
+  //显示大图片
   show_big(index){
-    this.comments[index].statem=true;
+    this.comments[index].showbig=true;
     this.bigpic=this.comments[index].sharepic;
   }
+  //关闭大图片
   close_big(index){
-    this.comments[index].statem=false;
+    this.comments[index].showbig=false;
   }
 }

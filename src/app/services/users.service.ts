@@ -192,6 +192,27 @@ url:string = 'http://localhost:3001/users';
       }
     )
   }
+  //显示评论================
+  commentShow (callback) {
+    this.http.post (this.url+ '/commentShow','' ).subscribe(function (result) {
+        callback(result);
+      },
+      function (error) {
+        console.log(error.message);
+      }
+    )
+  }
+  //给评论点赞====================
+  dianzan (shareid, callback ) {
+    this.http.post(this.url + '/dianzan', {shareid:shareid} ).subscribe(function (result) {
+        callback(result);
+      },
+      function (error) {
+        console.log(error.message);
+      }
+    )
+  }
+
 
 
   //===========================
@@ -251,15 +272,7 @@ url:string = 'http://localhost:3001/users';
   //     }
   //   )
   // }
-  commentShow (callback) {
-    this.http.post (this.url+ '/commentShow','' ).subscribe(function (result) {
-        callback(result);
-      },
-      function (error) {
-        console.log(error.message);
-      }
-    )
-  }
+
   backComment (body, callback ) {
     this.http.post(this.url+'/backcomment', body).subscribe(function (result) {
         callback(result);
@@ -277,15 +290,7 @@ url:string = 'http://localhost:3001/users';
 
 
 
-  addthum (body, callback ) {
-    this.http.post(this.url + '/addthum', body ).subscribe(function (result) {
-        callback(result);
-      },
-      function (error) {
-        console.log(error.message);
-      }
-    )
-  }
+
 
 userfoot(body, callback ) {
     this.http.post(this.url + '/userfoot', body ).subscribe(function (result) {
