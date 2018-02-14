@@ -78,8 +78,8 @@ export class SharesMyareaComponent implements OnInit {
     if(!comment[index].thum)
       comment[index].thum=0;
     comment[index].thum= comment[index].thum+1;
-    const body={'shareid':comment[index].shareid,'thum':comment[index].thum}
-    that.userSer.addthum( body, function ( result) {
+    // const body={'shareid':,'thum':comment[index].thum}
+    that.userSer.dianzan( comment[index].shareid, function ( result) {
       if (result.StateCode == 0) {
         alert("失败");
       } else {}

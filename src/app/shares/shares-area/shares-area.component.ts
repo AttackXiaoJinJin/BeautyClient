@@ -93,12 +93,14 @@ export class SharesAreaComponent implements OnInit {
     //点赞==============
   dianzan(share_id,thum,index){
     let that=this
-    that.userSer.dianzan({share_id}, function ( result) {
-      if (result.statusCode==27) {
-        that.like_if[index] = true;
-        that.comments[index].thum+=1
-      }
-    })
+    if(!that.like_if[index]){
+      that.userSer.dianzan({share_id}, function ( result) {
+        if (result.statusCode==27) {
+          that.like_if[index] = true;
+          that.comments[index].thum+=1
+        }
+      })
+    }
   }
 
   backsend(index, form)

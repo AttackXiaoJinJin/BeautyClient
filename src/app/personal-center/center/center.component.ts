@@ -130,96 +130,8 @@ export class CenterComponent implements OnInit {
     }
   }
 
-  //切换背景
-  // cdbkimg(index){
-  //   let def='personal_images/'+this.def[index];
-  //   // this.back[0].background=def;
-  //   this.bkicon=def;
-  //   this.fsq=true;
-  //   this.tu =def;
-  // }
-  /*
-    showm(){
-      this.statem=true;
-      this._password='';
-      this.rgpsw1='';
-      this. pswconfirm1='';
-    }
-    hid(){
-      this.stem=false;
-    }
-  /*
-    toregist (reg) {
-      this.statem=false;
-      let that=this;
-      that.personSer.updatep ({'pass':reg.form.value.pass,'newpass':reg.form.value.newpass,
-        'tel':sessionStorage.getItem('userId')},function (result) {
-        if(result.StateCode==0){
-          that.stateh= 3;
-          setTimeout(function(){
-            that.stateh = 10;
-          }, 3000 );
-       that._password='';
-       that.rgpsw1='';
-       that. pswconfirm1='';
-        }
-        else{
-          that.stateh= 2;
-          setTimeout(function(){
-            that.stateh =10;
-          }, 3000 );
-        }
-      })
-    }
-  */
-
- preview(file) {
-  let img = new Image();
-  img.src = URL.createObjectURL(file);
-  img.onload = function () {
-    URL.revokeObjectURL(img.src);
-    $('#preview').empty().append($(img));
-    // $('#preview1').empty().append($img);
-  }
-}
-
-//   showicon(){
-//   let that=this;
-//   const body ={ "telephone": sessionStorage.getItem('userId')};
-//   this.personSer.getUserIcon (body, function (result) {
-//     that.back=result;
-//     if(result[0].background==null)
-//     {that.back[0].background='personal_images/fj2.jpg';}
-//     sessionStorage.setItem('icon',result[0].icon);
-//   })
-// }
-
     //上传头像=======================
     onFileChanged(fileList: FileList) {
-    //
-    //   this.preview(fileList[0]);
-    // if (fileList.length > 0) {
-    //   let file: File = fileList[0];
-    //   let formData: FormData = new FormData();
-    //   formData.append('file', file, file.name);
-    //   const h=100*Math.random();
-    //   this.h=h;
-    //   formData.append('key','icons/'+this._tel+h+ '.jpg');
-    //   sessionStorage.setItem('icon','icons/'+this._tel+h+ '.jpg');
-    //   formData.append('token', '2aOfl8mhZO6y1XkBaNtu-axhD3nO0EwZF6Og1kYh:qUQgKzUP77jPo_TgY6ZKKFUml00=:eyJzY29wZSI6InNoaW5lIiwiZGVhZGxpbmUiOjE1MTUxMTU5NjQyOTh9');
-    //   let headers = new Headers({
-    //     "Accept": "application/json"
-    //   });
-    //   // let options = new RequestOptions({ headers });
-    //   this.http.post("http://up-z2.qiniu.com/", formData)
-    //     .subscribe(
-    //       data => console.log('success' + data),
-    //       error => console.log(error)
-    //     )
-    //   this.icon=sessionStorage.getItem('icon');
-    //   this.upload(this.icon);
-    // }
-
       //文件队列长度大于0,
       if (fileList.length > 0) {
         //选取队列的第一个文件
@@ -232,13 +144,12 @@ export class CenterComponent implements OnInit {
         formData.append('id', this._id);
         // console.log(formData.get('uploadFile'));
         // console.log(formData.get('user_id'));
-        console.log(formData,'234');
+        // console.log(formData,'234');
         //上传文件
-        let str = '{"id":' + this._id + '}';
-        let user_id = JSON.parse(str);
+        // let str = '{"id":' + this._id + '}';
+        // let user_id = JSON.parse(str);
         let that=this;
-
-        //将formData传到数据库
+        // 将formData传到数据库
         this.userSer.upLoad(formData, function (result) {
           console.log(result,'240')
           if(result.statusCode==-1){
@@ -247,32 +158,31 @@ export class CenterComponent implements OnInit {
           }
         });
       }
-
-
   }
   //上传头像================================end
 
 
 
-  upload(src){let that=this;
-  that.personSer.upload({'tel':sessionStorage.getItem('userId'),'src':src},function (result) {
-        if (result.stateCode==0){
-          that.stateh=4;
-          setTimeout(function(){
-            that.stateh = 10;
-          },2000 );
-        }else {
-          // that.back[0].icon = result[0][0].icon;
-          that.icon = result[0][0].icon;
-          that.mes = result;
-          that.stateh =0;
-          setTimeout(function(){
-            that.stateh = 10;
-          },2000 );
-
-        }
-      })
-}
+//   upload(src){
+//     let that=this;
+//   that.personSer.upload({'tel':sessionStorage.getItem('userId'),'src':src},function (result) {
+//         if (result.stateCode==0){
+//           that.stateh=4;
+//           setTimeout(function(){
+//             that.stateh = 10;
+//           },2000 );
+//         }else {
+//           // that.back[0].icon = result[0][0].icon;
+//           that.icon = result[0][0].icon;
+//           that.mes = result;
+//           that.stateh =0;
+//           setTimeout(function(){
+//             that.stateh = 10;
+//           },2000 );
+//
+//         }
+//       })
+// }
 
   change(){
     const that = this;

@@ -8,9 +8,15 @@
   max-width:400px;
   height:105px;
 }
+#immgg img{
+  width: 35%;
+  height: 100%;
+  object-fit: fill;
+}
 .send_area{
   margin-top: 20px;
   background-color: yellow;
+  position: relative;
 }
 .bigc{
   margin-top: -20px;
