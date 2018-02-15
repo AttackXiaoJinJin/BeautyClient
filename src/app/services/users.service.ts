@@ -172,6 +172,17 @@ url:string = 'http://localhost:3001/users';
       }
     )
   }
+  //上传分享
+  upLoadShares(formData,callback){
+    this.http.post(this.url+'/uploadshares', formData).subscribe(
+      function (result) {
+        callback(result);
+      },
+      function (error) {
+        console.log(error.message);
+      }
+    )
+  }
   //加入购物车============
   addshop (shopnum,goodspic,goodsname,goodsid,goodssize,id,goodsprice, callback ) {
     this.http.post(this.url + '/addshop',{shopnum:shopnum,goodspic:goodspic,goodsname:goodsname,goodsid:goodsid,goodssize:goodssize,id:id,goodsprice:goodsprice} ).subscribe(function (result) {
@@ -212,12 +223,9 @@ url:string = 'http://localhost:3001/users';
       }
     )
   }
-
-
-
-  //===========================
-  comment(comment, callback) {
-    this.http.post(this.url + '/comment', comment ).subscribe(function (result) {
+  //来评论和分享
+  comment(sharetext,userid, callback) {
+    this.http.post(this.url + '/comment', {sharetext:sharetext,userid:userid} ).subscribe(function (result) {
         callback(result);
       },
       function (error) {
@@ -225,6 +233,11 @@ url:string = 'http://localhost:3001/users';
       }
     )
   }
+
+
+
+  //===========================
+
   commentShowmy(body,callback) {
     this.http.post(this.url + '/commentShowmy',body).subscribe(function (result) {
         callback(result);

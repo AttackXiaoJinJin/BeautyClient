@@ -13,10 +13,18 @@ declare var $: any;
   providers: [UsersService],
 })
 export class SharesAreaComponent implements OnInit {
-  state:any;
+  //点击评论的发送键
+  if_click:any=false
   dstate:any
   //评论=============
   comments:any;
+  //userid
+  userid:any=null
+  share_formdata:any
+  //评论框里写的评论
+  _comment:any
+  //插入评论成功
+  if_comment:any=false
   back:any;
   index1:any;
   nologin:any;
@@ -39,6 +47,9 @@ export class SharesAreaComponent implements OnInit {
   ngOnInit() {
     window.scrollTo(0,0);
     let that = this;
+    if(sessionStorage.getItem('userId')){
+      that.userid=sessionStorage.getItem('userId')
+    }
     //显示评论
     that.userSer.commentShow(function (result) {
       that.comments= result
@@ -49,45 +60,46 @@ export class SharesAreaComponent implements OnInit {
       // that.back=result[1]
     })
   }
-  //========init
-  sendshare(comment) {
-    const body = {'com': comment .form.value.com, telephone: sessionStorage.getItem('userId'),
-      'img':this.src};
+  //========initend
+  //发送评论分享=============
+  sendshare(comForm) {
     let that = this;
     if (sessionStorage.getItem('userId')){
-      that.userSer.comment(body, function (result) {
-        if ( result.StateCode==0){
-          alert("发送失败");
-        }else {
-          // that.comments=result[0];
-          that.comments.unshift(result[0][0]);
-          $('#myform')[0].reset();
-          that.state=true;
-          $('#imgg').html('');
-          setTimeout(function(){
-            that.state=false;
-          },1000)
-        }
-      })
+      if(that._comment!==null){
+        that.userSer.comment(that._comment+'', that.userid+'',function (result) {
+          //评论成功
+          if (result.statusCode===29) {
+            //成功先把图片插入
+            // 将formData传到数据库
+            that.share_formdata.id=result.shareid
+            that.userSer.upLoadShares(that.share_formdata, function (result) {
+              if(result.statusCode===-1){
+                //重置评论
+                comForm.reset()
+                $('#imgg').html('');
+              }
+            })
+          }
+        })
+      }
     }
     else {
       that.nologin=true;
-      setTimeout(function(){
         that.router.navigate(['/login']);
-      },2000)
      }
   }
+
   //刷新===============
   refresh () {
     location.reload();
   }
 
-
+  //点击打开评论
   tocomment(index)
   {
     let comment=this.comments;
     //显示回复
-    comment[index].state='true'
+    comment[index].state=true
   }
 
     //点赞==============
@@ -138,37 +150,32 @@ export class SharesAreaComponent implements OnInit {
 
   onFileChanged(fileList: FileList) {
     this.preview(fileList[0]);
-    if (fileList.length > 0) {
-      let file: File = fileList[0];
-      let formData: FormData = new FormData();
-      formData.append('file', file, file.name);
-      const h=1000*Math.random();
-      this.h=h;
-      formData.append('key','shares/'+this.user_id+h+'.jpg');
-      formData.append('token', '2aOfl8mhZO6y1XkBaNtu-axhD3nO0EwZF6Og1kYh:qUQgKzUP77jPo_TgY6ZKKFUml00=:eyJzY29wZSI6InNoaW5lIiwiZGVhZGxpbmUiOjE1MTUxMTU5NjQyOTh9');
-      let headers = new Headers({
-        "Accept": "application/json"
-      });
-      // let options = new RequestOptions({ headers });
-      this.http.post("http://up-z2.qiniu.com/", formData)
-        .subscribe(
-          data => console.log('success' + data),
-          error => console.log(error)
-        )
-      this.src='shares/'+this.user_id+h+ '.jpg';
-    }
-
+    let that=this
+      //文件队列长度大于0,
+      if (fileList.length > 0) {
+        //选取队列的第一个文件
+        let file: File = fileList[0];
+        //创建一个formdata对象
+        let formData: FormData = new FormData();
+        //添加 name value filename
+        formData.append('uploadFile', file, file.name);
+        //添加name value null
+        formData.append('id', this.userid);
+        that.share_formdata=formData
+      }
   }
-
+  //预览图片
   preview(file) {
     const img = new Image();
+    //创建图片路径
     img.src = URL.createObjectURL(file);
     const url = img.src;
     const $img =$(img);
-    console.log($img);
+    // console.log($img);
     img.onload = function () {
       URL.revokeObjectURL(url);
       $('#imgg').append($img);
+      $img.css("object-fit","fill")
     }
   }
 
