@@ -233,13 +233,9 @@ url:string = 'http://localhost:3001/users';
       }
     )
   }
-
-
-
-  //===========================
-
-  commentShowmy(body,callback) {
-    this.http.post(this.url + '/commentShowmy',body).subscribe(function (result) {
+  //插入回复
+  backComment (shareid,backuserid,backtext, callback ) {
+    this.http.post(this.url+'/backcomment', {shareid:shareid,backuserid:backuserid,backtext:backtext}).subscribe(function (result) {
         callback(result);
       },
       function (error) {
@@ -247,8 +243,22 @@ url:string = 'http://localhost:3001/users';
       }
     )
   }
-  backShowmysql(body,callback) {
-    this.http.post(this.url + '/backShowmysql',body).subscribe(function (result) {
+  //显示回复
+  backshow(shareid,callback) {
+    this.http.post(this.url + '/backshow',{shareid:shareid}).subscribe(function (result) {
+        callback(result);
+      },
+      function (error) {
+        console.log(error.message);
+      }
+    )
+  }
+
+
+  //===========================
+
+  commentShowmy(body,callback) {
+    this.http.post(this.url + '/commentShowmy',body).subscribe(function (result) {
         callback(result);
       },
       function (error) {
@@ -276,25 +286,8 @@ url:string = 'http://localhost:3001/users';
       }
     )
   }
-  // addorder(body, callback ) {
-  //   this.http.post(this.url + '/addorder',body ).subscribe(function (result) {
-  //       callback(result);
-  //     },
-  //     function (error) {
-  //       console.log(error.message);
-  //     }
-  //   )
-  // }
 
-  backComment (body, callback ) {
-    this.http.post(this.url+'/backcomment', body).subscribe(function (result) {
-        callback(result);
-      },
-      function (error) {
-        console.log(error.message);
-      }
-    )
-  }
+
 
 
 

@@ -31,9 +31,9 @@ export class SharesMyareaComponent implements OnInit {
     that.userSer.commentShowmy({'tel':sessionStorage.getItem('userId')},function (result) {
       that.comments= result;
     })
-    that.userSer.backShowmysql({'tel':sessionStorage.getItem('userId')},function (result) {
-      that.back= result;
-    })
+    // that.userSer.backShowmysql({'tel':sessionStorage.getItem('userId')},function (result) {
+    //   that.back= result;
+    // })
   }
   show_big(index){
     this.comments[index].statem=true;
@@ -48,19 +48,19 @@ export class SharesMyareaComponent implements OnInit {
     'img':this.src};
     let that = this;
     if (sessionStorage.getItem('userId')){
-      that.userSer.comment(body, function (result) {
-        if ( result.StateCode==0){
-          alert("发送失败");
-        }else {
-          that.comments.unshift(result[0][0]);
-          $('#myform')[0].reset();
-          that.state=true;
-          $('#imgg').html('');
-          setTimeout(function(){
-            that.state=false;
-          },1000)
-        }
-      })
+      // that.userSer.comment(body, function (result) {
+      //   if ( result.StateCode==0){
+      //     alert("发送失败");
+      //   }else {
+      //     that.comments.unshift(result[0][0]);
+      //     $('#myform')[0].reset();
+      //     that.state=true;
+      //     $('#imgg').html('');
+      //     setTimeout(function(){
+      //       that.state=false;
+      //     },1000)
+      //   }
+      // })
     }
     else {
       that.router.navigate(['/login']); }
@@ -85,25 +85,14 @@ export class SharesMyareaComponent implements OnInit {
       } else {}
     })
   }
-  backsend(index, form)
-  {
-    const body = {'backcom': form.form.value.backcom,'shareid':this.comments [index].shareid,
-      'telephone': sessionStorage.getItem('userId')};
-    let that=this;
-    that.comments[index].add = index+'s';
-    this.userSer.backComment(body, function ( result) {
-      if(result.StateCode!==0){
-        $('#'+ index + 's').append(`<div class="col-sm-12 col-md-8" id="backshow">
-              <span class="a">${result[0][0].backname}&nbsp;:</span>&nbsp;&nbsp;
-              <span>${result[0][0].backtext}</span>&nbsp;&nbsp;
-              <p class="b">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${result[0][0].backdate}</p>
-              </div>`);
-        that.comments[index].state=false;
-      }else {
-        alert('erro');
-      }
-    })
-  }
+  // backsend(index, form)
+  // {
+  //   const body = {'backcom': form.form.value.backcom,'shareid':this.comments [index].shareid,
+  //     'telephone': sessionStorage.getItem('userId')}
+  //   this.userSer.backComment(body, function ( result) {
+  //
+  //   })
+  // }
   cancel(index)
   {
     this.comments[index].state=false;}

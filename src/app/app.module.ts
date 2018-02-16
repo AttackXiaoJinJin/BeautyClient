@@ -41,6 +41,8 @@ import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import { NavComponent } from './nav/nav.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { LoveitemComponent } from './loves/loveitem/loveitem.component';
+import { ShareitemComponent } from './shares/shares-area/shareitem/shareitem.component';
+import { BackitemComponent } from './shares/shares-area/shareitem/backitem/backitem.component';
 
 
 
@@ -69,6 +71,8 @@ import { LoveitemComponent } from './loves/loveitem/loveitem.component';
     BacktopComponent,
     SidebarComponent,
     LoveitemComponent,
+    ShareitemComponent,
+    BackitemComponent,
     SharesMyareaComponent
 
   ],

@@ -42,30 +42,9 @@ background-color: #ffad8d;
   left:40px;
   z-index: 2;
 }
-.pics{
-  min-width: 590px;
-  margin: 0 auto;
-  min-height: 60px;
-}
-.review_btn button{
-  background-color: #888888;
-  color: white;
-  margin-left: 5px;
-  width: 48px;
-  font-size: 12px;
-  height: 28px;
-text-align: center;
-  margin-top: 10px;
 
 
-}
-#backshow{
-  width:860px;
-  margin-bottom: 10px;
-  height:60px;
-}
-.review_area textarea{
-  margin-bottom: 10px}
+
 #container{
   height:auto;
   min-height:500px;
@@ -77,44 +56,15 @@ text-align: center;
   width:160px ;
   height: 230px;
 }
-#show{
-  border:1px solid #F2F2F5;
-  height:auto;
-  min-height:50px;
-  margin-top: 20px;
-  padding-top: 10px ;
-  text-indent: 25px;
-}
-#show .txt{
-  text-align: left;
-}
+
 #ever{
   margin-bottom:30px;
   background-color: rgba(242, 242, 245, 0.73);
   min-height:100px;
 }
-#num1{
-  width:25px;
-  border: none;
-  text-align: center;
-  background-color: transparent;
-}
-.pics a img{
-  width: 200px;
-  height: 210px;
-}
-.send_area2{
-  min-height: 10px;
-  display: block;
-  background-color: rgba(255, 206, 207, 0.59);
-  text-align: left;
-  margin-left: 180px;
 
-}
-.review_area{
-  text-align: center;
 
-}
+
 .panel-group .panel-heading:hover {
   background-color: rgba(220, 220, 220, 0.89);
 }
@@ -140,10 +90,5 @@ text-align: center;
   height: 40px;
   line-height: 40px;
   cursor: pointer;
-}
-.statem  img{
-  width: 550px;
-  height: 600px;
-  margin-top:20px;
 }
 
