@@ -52,10 +52,10 @@ export class LoveitemComponent implements OnInit {
         //22表示已收藏
         if (result.statusCode === 22) {
           that.if_love = true;
-          that.className = "noxin";
+          that.className = "xin";
         } else {
           that.if_love = false;
-          that.className = "xin";
+          that.className = "noxin";
         }
       });
     }else{
@@ -82,13 +82,14 @@ export class LoveitemComponent implements OnInit {
       let that = this;
       //点击收藏
       if (that.if_love === false) {
-        //console.log("这是未收藏显示");
+        // console.log(that.userid,that._love.goodsid,"这是未收藏显示");
         that.loveSer.insertloves(that.userid + '', that._love.goodsid + '', function (result) {
           //收藏成功
           // console.log(result.statusCode+"这是状态码");
           if (result.statusCode === 19) {
             that.showlovenum(that);
-            that.className = " xin";
+            that.className = "xin";
+            that.if_love = true
           }
         });
       }else if(that.if_love === true){
@@ -98,6 +99,7 @@ export class LoveitemComponent implements OnInit {
           if (result.statusCode ==24) {
             that.showlovenum(that);
             that.className = "noxin";
+            that.if_love = false
           }
         })
       }

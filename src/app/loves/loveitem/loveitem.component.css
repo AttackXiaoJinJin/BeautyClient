@@ -14,7 +14,7 @@ img{
   font-size: 1.2em;
 
 }
-.xin{
+.noxin{
   width:23px;
   height:23px;
   display: inline-block;
@@ -23,7 +23,7 @@ img{
   background-image: url("../../../assets/xin.jpg");
 }
 
-.noxin{
+.xin{
   width:23px;
   height:23px;
   display: inline-block;
