@@ -210,7 +210,7 @@ lun=['1.jpg','2.jpg','3.jpg','4.jpg'];
         //0.3s添加一个字
         typePanel.html(word.substring(0, index++));
         //注意div的空白节点
-        if (index == word.length) {
+        if (index === word.length) {
           $("#poem1").text('');
           index = 0;
         }

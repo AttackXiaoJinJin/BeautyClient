@@ -59,26 +59,18 @@ export class PayComponent implements OnInit {
   choose_address:any
   choose_tel:any
   //创建订单号
-  order_numbering:any
+  order_numbering:any=0
   //在编辑订单的时候存储衣服的数量的数组，这样方便插入
   // clothesArray=[]
   clothesArray:any
   //选择地址的id
   address_id: any;
   state1: any;
-
   x1 = 2;
   state_pay: any=1;
   x = true;
   homeid = '';
-
-
   every: any;
-
-
-
-
-
 
   //省市区数组================
   shuzu = {
@@ -101,11 +93,6 @@ export class PayComponent implements OnInit {
     // private shopping: ShappingCarComponent
               ) {
   }
-
-
-
-
-
 
   ngOnInit() {
 
@@ -169,8 +156,6 @@ export class PayComponent implements OnInit {
       // that.mesf=result[1];
     })
   }
-
-
 
   addaddress(){
     let that = this
@@ -240,8 +225,6 @@ export class PayComponent implements OnInit {
     })
   }
 
-
-
 //   editor(index,addForm){
 //    this.every=this.address[index];
 //    this.state1=true;
@@ -300,63 +283,30 @@ export class PayComponent implements OnInit {
 pay(){
     let that=this
     this.createOrderNum()
-  // console.log(that.address_id,'294')
-  // console.log(that.goods,'295');
+  console.log(that.address_id,'294')
+  console.log(that.goods,'295');
+  for(let i=0,m=that.goods.length;i<m;i++){
+    that.userSer.addorder(that._id+'',that.address_id+'',that.goods[i].goodsid+'',that.goods[i].shopnum+'',that.goods[i].goodsprice+'',that.order_numbering+'',function (result) {
+      console.log(result.statusCode)
+      if(result.statusCode===33){
+          that.del(that.goods[i].shopid)
+        }
+    })
+  }
+  that.router.navigate(['personal-center/myflow']);
+  }
 
-  // for(let i=0,m=that.goods.length;i<m;i++){
-  //   that.userSer.addorder(that._id+'',that.address_id+'',that.goods[i].goodsid+'',that.clothesArray[i]+'',that._mail+'',function (result) {
-  //     if ( result.statusCode===0) {
-  //       this.router.navigate(['/**'])
-  //     }else {
-  //       if(result.statusCode===15){
-  //         //success
-  //         // that.state1=false
-  //         // that.address.unshift(result[0][0])
-  //         that.showaddress()
-  //         that.if_addaddress=false
-  //         //  清空表单
-  //         that.pro = Object.keys(that.shuzu)
-  //         that._detail=''
-  //         that._name=''
-  //         that._tel=''
-  //         that._mail=''
-  //       }else if(result.statusCode===16){
-  //         //false
-  //         console.log("添加地址失败")
-  //       }
-  //     }
-  //   })
-  // }
-
-
-
-
-
-  //   if(that.homeid=='')
-  // {
-  //   that.address_succ=2;
-  //   setTimeout(function(){
-  //     that.address_succ=false
-  //   }, 3000 )
-  // }
-  // else{
-  //   that.state_pay=1;$('.slideCircle1').css('background-color','red')
-  //   $('#slideLine_id3').css('background-color','red')
-  //   if($('.circle').html()>0){
-  //     $('.circle').html($('.circle').html()-1)
-  //   }
-  // }
+  //删除商品
+  del(shopid){
+    let that=this
+      that.userSer.delshop(shopid+'', function (result) {
+        if ( result.statusCode===8){
+          console.log("删除成功")
+        }
+      })
   }
 
 
-//
-// pays(){let that=this;
-//   that.perSer.chhome({'homeid':that.homeid,'tel':sessionStorage.getItem('userId')},function (result) {
-//     that.router.navigate(['personal-center/myflow']);
-//     that.del1();
-//     that.state_pay=0;
-//   })
-// }
 
 //  选好省后要弹出选择的市
   choosecity(){
@@ -420,8 +370,6 @@ pay(){
 //     });
 //   $('.center_goods').remove();
 // }
-
-
 
 //   ded(id,index){
 //       let that = this;

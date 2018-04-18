@@ -88,10 +88,6 @@ statef:any;
     })
   }
 
-
-
-
-
   cutnum(index){
     let that=this
     // let mes=this.mes;
@@ -128,26 +124,12 @@ statef:any;
   del(shopid,index,price,num){
     let that=this
     window.confirm('你确定要删除该商品吗？')? that.if_del=true: that.if_del=false
-    // clearInterval(that.timer)
-     // mes[index].del = index+'s';
     if(that.if_del){
       that.userSer.delshop(shopid+'', function (result) {
         if ( result.statusCode===8){
           alert("删除成功!")
           that.real_del=index
           that.allprice -= price*num
-          // $('#'+index+'s').parent().parent().parent().remove();
-          //删除物品
-
-          // if($('.circle').html()>0){
-          // $('.circle').html($('.circle').html()-1)
-          // }
-
-          // that.statef=true
-          // that.timer=setInterval(function(){
-          //   that.statef=false
-          // },2000)
-
         }else{
           alert("删除失败!")
           that.real_del=false

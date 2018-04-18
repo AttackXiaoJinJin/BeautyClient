@@ -6,14 +6,14 @@
         <div class="left">
         <div id="d1">
           <!--<img src="http://owo22ooz3.bkt.clouddn.com/{{gooddetail.goodspic}}" width="400px" height="600px"/>-->
-          <img src="http://localhost:3001/images/{{gooddetail&&gooddetail.goodspic}}" width="400px" height="600px"/>
+          <img src="http://localhost:3000/images/{{gooddetail&&gooddetail.goodspic}}" width="400px" height="600px"/>
           <div id="d3">
           </div>
         </div>
           <!--{{detail.goodspicb}}-->
         <!--<div id="d4" style="background: red" [ngstyle]="{'background-image':url('http://localhost:3000/images/{{detail[0].goodspicb}}')"}>-->
         <!--<div id="d4" [ngStyle]="{'background-image':'url('+'http://owo22ooz3.bkt.clouddn.com/' + detail[0].goodspic + ')'}"  >-->
-        <div id="d4" [ngStyle]="{'background-image':'url('+'http://localhost:3001/images/'+gooddetail?.goodspic+')'}"  >
+        <div id="d4" [ngStyle]="{'background-image':'url('+'http://localhost:3000/images/'+gooddetail?.goodspic+')'}"  >
         </div>
         <div class="right">
           <div class="cname">
@@ -56,10 +56,10 @@
           <div class="picture">
             <!--<div class="picture_right">颜色:</div>-->
             <div class="picture_right">
-              <img *ngIf="gooddetail&&gooddetail.goodspic" src="http://localhost:3001/images/{{gooddetail&&gooddetail?.goodspic}}" height="70" width="70">
-              <img *ngIf="gooddetail&&gooddetail.goods2" src="http://localhost:3001/images/{{gooddetail&&gooddetail?.goods2}}" height="70" width="70">
-              <img *ngIf="gooddetail&&gooddetail.goods1" src="http://localhost:3001/images/{{gooddetail&&gooddetail?.goods1}}" height="70" width="70">
-              <img *ngIf="gooddetail&&gooddetail.goods3" src="http://localhost:3001/images/{{gooddetail&&gooddetail?.goods3}}" height="70" width="70">
+              <img *ngIf="gooddetail&&gooddetail.goodspic" src="http://localhost:3000/images/{{gooddetail&&gooddetail?.goodspic}}" height="70" width="70">
+              <img *ngIf="gooddetail&&gooddetail.goods2" src="http://localhost:3000/images/{{gooddetail&&gooddetail?.goods2}}" height="70" width="70">
+              <img *ngIf="gooddetail&&gooddetail.goods1" src="http://localhost:3000/images/{{gooddetail&&gooddetail?.goods1}}" height="70" width="70">
+              <img *ngIf="gooddetail&&gooddetail.goods3" src="http://localhost:3000/images/{{gooddetail&&gooddetail?.goods3}}" height="70" width="70">
             </div>
           </div>
           <!--尺码=================-->

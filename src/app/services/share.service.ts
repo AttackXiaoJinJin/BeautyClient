@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class ShareService {
-  url: string = 'http://localhost:3001/share';
+  url: string = 'http://localhost:3000/share';
 
   constructor(private http: HttpClient) {
   }

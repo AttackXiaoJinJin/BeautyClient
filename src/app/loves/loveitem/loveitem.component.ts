@@ -30,7 +30,7 @@ export class LoveitemComponent implements OnInit {
   ngOnInit() {
     let that=this
     //显示收藏数
-    this.showlovenum(that);
+    that.showlovenum();
     //判断登录
     if(sessionStorage.getItem('userId')) {
       that.tel=sessionStorage.getItem('userPhone')
@@ -64,13 +64,14 @@ export class LoveitemComponent implements OnInit {
   }
 
   //显示收藏数
-  showlovenum(that){
+  showlovenum(){
+    let that=this
     that.loveSer.showlovenum(that._love.goodsid + '', function (result) {
       if (result.statusCode == 26) {
         that.loveNum=0+'';
       } else {
         that.loveNum=result[0].love_num;
-        // console.log(+"这是收藏的代号！！")
+        console.log(result[0].love_num,"这是收藏的代号！！")
       }
     });
   }
@@ -87,7 +88,7 @@ export class LoveitemComponent implements OnInit {
           //收藏成功
           // console.log(result.statusCode+"这是状态码");
           if (result.statusCode === 19) {
-            that.showlovenum(that);
+            that.showlovenum();
             that.className = "xin";
             that.if_love = true
           }
@@ -97,7 +98,7 @@ export class LoveitemComponent implements OnInit {
         that.loveSer.deleteloves(that.userid + '', that._love.goodsid + '', function (result) {
           //取消收藏
           if (result.statusCode ==24) {
-            that.showlovenum(that);
+            that.showlovenum();
             that.className = "noxin";
             that.if_love = false
           }
@@ -109,25 +110,5 @@ export class LoveitemComponent implements OnInit {
       that.zitanchu.emit(this.motai);
     }
   }
-
-  // pra(index){
-  //   let that=this;
-  //   that.n=index;
-  //   if(that.n==index){
-  //     that.n = that.n + 1;
-  //     $('#' + index).css('background-position-x', '-3px').css('background-position-y', '-5px');
-  //     //添加爱心
-  //     that.loves[index].praise = that.loves[index].praise + 1;
-  //     //请求数据库
-  //     that.loveSer.addloves(that.loves[index].goodsid+'', function (result) {
-  //     })
-  //
-  //   }
-  // }
-
-
-
-
-
 
 }

@@ -53,6 +53,7 @@ export class SharesAreaComponent implements OnInit {
  let that=this
   that.userSer.commentShow(function (result) {
     that.comments= result
+    console.log(result,56)
   })
 }
   //发送评论分享=============

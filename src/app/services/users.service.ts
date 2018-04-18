@@ -5,7 +5,7 @@ import {HttpClient} from '@angular/common/http';
 export class UsersService {
 // url:string = 'http://39.106.36.37:3000/users';
 // url:string = 'http://101.132.127.138:3001/users';
-url:string = 'http://localhost:3001/users';
+url:string = 'http://localhost:3000/users';
   constructor(private http: HttpClient) {}
 
 //登录
@@ -220,6 +220,7 @@ url:string = 'http://localhost:3001/users';
       },
       function (error) {
         console.log(error.message);
+
       }
     )
   }

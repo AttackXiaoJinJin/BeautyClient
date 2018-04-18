@@ -5,7 +5,7 @@ import {HttpClient} from '@angular/common/http';
 export class PersonalService {
   // url: string = 'http://39.106.36.37:3000/personal';
   // url: string = 'http://101.132.127.138:3000/personal';
-  url: string = 'http://localhost:3001/personal';
+  url: string = 'http://localhost:3000/personal';
 
   constructor(private http: HttpClient) {
   }

@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class LooksService {
-url:string = 'http://localhost:3001/looks';
+url:string = 'http://localhost:3000/looks';
   constructor(private http: HttpClient) {}
 
   //男生穿搭========

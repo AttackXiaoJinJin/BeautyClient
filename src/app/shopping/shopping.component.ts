@@ -197,9 +197,12 @@ showGoodsDetail(id){
 
   addshop() {
     let that=this;
+
     that.userSer.addshop(that.spnum+'', that.goodspic+'',that.goodsname+'',that.goodsid+'',that.chima+'',that._id,that.goodsprice+'',function (result) {
+      console.log(result.statusCode)
       if( result.statusCode===17){
       //  插入成功
+
       }
       else {
       //  插入失败
